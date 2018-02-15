@@ -1,0 +1,6 @@
+-f /usr/share/pip-wheels
+Django==2.0.2
+django-bootstrap-toolkit==2.15.0
+django-registration-redux==2.2
+Pillow==5.0.0
+pytz==2018.3

@@ -99,3 +99,9 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# file managers 
+.DS_Store
+
+# db files
+db.sqlite3
