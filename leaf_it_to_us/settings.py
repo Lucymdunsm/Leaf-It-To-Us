@@ -25,7 +25,7 @@ SECRET_KEY = '+k_y1yijd2s%#5sar53_3d6(**(#kq($(!-@l4_+28mfgj5=f='
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["tealeaf.pythonanywhere.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost", "tealeaf.pythonanywhere.com"]
 
 
 # Application definition
