@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'leaf_it_to_us',
+    'core',
 ]
 
 MIDDLEWARE = [
