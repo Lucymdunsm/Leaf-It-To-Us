@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ["127.0.0.1", "localhost", "tealeaf.pythonanywhere.com"]
 
+MEDIA_DIR = os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = '/media/'
 
 # Application definition
 

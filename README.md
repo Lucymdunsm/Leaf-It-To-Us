@@ -19,3 +19,7 @@ Apply database migrations
 ```bash
 $ python manage.py migrate
 ```
+Load sample data to the database
+```bash
+$ python populate_script.py
+```

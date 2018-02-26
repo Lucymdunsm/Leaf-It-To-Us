@@ -100,8 +100,19 @@ ENV/
 # mypy
 .mypy_cache/
 
-# file managers 
+# file managers
 .DS_Store
 
 # db files
 db.sqlite3
+*.pyc
+*.db
+*.bat
+
+# Django specific
+migrations/
+__pycache__
+
+# IDE
+.floo
+.flooignore
