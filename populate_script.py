@@ -6,7 +6,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE',
 import django
 django.setup()
 from django.contrib.auth.models import User
-from leaf_it_to_us.models import Tea, Review, SavedTea, Category, UserProfile
+from core.models import Tea, Review, SavedTea, Category, UserProfile
 from django.contrib.auth.hashers import make_password
 from django.utils import timezone
 
