@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Jura|Nanum+Brush+Script|Prompt" rel="stylesheet">
+
+</head>
+
+<body>
+
+  <!-- DOCUMENTATION NAVBAR -->
+{% block body_block %}
+  <nav class="navbar navbar-default">
+
+    <!-- Inside of a Container -->
+    <div class="container-fluid">
+
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <!-- This is the actual code that create the "hamburger icon" -->
+      <!-- The data-target grabs ids to put into the icon -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+
+          <!--  Code for the hamburger icon-->
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <a class="navbar-brand navbar-left" href="#">
+          <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17932-200.png" width="50" height="50" class="d-inline-block align-top" alt="">
+      </div>
+}
+}
+
+<!-- HEADER -->
+      <div class="Container">
+        <div id = "hi">
+              <ul class="nav navbar-nav">
+                <li><a href="#"><h1>Leaf it to us</h1></a></li>
+        </ul>
+      </div>
+      </div>
+      <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+
+        <!-- SEARCH BAR -->
+
+        <div class="poo">
+        <form class="navbar-form d-inline-block align-items-center navbar-left" role="search" id = "poo">
+
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search">
+          </div>
+          <button onClick="window.location.href='search.html'" type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+
+        <!-- Stuff on the Right -->
+
+        <ul class="d-inline-block align-top navbar-right">
+          <li><a href="#">Sign up/ Log in</a></li>
+        </ul>
+      </div>
+
+
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+
+
+  <!-- Sidebar -->
+  <nav id="sidebar" class="col-md-2">
+    <!-- Sidebar Header -->
+    <div class="sidenav">
+
+
+      <li class="active"><a href="#"><h4>Home</h4></a></li>
+      <li><a href="#"><h4>Reviews</h4></a></li>
+      <li><a href="#"><h4>Sort by</h4></a></li>
+
+      <li><a href="#"><h4>FAQ</h4></a></li>
+      <li><a href="#"><h4>Contact info</h4></a></li>
+      <li><a href="#"><h4>Site map</h4></a></li>
+
+    </div>
+  </nav>
+{% endblock %}
+      <!-- Body (This isn't working right) -->
+
+
+
+
+<div class="main">
+  <div id="hello">
+    <a href="#">I am in the wrong place</a>
+    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+
+
+</p>
+  </div>
+  </div>
+
+
+
+
+
+    <!-- Need to have JQuery and Javascript for DropDown Actions to work -->
+
+    <script src="http://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+
+
+</body>
