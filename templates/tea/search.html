@@ -1,0 +1,50 @@
+{% extends 'tea/base.html' %}
+{% load staticfiles %}
+
+
+
+
+<!-- <!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Search page</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<link rel="stylesheet" href="search.css">
+
+</head> -->
+
+<body>
+{% block body_block %}
+{% end_block}
+    <div class ="container-fluid">
+        <div class="row">
+            <p>Search filters</p>
+            <p href="#">Temperature</p>
+            <p href="#">Type</p>
+            <p href="#">Origin</p>
+            <p href="#">Top rated</p>
+        </div>
+
+
+        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+            <h3 class="tname">{{ tea.name }}</h3>
+            <h4>{{ tea.rating }}</h4>
+        </div>
+
+        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+            <h3>{{ tea.name }}</h3>
+            <h4>{{ tea.rating }}</h4>
+        </div>
+
+        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+            <h3>{{ tea.name }}</h3>
+            <h4>{{ tea.rating }}</h4>
+        </div>
+
+    </div>
+</body>
+</html>
