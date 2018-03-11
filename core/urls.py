@@ -8,11 +8,11 @@ urlpatterns = [
 
 #     re_path(r'^about/$', views.about, name='about'),
 #     re_path(r'^contact/$', views.contact, name='contact'),
-#     re_path(r'^faq/$', views.faq, name='faq'),
+     re_path(r'^faq/$', views.faq, name='faq'),
 # 
 #     # Tea Catalog URLs. This assumes each sort (popularity, type, origin) will need its own URL.
 #     # I do not know what the difference between tea catalog and tea listings is.
-#     re_path(r'^teas/$', views.teas, name='teas'),
+     re_path(r'^teas/$', views.teas, name='teas'),
 #     re_path(r'^teas/popular/$', views.most_popular, name='popular'),
 #     re_path(r'^teas/type/$', views.type, name='type'),
 #     re_path(r'^teas/origin/$', views.origin, name='origin'),
@@ -37,5 +37,5 @@ urlpatterns = [
 # 
 #     # Search URLs. Unsure whether search will be its own page or just a bar on the home page.
 #     # Again, unsure what the difference between Tea catalog and tea listings is.
-#     re_path(r'^search/$', views.search, name='search'),
+     re_path(r'^search/$', views.search, name='search'),
 ]
