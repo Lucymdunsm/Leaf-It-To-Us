@@ -3,6 +3,11 @@
 /* selected tag
 property:value; */
 
+* {
+  color:#4C5B40;
+  font-family: 'Josefin Slab', serif;
+}
+
 #hi {
   display: inline-block;
 }
@@ -18,38 +23,12 @@ property:value; */
 }
 
 h1{
-  color:#4C5B40;
+  color:yellow;
 font-family: 'Josefin Slab', serif;
 display: inline-block;
 
 }
 
-h2{
-  color:#4C5B40;
-font-family: 'Josefin Slab', serif;
-
-}
-
-h3{
-  color:#4C5B40;
-font-family: 'Josefin Slab', serif;
-
-}
-h4{
-  color:#4C5B40;
-font-family: 'Josefin Slab', serif;
-
-}
-h5{
-  color:#4C5B40;
-font-family: 'Josefin Slab', serif;
-
-}
-h6{
-  color:#4C5B40;
-font-family: 'Josefin Slab', serif;
-
-}
 /*  just try'n and see'n*/
 nav{
   color:#4C5B40;
