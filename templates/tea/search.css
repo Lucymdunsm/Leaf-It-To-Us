@@ -1,12 +1,18 @@
 
+
+.body {
+    font-size: 50%;
+
+}
 .row {
     background-color: gray;
 
 }
 
 
-.filter-options {
-
+#filter-options {
+    margin-right: 50%;
+    font-size: 50%;
 }
 
 .col-md-2 {

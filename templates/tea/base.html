@@ -10,9 +10,13 @@
   <title>{% block title %}Leaf it to Us {% endblock %}</title>
 
   <!-- Latest compiled and minified CSS -->
+
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Jura|Nanum+Brush+Script|Prompt" rel="stylesheet">
+
+  {% block style_block %}
+  {% endblock %}
 </head>
 
 <body>
@@ -46,7 +50,7 @@
 <!-- HEADER -->
       <div class="Container">
             <div class="nav navbar-nav">
-                <h1 id="litu"><a href="#">Leaf it to us</a></h1>
+                <h1 id="litu"><a href="{% url 'home' %}">Leaf it to us</a></h1>
             </div>
 
       <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
@@ -90,8 +94,8 @@
       <a href="#"><h4>Reviews</h4></a>
       <a href="#"><h4>Sort by</h4></a>
       <a href="{% url 'faq' %}"><h4>FAQ</h4></a>
-      <a href="#"><h4>Contact info</h4></a>
-      <a href="{% url 'teas' %}"><h4>Site map</h4></a>
+      <a href="{% url 'teas' %}"><h4>Contact info</h4></a>
+      <a href="{% url 'search' %}"><h4>Site map</h4></a>
     </div>
   </nav>
 {% endblock %}
