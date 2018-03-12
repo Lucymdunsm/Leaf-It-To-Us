@@ -121,3 +121,10 @@ __pycache__
 # IntelliJ IDEA
 .idea/
 *.iml
+
+# proj files
+.project
+.pydevproject
+
+#dump
+sh.exe.stackdump
