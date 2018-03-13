@@ -3,28 +3,58 @@
 
 {% block title_block %}
     <title>tea</title>
+    <!-- not working -->
+{% endblock %}
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/teas.css' %}">
 {% endblock %}
 
 {% block body_block %}
 
-<link rel="stylesheet" href="specifictea.css">
-
-<body>
+    <div class="breadcrumb">breadcrumb
+     <!-- should prob be inherting from a block from somewhere? -->
+    </div>
 
         <div class="tea-info">
             <div class="col-md-3">
-                <div class="img"><img src="http://via.placeholder.com/150x150" alt="picture of tea"></div>
+                <div class="img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
             </div>
 
             <div class="col-md-6">
-                <div class="tea-desc">
+                <div class="tea-name">tea name</div>
+                <div class="tea-desc">Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin. Samtidigt kan det i ett demokratiskt samhälle uppstå konfliktytor mellan religionsfriheten och andra mänskliga fri- och rättigheter, till exempel i frågor om jämställdhet, barns rättigheter och alla människors lika värde. I debatten framförs inte så sällan ståndpunkten att staten borde ha skarpare verktyg för att förhindra att statligt stöd går till trossamfund som inte lever upp till demokratiska principer.</div>
             </div>
+        </div>
 
-            <div class="col-md-2">
-                <div class="icons">
-    temp / origin / type / brew time / rating / fav inline
+        <div class="col-md-2">
+            <div class="tea-icons">
+                <div class="img"><img src="http://via.placeholder.com/100x100" alt="icon"></div>
+                <p class="icon-name">Temperature</p><!--  have these vals stored in an array and print them out on load? -->
+            </div>
+        </div>
 
-    reviews | order by date / rating inline
+        <div class="col-md-9">
+            <div class="review-section">
+                <div class="review-sort-bar">
+                    <p class="reviews">reviews</p>
 
-    review boxes
+                    <div class="review-filter">
+                        <p>order by:</p>
+                        <button>most recent</button> <!-- maybe dont have as button for real -->
+                        <button>top rated</button>
+                    </div>
+                </div>
+
+                <div class="review-boxes">
+                    <div id="profile-pic">
+                        <div class="img"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
+                        <div class="tea-rating">some stars</div>
+                    </div>
+                    <div class="review-text">
+                    Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin.
+                    </div>
+                </div>
+        </div>
+
 {% endblock %}

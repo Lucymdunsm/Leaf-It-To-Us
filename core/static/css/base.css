@@ -44,6 +44,10 @@ property:value; */
  * Sidebar
  */
 
+
+/*might need to re-add in the z-index if that's what was preventing the sidebar
+from staying on top?*/
+
 #sidebar {
   position: fixed;
   background-color: #c1f0c1;

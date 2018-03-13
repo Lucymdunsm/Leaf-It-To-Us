@@ -10,10 +10,13 @@
   <title>{% block title %}Leaf it to Us {% endblock %}</title>
 
   <!-- Latest compiled and minified CSS -->
+
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Jura|Nanum+Brush+Script|Prompt" rel="stylesheet">
 
+  {% block style_block %}
+  {% endblock %}
 </head>
 
 <body>
@@ -47,7 +50,7 @@
 <!-- HEADER -->
       <div class="Container">
             <div class="nav navbar-nav">
-                <h1 id="litu"><a href="#">Leaf it to us</a></h1>
+                <h1 id="litu"><a href="{% url 'home' %}">Leaf it to us</a></h1>
             </div>
 
       <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
@@ -91,8 +94,8 @@
       <a href="#"><h4>Reviews</h4></a>
       <a href="#"><h4>Sort by</h4></a>
       <a href="{% url 'faq' %}"><h4>FAQ</h4></a>
-      <a href="#"><h4>Contact info</h4></a>
-      <a href="{% url 'teas' %}"><h4>Site map</h4></a>
+      <a href="{% url 'teas' %}"><h4>Contact info</h4></a>
+      <a href="{% url 'search' %}"><h4>Site map</h4></a>
     </div>
   </nav>
 {% endblock %}
@@ -109,7 +112,6 @@ Why do we use it?
 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
 
 </p>
-<div id="mugshot"></div>
   </div>
   </div>
 {% endblock %}
@@ -120,7 +122,4 @@ It is a long established fact that a reader will be distracted by the readable c
   <!-- Leaf It's Custom JavaScript -->
   <script type="text/javascript" src="{% static 'src/js/mugshot.js' %}"></script>
 
-  <script type="text/javascript">
-  var myplugin = $('#mugshot').mugshot();
-  </script>
 </body>

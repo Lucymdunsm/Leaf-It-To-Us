@@ -3,36 +3,62 @@
 
 <title>Search page</title>
 
-<link rel="stylesheet" href="search.css">
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+{% endblock %}
 
 
-<body>
 {% block body_block %}
+<body>
 
     <div class ="container-fluid">
         <div class="row">
-            <p>Search filters</p>
-            <p href="#">Temperature</p>
-            <p href="#">Type</p>
-            <p href="#">Origin</p>
-            <p href="#">Top rated</p>
+            <div id="filter-options" class="col-md-9">
+                <ul id="filters">
+                    <li class="dropdown">
+                        <p>Search filters:</p></li>
+                    <li class="dropdown">temp
+                         <div class="dropdown-content">hi</li>
+                    <li class="dropdown">origin
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">type
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">brew time
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">top rated
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">recently reviewed
+                        <div class="dropdown-content">hi</li>
+                </ul>
+            </div>
         </div>
 
+        <div class="toprow"> <!-- having multi rows but dk how to implement - for loop? -->
+        <div class="teabox">
+            <div class="col-md-2">
+                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+                <h3 class="tname"> tea.name </h3>
+                <h4 class="trating"> tea.rating </h4>
+            </div>
 
-        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-            <h3 class="tname">{{ tea.name }}</h3>
-            <h4>{{ tea.rating }}</h4>
+            <div class="col-md-2">
+                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+                <h3>{{ tea.name }}</h3>
+                <h4>{{ tea.rating }}</h4> <!-- braces for django to iterate -->
+            </div>
+
+            <div class="col-md-2">
+                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+                <h3>{{ tea.name }}</h3>
+                <h4>{{ tea.rating }}</h4>
+            </div>
+
+            <div class="col-md-2">
+                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+                <h3>{{ tea.name }}</h3>
+                <h4>{{ tea.rating }}</h4>
+            </div>
         </div>
-
-        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-            <h3>{{ tea.name }}</h3>
-            <h4>{{ tea.rating }}</h4>
-        </div>
-
-        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-            <h3>{{ tea.name }}</h3>
-            <h4>{{ tea.rating }}</h4>
-        </div>
-
     </div>
-{% end_block}
+    </div>
+{% endblock %}
