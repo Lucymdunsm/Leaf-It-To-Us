@@ -22,7 +22,7 @@
             </div>
 
             <div class="col-md-6">
-                <div class="tea-name">tea name</div>
+                <div class="tea-name">{{ tea.name }}</div>
                 <div class="tea-desc">Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin. Samtidigt kan det i ett demokratiskt samhälle uppstå konfliktytor mellan religionsfriheten och andra mänskliga fri- och rättigheter, till exempel i frågor om jämställdhet, barns rättigheter och alla människors lika värde. I debatten framförs inte så sällan ståndpunkten att staten borde ha skarpare verktyg för att förhindra att statligt stöd går till trossamfund som inte lever upp till demokratiska principer.</div>
             </div>
         </div>
@@ -30,7 +30,7 @@
         <div class="col-md-2">
             <div class="tea-icons">
                 <div class="img"><img src="http://via.placeholder.com/100x100" alt="icon"></div>
-                <p class="icon-name">Temperature</p><!--  have these vals stored in an array and print them out on load? -->
+                <p class="icon-name">Temperature</p> <!-- get block from somewhere -->
             </div>
         </div>
 
@@ -48,12 +48,16 @@
 
                 <div class="review-boxes">
                     <div id="profile-pic">
+                        {% if review %}
                         <div class="img"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
-                        <div class="tea-rating">some stars</div>
+
+                        {% for review in review %}
+                            <div class="tea-rating">{{ review.rating }}</div>
+
                     </div>
-                    <div class="review-text">
-                    Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin.
-                    </div>
+                    <div class="review-text">{{ review.content }}</div>
+                    {% endfor %}
+                    {% endif %}
                 </div>
         </div>
 

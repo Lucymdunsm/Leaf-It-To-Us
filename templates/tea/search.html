@@ -35,29 +35,15 @@
 
         <div class="toprow"> <!-- having multi rows but dk how to implement - for loop? -->
         <div class="teabox">
+            {% if tea %}
+            {% for tea in tea %}
             <div class="col-md-2">
                 <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                <h3 class="tname"> tea.name </h3>
-                <h4 class="trating"> tea.rating </h4>
+                <h3 class="tname">{{ tea.name }}</h3>
+                <h4 class="trating">{{ tea.rating }}</h4>
             </div>
-
-            <div class="col-md-2">
-                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                <h3>{{ tea.name }}</h3>
-                <h4>{{ tea.rating }}</h4> <!-- braces for django to iterate -->
-            </div>
-
-            <div class="col-md-2">
-                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                <h3>{{ tea.name }}</h3>
-                <h4>{{ tea.rating }}</h4>
-            </div>
-
-            <div class="col-md-2">
-                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                <h3>{{ tea.name }}</h3>
-                <h4>{{ tea.rating }}</h4>
-            </div>
+            {% endfor %}
+            {% endif %}
         </div>
     </div>
     </div>
