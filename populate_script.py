@@ -275,5 +275,5 @@ def add_savedTea(user, tea):
 
 
 if __name__=='__main__':
-	print('Starting Rango population script...')
+	print('Starting Leaf It To Us population script...')
 	populate()

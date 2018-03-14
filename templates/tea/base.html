@@ -61,10 +61,12 @@
         <!-- SEARCH BAR -->
 
         <div>
-          <form class="navbar-form d-inline-block align-items-center navbar-left" role="search" id = "schbar">
 
+          <form id="search_form" method="post" action="{% url 'search' %}" class="navbar-form d-inline-block align-items-center navbar-left" role="search">
+              {% csrf_token %}
+              {{ error }}
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" name="query" class="form-control" placeholder="Search">
             </div>
             <button href="#" type="submit" class="btn btn-default">Submit</button>
           </form>
@@ -101,29 +103,30 @@
 {% endblock %}
       <!-- Body (This isn't working right) -->
 
-
-
 {% block body_block %}
 <div class="main">
   <div id="placeh">
     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
 
+<<<<<<< HEAD
     THIS SHOULDN'T BE VISIBLE ANYWHERE
     </p>
+=======
+Why do we use it?
+It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+<div id="mugshot"></div>
+</p>
+  </div>
+>>>>>>> 87b51f68ffcfa115214cf234443868f368128a18
   </div>
 </div>
 {% endblock %}
-
-
-
-
-    <!-- Need to have JQuery and Javascript for DropDown Actions to work -->
-
-    <script src="http://code.jquery.com/jquery-3.1.1.js" integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA=" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-
+  <!-- JQuery v3.3.1 -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+  <!-- Bootstrap v3.3.7 JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <!-- Leaf It's Custom JavaScript -->
+  <script type="text/javascript" src="{% static 'src/js/mugshot.js' %}"></script>
+  <script type="text/javascript" src="{% static 'src/js/main.js' %}"></script>
 
 </body>

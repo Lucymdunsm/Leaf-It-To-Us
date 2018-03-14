@@ -12,9 +12,8 @@ urlpatterns = [
 # 
 #     # Tea Catalog URLs. This assumes each sort (popularity, type, origin) will need its own URL.
 #     # I do not know what the difference between tea catalog and tea listings is.
-     re_path(r'^teas/$', views.show_catalog, name='teas'),
-     re_path(r'^teas/popular/$', views.most_popular, name='popular'),
-
+     re_path(r'^teas/$', views.teas, name='teas'),
+#     re_path(r'^teas/popular/$', views.most_popular, name='popular'),
 #     re_path(r'^teas/type/$', views.type, name='type'),
 #     re_path(r'^teas/origin/$', views.origin, name='origin'),
 #     re_path(r'^teas/(?P<tea_name_slug>[\w\-]+)/$', views.show_tea, name='show_tea'),
@@ -31,11 +30,7 @@ urlpatterns = [
 #     # Account pages. These will only show information if user is logged in.
 #     # Unsure how much is being shown on a single page (do wee need separate URLs for dashboard
 #     # and account details? Dashboard and saved teas?
-<<<<<<< HEAD
       re_path(r'^account/$', views.show_account, name='show_account'),
-=======
-	  re_path(r'^account/$', views.show_account, name='show_account'),
->>>>>>> 87b51f68ffcfa115214cf234443868f368128a18
 #     re_path(r'^account/settings/$', views.settings, name='settings'),
 #     re_path(r'^account/reviews/$', views.user_reviews, name='user_reviews'),
 #     re_path(r'^account/saved_teas/$', views.saved_teas, name='saved_teas'),

@@ -1,5 +1,40 @@
 {% extends 'tea/base.html' %}
 {% load staticfiles %}
 
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+{% endblock %}
+
 {% block title_block %}
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="col-md-4">
+        <div class="tea-month"> <!-- could text be a block from somewhere? -->
+            Tea of the month
+            <div class="img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
+            <div class="tea-desc">Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin. Samtidigt kan det i ett demokratiskt samhälle uppstå konfliktytor mellan religionsfriheten och andra mänskliga fri- och rättigheter, till exempel i frågor om jämställdhet, barns rättigheter och alla människors lika värde. I debatten framförs inte så sällan ståndpunkten att staten borde ha skarpare verktyg för att förhindra att statligt stöd går till trossamfund som inte lever upp till demokratiska principer.</div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="icon-group">
+            icon group
+
+            <div class="img"> <!-- could these be a block from somewhere? -->
+                <img src="http://via.placeholder.com/100x100" alt="icon">
+            </div>
+            <p class="icon-name">Temperature</p>
+            <div class="img">
+                <img src="http://via.placeholder.com/100x100" alt="icon">
+            </div>
+            <p class="icon-name">Temperature</p>
+        </div>
+
+        <div class="mugshot-api">
+            <img src="http://via.placeholder.com/250x250" alt="mugshot">
+        </div>
+    </div>
+
 {% endblock %}
