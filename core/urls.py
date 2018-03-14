@@ -30,7 +30,7 @@ urlpatterns = [
 #     # Account pages. These will only show information if user is logged in.
 #     # Unsure how much is being shown on a single page (do wee need separate URLs for dashboard
 #     # and account details? Dashboard and saved teas?
-#     re_path(r'^account/$', views.show_account, name='show_account'),
+      re_path(r'^account/$', views.show_account, name='show_account'),
 #     re_path(r'^account/settings/$', views.settings, name='settings'),
 #     re_path(r'^account/reviews/$', views.user_reviews, name='user_reviews'),
 #     re_path(r'^account/saved_teas/$', views.saved_teas, name='saved_teas'),
