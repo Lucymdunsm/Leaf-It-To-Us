@@ -5,11 +5,7 @@
     <title>tea</title>
     <!-- not working -->
 {% endblock %}
-
-{% block style_block %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/tea_catalog.css' %}">
-{% endblock %}
-
+<body>
 {% block body_block %}
 <h1>Catalog page</h1>
 <div class="dropdown" id="catalog-filter">
@@ -34,3 +30,5 @@
 </div>
 {% endif %}
 {% endblock %}
+</body>
+</html>

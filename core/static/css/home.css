@@ -1,0 +1,24 @@
+.col-md-4 {
+    padding-top: 2%;
+}
+
+
+.tea-month {
+    margin-left: 75%;
+    background-color: BurlyWood;
+    width: 50%;
+}
+
+.tea-desc {
+    padding: 7% 2% 7% 2%;
+
+}
+
+.icon-group {
+    margin-left: 75%;
+    background: lavender;
+}
+
+.mugshot-api {
+    margin-left: 75%;
+}

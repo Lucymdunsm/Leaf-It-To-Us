@@ -1,0 +1,53 @@
+{% extends 'tea/base.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/profile.css' %}">
+{% endblock %}
+
+{% block title_block %}
+{% endblock %}
+
+{% block login_block %}
+    <div class="d-inline-block align-top navbar-right">
+        <a href="#">Log out</a>
+    </div>
+{% endblock %}
+
+{% block body_block %}
+
+    <div class="col-md-12">
+        <div id="display-name">
+
+            Welcome, first name last name
+        </div>
+    </div>
+
+    <div class="col-md-4">
+         <div class="profile-img"><img src="http://via.placeholder.com/200x200" alt="profile picture">
+            profile img
+         </div>
+    </div>
+
+    <div class="col-md-8">
+        <div class="recent-posted-review">
+            <h2>Most recent review</h2>
+            {% if review %}
+            <p id="review-text">{{ review.content }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="recent-fav-tea">
+            Most recent favd tea x5
+            <div class="tea-img"><img src="http://via.placeholder.com/150x150" alt="picture of tea">
+            {% if tea %}
+            {% for tea in tea %}
+
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}
