@@ -61,10 +61,12 @@
         <!-- SEARCH BAR -->
 
         <div>
-          <form class="navbar-form d-inline-block align-items-center navbar-left" role="search" id = "schbar">
 
+          <form id="search_form" method="post" action="{% url 'search' %}" class="navbar-form d-inline-block align-items-center navbar-left" role="search">
+              {% csrf_token %}
+              {{ error }}
             <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search">
+              <input type="text" name="query" class="form-control" placeholder="Search">
             </div>
             <button href="#" type="submit" class="btn btn-default">Submit</button>
           </form>
@@ -101,8 +103,6 @@
 {% endblock %}
       <!-- Body (This isn't working right) -->
 
-
-
 {% block body_block %}
 <div class="main">
   <div id="placeh">
@@ -110,7 +110,7 @@
 
 Why do we use it?
 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-
+<div id="mugshot"></div>
 </p>
   </div>
   </div>
@@ -121,5 +121,6 @@ It is a long established fact that a reader will be distracted by the readable c
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <!-- Leaf It's Custom JavaScript -->
   <script type="text/javascript" src="{% static 'src/js/mugshot.js' %}"></script>
+  <script type="text/javascript" src="{% static 'src/js/main.js' %}"></script>
 
 </body>

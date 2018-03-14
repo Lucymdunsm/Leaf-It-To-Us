@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
 from core import views
-
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     re_path(r'^$', views.home, name = 'home'),
     re_path(r'^leafittous/', include('core.urls')),
     re_path(r'^admin/', admin.site.urls),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

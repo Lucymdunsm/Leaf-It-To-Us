@@ -1,0 +1,11 @@
+{% extends 'tea/base.html' %}
+{% load staticfiles %}
+{% block body_block %}
+<h1>Account</h1>
+	{% if user %}
+		{{ user.first_name }} {{ user.last_name }}
+		{{ profile.profile_pic }}
+		{{ MEDIA_URL }}
+		<img src="{{ MEDIA_URL }}{{ profile.profile_pic }}">
+	{% endif %}
+{% endblock %}
