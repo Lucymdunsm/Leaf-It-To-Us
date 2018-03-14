@@ -9,7 +9,6 @@
 
 
 {% block body_block %}
-<body>
 
     <div class ="container-fluid">
         <div class="row">
@@ -33,32 +32,20 @@
             </div>
         </div>
     {% if results %}
-        <div class="toprow"> <!-- having multi rows but dk how to implement - for loop? -->
-        <div class="teabox">
-<<<<<<< HEAD
-            {% if tea %}
-            {% for tea in tea %}
-            <div class="col-md-2">
-                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                <h3 class="tname">{{ tea.name }}</h3>
-                <h4 class="trating">{{ tea.rating }}</h4>
+        <div class="toprow">
+            <div class="teabox">
+                {% for tea in results %}
+                <div class="col-md-2">
+                    <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+                    <h3 class="tname"> {{ tea.name }} </h3>
+                    <h4 class="trating">{{ tea.rating }}</h4>
+                </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-            {% endif %}
-=======
-            {% for tea in results %}
-            <div class="col-md-2">
-                <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                <h3 class="tname"> {{ tea.name }} </h3>
-                <h4 class="trating">{{ tea.rating }}</h4>
-            </div>
-            {% endfor %}
->>>>>>> 87b51f68ffcfa115214cf234443868f368128a18
         </div>
-    </div>
-    {% else %}
-    <p>No results matched your search</p>
-    {% endif %}
-    
+        {% else %}
+            <p>No results matched your search</p>
+        {% endif %}
+
     </div>
 {% endblock %}

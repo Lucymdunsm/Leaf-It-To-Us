@@ -1,0 +1,64 @@
+body {
+    background-color: #d9d9d9;
+}
+
+.breadcrumb {
+    margin-left: 20%;
+}
+
+.tea-info {
+    margin-left: 25%;
+    display: inline-block;
+}
+
+.tea-name {
+    text-transform: uppercase;
+    font-size: 200%;
+}
+
+.tea-icons {
+    margin-left: 165%; /*lol*/
+    margin-top: 10%;
+    display: inline-block;
+}
+
+.icon-name {
+    text-align: center;
+    margin-top: 10%;
+}
+
+.review-sort-bar {
+    display: inline-flex;
+    padding-left: 5%;
+    margin-top: 20%; /*this is hacky af but it works for now*/
+    background-color: grey;
+    width: 90%;
+}
+
+.review-section {
+    margin-left: 10%;
+
+}
+
+.reviews {
+    padding-left: 1%;
+}
+
+.review-filter {
+    padding: 5% 0 5% 50%; /*t&b doing nothing*/
+    display: flex;
+}
+
+#profile-pic {
+    padding-top: 2%;
+    display: flex;
+}
+
+.tea-rating {
+    padding-left: 2%
+}
+
+.review-text {
+    padding-top: 2%;
+    width: 20%;
+}
