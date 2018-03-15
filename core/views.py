@@ -2,10 +2,8 @@ import json
 from django.core import serializers
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
-from core.models import Tea, User, UserProfile
-
+from core.models import Tea, User, UserProfile, Review
 from core.models import Category, Tea, Review, UserProfile, SavedTea
-
 
 def home(request):
     return render(request, 'tea/home.html')
@@ -29,7 +27,6 @@ def search(request):
         # Execption, return nothing
             matches["results"] = None
  
-    print(matches["results"])
     return render(request, 'tea/search.html', matches)
 
 def faq(request):
@@ -45,7 +42,6 @@ def show_account(request):
 
 # i had this in mine but it wasn't fully working    
 #     review_list = Review.objects.order_by('-date')[:1]
-#     favtea_list = SavedTea.objects.order_by('-tea')[:5]
 #     context_dict = {'review': review_list, 'fav': favtea_list}
     
     account = {}
@@ -56,9 +52,13 @@ def show_account(request):
     try:
         user = User.objects.get(username=meghan)
         profile = UserProfile.objects.get(user=user)
-        account = {"user": user, "profile": profile}
+        reviews = Review.objects.filter(user=user).order_by('date')
+        favtea_list = SavedTea.objects.filter(user=user).order_by('-tea')[:5]
+        account = {"user": user, "profile": profile, 
+        			"reviews": reviews, "favourites": favtea_list}
     except User.DoesNotExist:
-        account = {"user": None, "profile": None}
+        account["user"], account["profile"], account["reviews"],
+        account["favourites"] = None
 
     return render(request, 'tea/account.html', account)
 
@@ -75,15 +75,8 @@ def show_catalog(request):
 	return response
 
 def most_popular(request):
-	context_dict = {}
 	if request.method == 'GET':
-		try:
-			teaList = Tea.objects.order_by('-views')
-			context_dict["teas"] = teaList
-		except Tea.DoesNotExist:
-			teaList["teas"] = None
-			context_dict["teas"] = teaList
+		teaList = serializers.serialize("json", Tea.objects.order_by('-views'))
+		data = {"data": teaList}
 
-	Tea_json = serializers.serialize("json", teaList)
-	data = {"data": Tea_json}
-	return JsonResponse(data)
+	return JsonResponse(data, safe=False)
