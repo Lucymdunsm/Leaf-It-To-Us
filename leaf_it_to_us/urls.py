@@ -17,10 +17,20 @@ from django.contrib import admin
 from django.urls import path, re_path
 from django.conf.urls import include
 from core import views
+from registration.backends.simple.views import RegistrationView 
 
+#Class that redirects user to homepage after login.
+class MyRegistrationView(RegistrationView):
+    def get_success_url(self, user):
+        return '/leafitous/'
 
 urlpatterns = [
     re_path(r'^$', views.home, name = 'home'),
     re_path(r'^leafittous/', include('core.urls')),
+    re_path(r'^oauth/', include('social_django.urls', namespace='social')), 
     re_path(r'^admin/', admin.site.urls),
+    re_path(r'^accounts/register/$', MyRegistrationView.as_view(), name = 'registration_register'),
+    re_path(r'^accounts/', include('registration.backends.simple.urls')),
 ]
+
+
