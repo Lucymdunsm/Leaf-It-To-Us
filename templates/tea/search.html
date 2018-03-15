@@ -1,50 +1,51 @@
 {% extends 'tea/base.html' %}
 {% load staticfiles %}
 
+<title>Search page</title>
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+{% endblock %}
 
 
-
-<!-- <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="utf-8">
-  <title>Search page</title>
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-<link rel="stylesheet" href="search.css">
-
-</head> -->
-
-<body>
 {% block body_block %}
-{% end_block}
+
     <div class ="container-fluid">
         <div class="row">
-            <p>Search filters</p>
-            <p href="#">Temperature</p>
-            <p href="#">Type</p>
-            <p href="#">Origin</p>
-            <p href="#">Top rated</p>
+            <div id="filter-options" class="col-md-9">
+                <ul id="filters">
+                    <li class="dropdown">
+                        <p>Search filters:</p></li>
+                    <li class="dropdown">temp
+                         <div class="dropdown-content">hi</li>
+                    <li class="dropdown">origin
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">type
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">brew time
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">top rated
+                        <div class="dropdown-content">hi</li>
+                    <li class="dropdown">recently reviewed
+                        <div class="dropdown-content">hi</li>
+                </ul>
+            </div>
         </div>
-
-
-        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-            <h3 class="tname">{{ tea.name }}</h3>
-            <h4>{{ tea.rating }}</h4>
+    {% if results %}
+        <div class="toprow">
+            <div class="teabox">
+                {% for tea in results %}
+                <div class="col-md-2">
+                    <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
+                    <h3 class="tname"> {{ tea.name }} </h3>
+                    <h4 class="trating">{{ tea.rating }}</h4>
+                </div>
+                {% endfor %}
+            </div>
         </div>
-
-        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-            <h3>{{ tea.name }}</h3>
-            <h4>{{ tea.rating }}</h4>
-        </div>
-
-        <div class="col-md-2"><img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-            <h3>{{ tea.name }}</h3>
-            <h4>{{ tea.rating }}</h4>
-        </div>
+        {% else %}
+            <p>No results matched your search</p>
+        {% endif %}
 
     </div>
-</body>
-</html>
+{% endblock %}

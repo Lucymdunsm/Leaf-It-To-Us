@@ -1,0 +1,44 @@
+{% load staticfiles %}
+{% block body_block %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style type="text/css">
+.checked {
+    color: orange;
+}
+</style>
+<h1>Account</h1>
+	{% if user %}
+		{{ user.first_name }} {{ user.last_name }}
+		<img src="{{ MEDIA_URL }}{{ profile.profile_pic }}">
+	{% endif %}
+
+	<p><b>My Reviews:</b></p>
+	{% if reviews %}
+	{% for review in reviews %}
+	{{ review.tea }} 
+	<span class="score" data-rating="{{ review.rating }}">
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+		<span class="fa fa-star"></span>
+	</span>
+	<p>{{review.date}}</p>
+	{{ review.content }}
+	{% endfor %}
+	{% endif %}
+
+	<p><b>Favourite teas:</b></p>
+	{% if favourites %}
+	<ul>
+		{% for favourite in favourites %}
+		<li>{{ favourite.tea }}</li>
+		{% endfor %}
+	</ul>
+	{% endif %}
+{% endblock %}
+
+
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="/static/src/js/main.js"></script>
