@@ -6,25 +6,40 @@ body {
     margin-left: 20%;
 }
 
-.tea-info {
+#tea-info {
+    background-color: LightSteelBlue;
     margin-left: 25%;
     display: inline-block;
+    width: 60%;
+
 }
 
-.tea-name {
+#tea-name {
     text-transform: uppercase;
     font-size: 200%;
 }
 
-.tea-icons {
+
+#tea-icon-group {
     margin-left: 165%; /*lol*/
     margin-top: 10%;
-    display: inline-block;
 }
 
-.icon-name {
-    text-align: center;
-    margin-top: 10%;
+#icon-group {
+    display: inline-flex;
+}
+
+.icon-img {
+    margin-right: 10%;
+}
+
+#icon-headings {
+    display: inline-flex;
+}
+
+#detailed-tea-info {
+    display: inline-flex;
+    margin-right: 10%;
 }
 
 .review-sort-bar {
@@ -55,10 +70,10 @@ body {
 }
 
 .tea-rating {
-    padding-left: 2%
+    padding-left: 2%;
+    display: inline-flex;
 }
 
-.review-text {
+#review-text {
     padding-top: 2%;
     width: 20%;
-}

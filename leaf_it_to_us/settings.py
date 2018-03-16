@@ -44,6 +44,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'leaf_it_to_us',
     'core',
+    'registration',
+    'social_django',
+
 ]
 
 MIDDLEWARE = [
@@ -54,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'leaf_it_to_us.urls'
@@ -69,6 +73,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
                 'django.template.context_processors.media'
             ],
         },
@@ -128,3 +134,36 @@ USE_TZ = True
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [STATIC_DIR, ]
+
+# Registration Redux Variables
+
+REGISTRATION_OPEN = True
+
+ACCOUNT_ACTIVATION_DAYS = 7
+
+REGISTRATION_AUTO_LOGIN = True
+
+LOGIN_REDIRECT_URL = '/leafittous/'
+
+LOGIN_URL =  '/accounts/login/'
+
+# Social login variables
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    #'django.contrib.auth.backends.ModelBackend',
+)
+
+# URL directions after social login.
+SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/settings/'
+SOCIAL_AUTH_RAISE_EXCEPTIONS = False
+
+# Twitter socia auth data. Requires registering the website at app.twitter
+SOCIAL_AUTH_TWITTER_KEY = 'needsAKey'
+SOCIAL_AUTH_TWITTER_SECRET = 'needsAKey'
+
+# Facebook social auth data. Requires registering the website at developers.facebook
+SOCIAL_AUTH_FACEBOOK_KEY = 'needsAKey'  # App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'needsAKey'  # App Secret
