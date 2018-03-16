@@ -33,6 +33,12 @@ class Tea(models.Model):
 		self.rating = avg_ratings
 		self.save()
 
+
+		class Meta:
+	  		model = Tea
+	  		fields = ('id', 'name', 'price', 'description', 
+	        	'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image')
+
 	def __str__(self):
 		return self.name
 

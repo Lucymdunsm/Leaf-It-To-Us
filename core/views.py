@@ -1,6 +1,7 @@
 import json
 from django.core import serializers
 from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from core.models import Tea, User, UserProfile, Review
 from core.models import Category, Tea, Review, UserProfile, SavedTea
@@ -71,12 +72,52 @@ def show_catalog(request):
 	except Tea.DoesNotExist:
 		teaList["teas"] = None
 
-	response = render(request, 'tea/tea_catalog.html', context_dict)
-	return response
+	return render(request, 'tea/tea_catalog.html', context_dict)
 
+@csrf_exempt
 def most_popular(request):
-	if request.method == 'GET':
-		teaList = serializers.serialize("json", Tea.objects.order_by('-views'))
-		data = {"data": teaList}
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            model_to_json =  Tea.objects.order_by('-views')
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+               queryset = Tea.objects.filter(pk__in=pk_list).order_by("-views")
+               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+    
+    return JsonResponse(model_to_json, safe=False)
 
-	return JsonResponse(data, safe=False)
+@csrf_exempt
+def type(request):
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            model_to_json =  Tea.objects.order_by('category')
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+               queryset = Tea.objects.filter(pk__in=pk_list).order_by("category")
+               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+    
+    return JsonResponse(model_to_json, safe=False)
+
+@csrf_exempt
+def origin(request):
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            model_to_json =  Tea.objects.order_by('origin')
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+               queryset = Tea.objects.filter(pk__in=pk_list).order_by("origin")
+               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+    
+    return JsonResponse(model_to_json, safe=False)

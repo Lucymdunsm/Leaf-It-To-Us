@@ -16,9 +16,8 @@ urlpatterns = [
      re_path(r'^teas/$', views.teas, name='teas'),
      re_path(r'^teas/catalog/$', views.show_catalog, name='catalog'),
      re_path(r'^teas/popular/$', views.most_popular, name='popular'),
-
-#     re_path(r'^teas/type/$', views.type, name='type'),
-#     re_path(r'^teas/origin/$', views.origin, name='origin'),
+    re_path(r'^teas/type/$', views.type, name='type'),
+    re_path(r'^teas/origin/$', views.origin, name='origin'),
 #     re_path(r'^teas/(?P<tea_name_slug>[\w\-]+)/$', views.show_tea, name='show_tea'),
 # 
 #     # Specific review pages have an id slug that is passed on to the view function.
