@@ -16,21 +16,33 @@
      <!-- should prob be inherting from a block from somewhere? -->
     </div>
 
-        <div class="tea-info">
-            <div class="col-md-3">
-                <div class="img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="tea-name">{{ tea.name }}</div> <!-- not working yet -->
-                <div class="tea-desc">Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin. Samtidigt kan det i ett demokratiskt samhälle uppstå konfliktytor mellan religionsfriheten och andra mänskliga fri- och rättigheter, till exempel i frågor om jämställdhet, barns rättigheter och alla människors lika värde. I debatten framförs inte så sällan ståndpunkten att staten borde ha skarpare verktyg för att förhindra att statligt stöd går till trossamfund som inte lever upp till demokratiska principer.</div>
+        <div id="tea-info">
+            <div class="col-md-9">
+                {% if tea %}
+                    <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
+                    <div id="tea-name">{{ tea.name }}</div>
+                    <div id="tea-desc">{{ tea.description }}</div>
+                {% endif %}
             </div>
         </div>
 
         <div class="col-md-2">
-            <div class="tea-icons">
-                <div class="img"><img src="http://via.placeholder.com/100x100" alt="icon"></div>
-                <p class="icon-name">Temperature</p> <!-- get block from somewhere -->
+            <div id="tea-icon-group">
+                {% include 'tea/icon-group.html' %}
+                <div id="icon-headings">
+                    <h4 class="icon-name">Temperature</h4>
+                    <h4 class="icon-name">Origin</h4>
+                    <h4 class="icon-name">Type</h4>
+                    <h4 class="icon-name">Rating</h4>
+                </div>
+                {% if tea %}
+                <div id="detailed-tea-info">
+                    <h5 class="tea-details">{{ tea.temperature }}</h5>
+                    <h5 class="tea-details">{{ tea.origin }}</h5>
+                    <h5 class="tea-details">{{ tea.category }}</h5>
+                    <h5 class="tea-details">{{ tea.rating }}</h5>
+                </div>
+                {% endif %}
             </div>
         </div>
 
@@ -47,17 +59,17 @@
                 </div>
 
                 <div class="review-boxes">
-                    <div id="profile-pic">
+                    <div id="review-profile">
                         {% if review %}
-                        <div class="img"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
-                    </div>
                         {% for review in review %}
-                            <div class="tea-rating">{{ review.rating }}</div>
-
-                            <div class="review-text">{{ review.content }}</div>
-                    {% endfor %}
-                    {% endif %}
+                            <div id="profile-pic"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
+                            <div id="tea-rating">{{ review.rating }}</div>
+                            <div id="review-text">{{ review.content }}</div>
+                        {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
+            </div>
         </div>
 
 {% endblock %}
