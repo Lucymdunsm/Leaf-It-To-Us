@@ -9,11 +9,6 @@ from core.models import Category, Tea, Review, UserProfile, SavedTea
 def home(request):
     return render(request, 'tea/home.html')
 
-# def search(request):
-#     tea_list = Tea.objects.order_by('-name')[:5]
-#     context_dict = {'tea': tea_list}
-#     return render(request, 'tea/search.html', context_dict)
-
 def search(request):
     matches = {}
     if request.method == 'POST':
@@ -33,9 +28,15 @@ def search(request):
 def faq(request):
     return render(request, 'tea/faq.html')
 
-def teas(request):
-    review_list = Review.objects.order_by('-date')[:5]
-    context_dict = {'review': review_list}
+def specific_tea(request, tea_name_slug):
+    context_dict = {}
+    try:
+        tea = Tea.objects.get(slug=tea_name_slug)
+        tea_review = Review.objects.filter(tea=tea)
+        context_dict = {'tea': tea, 'review': tea_review}
+    except Tea.DoesNotExist:
+        teaList["teas"] = None 
+        
     return render(request, 'tea/specific_tea.html', context_dict)
 
 
@@ -119,5 +120,8 @@ def origin(request):
                queryset = Tea.objects.filter(pk__in=pk_list).order_by("origin")
                model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
                 'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
-    
+
     return JsonResponse(model_to_json, safe=False)
+
+def user_login(request):
+    return render(request, 'registration/login.html')

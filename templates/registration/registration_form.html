@@ -1,0 +1,17 @@
+{% extends 'tea/base.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/registration_form.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div id = "everything">
+	<h1>Register Here</h1>
+	<form method="post" action=".">
+		{% csrf_token %}
+		{{ form.as_p }}
+		<input type="submit" value="Submit" />
+	</form>
+</div>
+{% endblock %}

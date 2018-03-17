@@ -5,8 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %}
 
-{% block title_block %}
-{% endblock %}
+
 
 {% block body_block %}
 
@@ -18,11 +17,15 @@
         </div>
     </div>
 
-    <div class="col-md-4">
+    <div class="icon-group">
+        <h3 id="icon-search-text">Search by</h3>
+        {% include 'tea/icon-group.html' %}
+    </div>
+<!--     <div class="col-md-4">
         <div class="icon-group">
-            icon group
+            <h3>Search by</h3>
 
-            <div class="img"> <!-- could these be a block from somewhere? -->
+            <div class="img">
                 <img src="http://via.placeholder.com/100x100" alt="icon">
             </div>
             <p class="icon-name">Temperature</p>
@@ -30,7 +33,7 @@
                 <img src="http://via.placeholder.com/100x100" alt="icon">
             </div>
             <p class="icon-name">Temperature</p>
-        </div>
+        </div> -->
 
         <div class="mugshot-api">
             <img src="http://via.placeholder.com/250x250" alt="mugshot">

@@ -1,7 +1,3 @@
-.col-md-4 {
-    padding-top: 2%;
-}
-
 
 .tea-month {
     margin-left: 75%;
@@ -14,11 +10,21 @@
 
 }
 
-.icon-group {
-    margin-left: 75%;
+#icon-search-text {
+    margin-left: 65%;
+}
+
+#icon-group {
+    margin-left: 65%;
     background: lavender;
 }
 
+.column {
+    display: inline-block;
+    margin-right: 5%;
+}
+
 .mugshot-api {
-    margin-left: 75%;
+    margin-left: 65%;
+    background: Bisque;
 }
