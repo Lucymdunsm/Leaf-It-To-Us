@@ -13,7 +13,7 @@ urlpatterns = [
 #     # Tea Catalog URLs. This assumes each sort (popularity, type, origin) will need its own URL.
 #     # I do not know what the difference between tea catalog and tea listings is.
 
-     re_path(r'^teas/(?P<tea_name_slug>[\w\-]+)/$', views.specific_tea, name='specific_tea'),
+     re_path(r'^teas/catalog/(?P<tea_name_slug>[\w\-]+)/$', views.specific_tea, name='specific_tea'),
      re_path(r'^teas/catalog/$', views.show_catalog, name='catalog'),
      re_path(r'^teas/popular/$', views.most_popular, name='popular'),
     re_path(r'^teas/type/$', views.type, name='type'),

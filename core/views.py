@@ -35,7 +35,7 @@ def specific_tea(request, tea_name_slug):
         tea_review = Review.objects.filter(tea=tea)
         context_dict = {'tea': tea, 'review': tea_review}
     except Tea.DoesNotExist:
-        teaList["teas"] = None 
+        context_dict = None 
         
     return render(request, 'tea/specific_tea.html', context_dict)
 
