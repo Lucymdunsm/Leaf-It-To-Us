@@ -4,17 +4,13 @@ from django.shortcuts import render
 from django.contrib.auth import  authenticate, login
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
+from django.views.decorators.csrf import csrf_exempt
 from core.models import Tea, User, UserProfile, Review
 from core.models import Category, Tea, Review, UserProfile, SavedTea
 from core.forms import UserForm, UserProfileForm
 
 def home(request):
     return render(request, 'tea/home.html')
-
-# def search(request):
-#     tea_list = Tea.objects.order_by('-name')[:5]
-#     context_dict = {'tea': tea_list}
-#     return render(request, 'tea/search.html', context_dict)
 
 def search(request):
     matches = {}
@@ -35,9 +31,15 @@ def search(request):
 def faq(request):
     return render(request, 'tea/faq.html')
 
-def teas(request):
-    review_list = Review.objects.order_by('-date')[:5]
-    context_dict = {'review': review_list}
+def specific_tea(request, tea_name_slug):
+    context_dict = {}
+    try:
+        tea = Tea.objects.get(slug=tea_name_slug)
+        tea_review = Review.objects.filter(tea=tea)
+        context_dict = {'tea': tea, 'review': tea_review}
+    except Tea.DoesNotExist:
+        context_dict = None 
+        
     return render(request, 'tea/specific_tea.html', context_dict)
 
 
@@ -74,15 +76,55 @@ def show_catalog(request):
 	except Tea.DoesNotExist:
 		teaList["teas"] = None
 
-	response = render(request, 'tea/tea_catalog.html', context_dict)
-	return response
+	return render(request, 'tea/tea_catalog.html', context_dict)
 
+@csrf_exempt
 def most_popular(request):
-	if request.method == 'GET':
-		teaList = serializers.serialize("json", Tea.objects.order_by('-views'))
-		data = {"data": teaList}
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            model_to_json =  Tea.objects.order_by('-views')
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+               queryset = Tea.objects.filter(pk__in=pk_list).order_by("-views")
+               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+    
+    return JsonResponse(model_to_json, safe=False)
 
-	return JsonResponse(data, safe=False)
+@csrf_exempt
+def type(request):
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            model_to_json =  Tea.objects.order_by('category')
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+               queryset = Tea.objects.filter(pk__in=pk_list).order_by("category")
+               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+    
+    return JsonResponse(model_to_json, safe=False)
+
+@csrf_exempt
+def origin(request):
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            model_to_json =  Tea.objects.order_by('origin')
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+               queryset = Tea.objects.filter(pk__in=pk_list).order_by("origin")
+               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+
+    return JsonResponse(model_to_json, safe=False)
 
 def register(request):
     # Boolean saying whether registration is successful. False initially.
@@ -134,3 +176,4 @@ def user_login(request):
             return HttpResponse("The username or password you entered is wrong.")
     else:
         return render(request, 'registration/login.html')
+
