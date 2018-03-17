@@ -1,4 +1,17 @@
 #thing {
-    color: red;
-    padding-left: 50%;
+    padding-left: 25%;
+    width: 75%;
+}
+
+#small-table {
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+#table-content {
 }
