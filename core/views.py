@@ -1,9 +1,12 @@
 import json
 from django.core import serializers
 from django.shortcuts import render
-from django.http import HttpResponse, JsonResponse
+from django.contrib.auth import  authenticate, login
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
+from django.urls import reverse
 from core.models import Tea, User, UserProfile, Review
 from core.models import Category, Tea, Review, UserProfile, SavedTea
+from core.forms import UserForm, UserProfileForm
 
 def home(request):
     return render(request, 'tea/home.html')
@@ -80,3 +83,54 @@ def most_popular(request):
 		data = {"data": teaList}
 
 	return JsonResponse(data, safe=False)
+
+def register(request):
+    # Boolean saying whether registration is successful. False initially.
+    registered = False
+    
+    if request.method == 'POST':
+        # Take information from both forms.
+        user_form = UserForm(data=request.POST)
+        profile_form = UserProfileForm(data=request.POST)
+    
+        if user_form.is_valid() and profile_form.is_valid():
+            # Save user data to database and hash passwrod.
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+            # Save userprofil form data, delaying commiting until user foreign key is fileld.
+            profile = profile_form.save(commit=False)
+            profile.user = user
+            if 'picture' in request.FILES:
+                profile.profile_pic = request.FILES['picture']
+            profile.save()
+            
+            registered = True
+        else:
+            # Print problems to the terminal.
+            print(user_form.errors, profile_form.errors)
+            return HttpResponse("The username or password you entered is wrong.")
+    else:
+        # Not form submitting, render blank forms isntead.
+        user_form = UserForm()
+        profile_form = UserProfileForm()
+    return render(request, 'registration/registration_form.html', {'user_form': user_form, 'profile_form': profile_form,'registered': registered})  
+
+def user_login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(username = username, password = password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+                return HttpResponseRedirect(reverse('home'))
+            else:
+                return HttpResponse("Your account is not active")
+        else:
+            print("Your username or password is wrong")
+            return HttpResponse("The username or password you entered is wrong.")
+    else:
+        return render(request, 'registration/login.html')
