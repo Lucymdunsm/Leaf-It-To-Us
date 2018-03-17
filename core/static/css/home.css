@@ -15,8 +15,20 @@
 }
 
 #icon-group {
-    margin-left: 65%;
+    margin-left: 55%;
+    display: flex;
+    padding: 1%;
     background: lavender;
+    width: 25%;
+}
+
+.icon-img {
+    padding-left: 2%;
+    display: inline-flex;
+}
+
+.icon-text {
+    margin-left: 55%;
 }
 
 .column {
@@ -25,6 +37,14 @@
 }
 
 .mugshot-api {
-    margin-left: 65%;
+    margin-left: 55%;
     background: Bisque;
+}
+
+.mugshot-img {
+    height: auto;
+    width: auto;
+    max-width: 500px;
+    max-height: 450px;
+
 }

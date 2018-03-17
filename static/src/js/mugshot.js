@@ -1,7 +1,7 @@
 /*
 MugShot JQuery Plugin
 version 1.0 March 11, 2018
-by Cameron Nicolson 
+by Cameron Nicolson
 */
 
 (function($) {
@@ -15,7 +15,7 @@ by Cameron Nicolson
         this.options = $.extend({}, this.defaults, options);
 
         this._init();
-    } 
+    }
 
     MugShot.prototype = {
 
@@ -88,5 +88,7 @@ by Cameron Nicolson
 
     });
   };
+
+$("#display-mugshot").mugshot();
 
 })(jQuery);

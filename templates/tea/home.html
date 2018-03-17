@@ -5,21 +5,39 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %}
 
-
+{% if user %}
+{% block login_block %}
+    <div class="d-inline-block align-top navbar-right">
+        <a href="#">Log out</a>
+    </div>
+{% endblock %}
+{% endif %}
 
 {% block body_block %}
 
     <div class="col-md-4">
         <div class="tea-month"> <!-- could text be a block from somewhere? -->
-            Tea of the month
-            <div class="img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-            <div class="tea-desc">Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin. Samtidigt kan det i ett demokratiskt samhälle uppstå konfliktytor mellan religionsfriheten och andra mänskliga fri- och rättigheter, till exempel i frågor om jämställdhet, barns rättigheter och alla människors lika värde. I debatten framförs inte så sällan ståndpunkten att staten borde ha skarpare verktyg för att förhindra att statligt stöd går till trossamfund som inte lever upp till demokratiska principer.</div>
+            {% if tea %}
+            Tea of the moment
+            <div class="img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"></div>
+            <div class="tea-desc">
+                <p>{{ tea.name }}</p>
+                <p>{{ tea.description }}</p>
+                <p>country of origin: {{ tea.origin }}</p>
+                <p>brewed at {{ tea.temperature }} degrees</p>
+            </div>
+            {% endif %}
         </div>
     </div>
 
-    <div class="icon-group">
+<!--     basically i want this as a cube here, but in a row on a spectea page
+    and i can't work out how to do different things with an included block
+    so this is a row too right now
+    dk whether to put the text in the block or if that'll complicate things further-->
+    <div class="included-icon-group">
         <h3 id="icon-search-text">Search by</h3>
         {% include 'tea/icon-group.html' %}
+        <p class="icon-text">Temperature / Origin / Type / Rating</p>
     </div>
 <!--     <div class="col-md-4">
         <div class="icon-group">
@@ -36,7 +54,9 @@
         </div> -->
 
         <div class="mugshot-api">
-            <img src="http://via.placeholder.com/250x250" alt="mugshot">
+            Mugshot
+            <div id="display-mugshot">
+            </div>
         </div>
     </div>
 

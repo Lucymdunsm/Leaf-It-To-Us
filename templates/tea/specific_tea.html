@@ -8,6 +8,7 @@
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/specific_tea.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block body_block %}
@@ -19,9 +20,12 @@
         <div id="tea-info">
             <div class="col-md-9">
                 {% if tea %}
+                <div class="test">
                     <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-                    <div id="tea-name">{{ tea.name }}</div>
-                    <div id="tea-desc">{{ tea.description }}</div>
+                    <div id="tea-name"><p class="name">{{ tea.name }}<p></div>
+                    <div id="tea-desc"><p class="desc">{{ tea.description }}</p></div>
+                    <p>tag list? </p>
+                </div>
                 {% endif %}
             </div>
         </div>
@@ -62,8 +66,18 @@
                     <div id="review-profile">
                         {% if review %}
                         {% for review in review %}
-                            <div id="profile-pic"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
-                            <div id="tea-rating">{{ review.rating }}</div>
+                            <div id="reviewer-name">{{ review.user }}</div>
+
+                            <span class="score" data-rating="{{ review.rating }}">
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            <span class="fa fa-star"></span>
+                            </span>
+
+                            <!-- <div id="tea-rating">{{ review.rating }}</div> -->
+                            <p>{{review.date}}</p>
                             <div id="review-text">{{ review.content }}</div>
                         {% endfor %}
                         {% endif %}

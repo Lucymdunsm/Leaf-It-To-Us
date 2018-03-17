@@ -7,7 +7,13 @@ from core.models import Tea, User, UserProfile, Review
 from core.models import Category, Tea, Review, UserProfile, SavedTea
 
 def home(request):
-    return render(request, 'tea/home.html')
+    context_dict = {}
+    try:
+        tea_image = Tea.objects.order_by('?')[0]
+        context_dict = {'tea': tea_image}
+    except Tea.DoesNotExist:
+        context_dict = None
+    return render(request, 'tea/home.html', context_dict)
 
 def search(request):
     matches = {}
@@ -40,12 +46,7 @@ def specific_tea(request, tea_name_slug):
     return render(request, 'tea/specific_tea.html', context_dict)
 
 
-def show_account(request):
-
-# i had this in mine but it wasn't fully working    
-#     review_list = Review.objects.order_by('-date')[:1]
-#     context_dict = {'review': review_list, 'fav': favtea_list}
-    
+def show_account(request):    
     account = {}
     # TO BE REMOVED 
     # This line is for development purposes only
