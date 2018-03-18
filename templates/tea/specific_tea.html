@@ -18,33 +18,28 @@
     </div>
 
         <div id="tea-info">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 {% if tea %}
                 <div class="test">
                     <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
                     <div id="tea-name"><p class="name">{{ tea.name }}<p></div>
-                    <div id="tea-desc"><p class="desc">{{ tea.description }}</p></div>
-                    <p>tag list? </p>
+                    <div id="tea-desc"><p class="desc">{{ tea.description }}</p><br><p>tag list</p></div>
                 </div>
                 {% endif %}
             </div>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-9">
             <div id="tea-icon-group">
+
                 {% include 'tea/icon-group.html' %}
-                <div id="icon-headings">
-                    <h4 class="icon-name">Temperature</h4>
-                    <h4 class="icon-name">Origin</h4>
-                    <h4 class="icon-name">Type</h4>
-                    <h4 class="icon-name">Rating</h4>
-                </div>
+
                 {% if tea %}
                 <div id="detailed-tea-info">
-                    <h5 class="tea-details">{{ tea.temperature }}</h5>
-                    <h5 class="tea-details">{{ tea.origin }}</h5>
-                    <h5 class="tea-details">{{ tea.category }}</h5>
-                    <h5 class="tea-details">{{ tea.rating }}</h5>
+                    <h3 class="tea-details">{{ tea.temperature }}°</h3>
+                    <h3 class="tea-details">{{ tea.origin }}</h3>
+                    <h3 class="tea-details">{{ tea.category }}</h3>
+                    <h3 class="tea-details">{{ tea.rating }}</h3>
                 </div>
                 {% endif %}
             </div>
@@ -53,7 +48,7 @@
         <div class="col-md-9">
             <div class="review-section">
                 <div class="review-sort-bar">
-                    <p class="reviews">reviews</p>
+                    <p class="reviews">Reviews</p>
 
                     <div class="review-filter">
                         <p>order by:</p>
@@ -62,21 +57,25 @@
                     </div>
                 </div>
 
-                <div class="review-boxes">
+                <div class="new-review">
+                    <div class="new-review-text">
+                        <textarea rows="4" cols="60">
+                            Leave a review
+                        </textarea>
+                    </div>
+                    <button>Submit</button>
+                </div>
+
+                <div class="individual-review-boxes">
                     <div id="review-profile">
                         {% if review %}
                         {% for review in review %}
                             <div id="reviewer-name">{{ review.user }}</div>
 
                             <span class="score" data-rating="{{ review.rating }}">
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
-                            <span class="fa fa-star"></span>
+                                {% include 'tea/star_rating.html' %}
                             </span>
 
-                            <!-- <div id="tea-rating">{{ review.rating }}</div> -->
                             <p>{{review.date}}</p>
                             <div id="review-text">{{ review.content }}</div>
                         {% endfor %}

@@ -30,14 +30,9 @@
 			{% if reviews %}
 				{% for review in reviews %}
 					<p class="review-tea-name">{{ review.tea }}</p>
-						<span class="score" data-rating="{{ review.rating }}">
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
-						<span class="fa fa-star"></span>
+					<span class="score" data-rating="{{ review.rating }}">
+						{% include 'tea/star_rating.html' %}
 						</span>
-
 					<p>{{review.date}}</p>
 					{{ review.content }}
 				{% endfor %}

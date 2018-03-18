@@ -6,13 +6,19 @@ body {
     margin-left: 20%;
 }
 
+.col-md-12 {
+    margin-left: 35%;
+    width: 200%;
+}
+
 .test {
     display: inline-flex;
+    width: 200%;
 }
 
 #tea-info {
     background-color: LightSteelBlue;
-    margin-left: 25%;
+    margin-left: 10%;
     display: inline-flex;
     padding: 2%;
 }
@@ -25,78 +31,80 @@ body {
     text-transform: uppercase;
     font-size: 200%;
     padding: 2%;
+    display: block;
 }
 
-#tea-desc {
-    margin: 1%; /*don't get rid of this, bad things happen*/
-}
 
 .desc {
-    padding-top: 30%;
+    padding-top: 20%;
 }
 
 #tea-icon-group {
-    margin-left: 165%; /*lol*/
-    margin-top: 10%;
+    margin-top: 3%;
+    margin-left: 30%;
+    background-color: lavender;
 }
 
 #icon-group {
     display: inline-flex;
     background-color: beige;
+    margin-left: 15%;
 }
 
 .icon-img {
-    margin-left: 15%;
-    margin-right: 15%;
-
-}
-
-#icon-tagline {
-    margin-left: 51%;
-    padding-left: 51%;
-    width: 10%;
-
+    margin-left: 7%;
+    margin-right: 7%;
 }
 
 .icon-name {
     display: inline-flex;
-}
-
-#icon-headings {
-    display: inline-flex;
-    padding:25%;
+    padding-left: 16%;
 }
 
 #detailed-tea-info {
     display: inline-flex;
-    margin-right: 10%;
+    padding-left: 16%;
+}
+
+.tea-details {
+    padding-left: 35%;
+}
+
+.review-section {
+    margin-left: 10%;
 }
 
 .review-sort-bar {
     display: inline-flex;
     padding-left: 5%;
-    margin-top: 20%; /*this is hacky af but it works for now*/
+    margin-top: 5%;
+    margin-left: 20%;
     background-color: grey;
     width: 90%;
 }
 
-.review-section {
-    margin-left: 10%;
+.new-review {
+    padding-top: 3%;
+    margin-left: 45%;
+}
 
+.new-review-text {
+    display: block;
+}
+
+.individual-review-boxes {
+    margin-left: 20%;
+    padding: 3% 0 3% 3%;;
 }
 
 .reviews {
     padding-left: 1%;
+    text-transform: uppercase;
 }
 
 .review-filter {
     padding: 5% 0 5% 50%; /*t&b doing nothing*/
     display: flex;
-}
-
-.tea-rating {
-    padding-left: 2%;
-    display: inline-flex;
 }
 
 .checked {

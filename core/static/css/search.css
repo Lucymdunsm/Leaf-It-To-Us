@@ -19,7 +19,13 @@
     background-color:lavender;
 }
 
-.tname {
+
+.tname a:hover {
+    text-decoration: none;
+}
+
+.trating {
+    background-color: beige;
 }
 
 .dropdown {
@@ -41,4 +47,8 @@
 .dropdown:hover .dropdown-content {
     display: block;
     background-color: #ddd;
+}
+
+.checked {
+    color: orange;
 }
