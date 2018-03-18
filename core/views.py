@@ -54,22 +54,16 @@ def increment_tea_page_views(tea):
         tea.views += 1
         tea.save()
 
+@login_required
 def show_account(request):
 
-# i had this in mine but it wasn't fully working    
-#     review_list = Review.objects.order_by('-date')[:1]
-#     context_dict = {'review': review_list, 'fav': favtea_list}
-    
     account = {}
-    # TO BE REMOVED 
-    # This line is for development purposes only
-    # MeghanBright account 
-    meghan = "MeghanBright"
     try:
-        user = User.objects.get(username=meghan)
+        userReq = request.user
+        user = User.objects.get(username=userReq)
         profile = UserProfile.objects.get(user=user)
         reviews = Review.objects.filter(user=user).order_by('date')
-        favtea_list = SavedTea.objects.filter(user=user).order_by('-tea')[:5]
+        favtea_list = SavedTea.objects.filter(user=user).order_by('tea')[:5]
         account = {"user": user, "profile": profile, 
         			"reviews": reviews, "favourites": favtea_list}
     except User.DoesNotExist:
@@ -137,8 +131,7 @@ def origin(request):
 
     return JsonResponse(model_to_json, safe=False)
 
-## add @login_required when login is working
-## @login_required 
+@login_required 
 def add_favourite_tea(request): 
     tea_id = None
     if request.method == 'GET':
@@ -146,8 +139,8 @@ def add_favourite_tea(request):
         if tea_id:
             tea_model = Tea.objects.get(id = int(tea_id)) 
             if tea_model: 
-                meghan = "MeghanBright"
-                user_model = User.objects.get(username=meghan)
+                userReq = request.user
+                user_model = User.objects.get(username=userReq)
                 fav = SavedTea.objects.get_or_create(user=user_model,tea=tea_model)[0]
                 fav.user=user_model
                 fav.tea=tea_model
