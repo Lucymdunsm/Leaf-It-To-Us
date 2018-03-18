@@ -24,7 +24,7 @@ from django.conf.urls.static import static
 #Class that redirects user to homepage after login.
 class MyRegistrationView(RegistrationView):
     def get_success_url(self, user):
-        return '/leafittous/'
+        return 'home'
 
 
 urlpatterns = [
@@ -34,6 +34,8 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
 
     re_path(r'^accounts/register/$', MyRegistrationView.as_view(), name = 'registration_register'),
+    re_path(r'^accounts/social/$', views.account_settings, name='social_settings'),
+    re_path(r'^accounts/pasword/$', views.manage_password, name = 'password'),
     re_path(r'^accounts/', include('registration.backends.simple.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

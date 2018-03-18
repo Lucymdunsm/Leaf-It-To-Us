@@ -1,8 +1,11 @@
 import json
 from django.core import serializers
+from django.contrib import messages
 from django.shortcuts import render
-from django.contrib.auth import  authenticate, login, logout
+from django.contrib.auth import  authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.forms import AdminPasswordChangeForm, PasswordChangeForm
 from django.contrib.auth.decorators import login_required
+from social_django.models import UserSocialAuth
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
@@ -182,3 +185,38 @@ def user_login(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('home'))
+
+@login_required
+def account_settings(request):
+    user = request.user
+
+    try:
+        twitter_login = user.social_auth.get(provider='twitter')
+    except UserSocialAuth.DoesNotExist:
+        twitter_login = None
+    try:
+        facebook_login = user.social_auth.get(provider='facebook')
+    except UserSocialAuth.DoesNotExist:
+        facebook_login = None
+    can_disconnect = (user.social_auth.count() > 1 or user.has_usable_password())
+
+    return render(request, 'registration/social_settings.html', {'twitter_login': twitter_login, 'facebook_login': facebook_login, 'can_disconnect': can_disconnect})
+
+@login_required
+def manage_password(request):
+    if request.user.has_usable_password():
+        PasswordForm = PasswordChangeForm
+    else:
+        PasswordForm = AdminPasswordChangeForm
+    if request.method == 'POST':
+        form = PasswordForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            messages.success(request, 'Your password was successfully updated!')
+            return HttpResponseRedirect(reverse('password'))
+        else:
+            messages.error(request, 'Invalid Password Provided')
+    else:
+        form = PasswordForm(request.user)
+    return render(request, 'registration/password.html', {'form': form})

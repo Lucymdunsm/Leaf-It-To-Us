@@ -140,7 +140,7 @@ REGISTRATION_OPEN = True
 
 ACCOUNT_ACTIVATION_DAYS = 7
 
-# REGISTRATION_AUTO_LOGIN = True
+REGISTRATION_AUTO_LOGIN = True
 
 LOGIN_URL =  'login'
 
@@ -148,7 +148,10 @@ LOGOUT_URL = 'logout'
 
 LOGIN_REDIRECT_URL = 'home'
 
+LOGOUT_REDIRECT_URL = 'home'
+
 # Social login variables
+
 
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.github.GithubOAuth2',
@@ -157,9 +160,10 @@ AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
 )
 
+
 # URL directions after social login.
-SOCIAL_AUTH_LOGIN_ERROR_URL = '/settings/'
-SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'home'
+SOCIAL_AUTH_LOGIN_ERROR_URL = 'social_settings'
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'social_settings'
 SOCIAL_AUTH_RAISE_EXCEPTIONS = False
 
 SOCIAL_AUTH_GITHUB_KEY = '46e7685d68a3f58c1a23'
