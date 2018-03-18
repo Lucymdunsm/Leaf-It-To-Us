@@ -3,7 +3,7 @@ from core import views
 
 # These are preliminary URL patterns. You will have to change the views. calls to the correct method names.
 urlpatterns = [
-    re_path(r'^$', views.home, name = 'home'),
+    # re_path(r'^$', views.home, name = 'home'),
     # Reviews for the "about" section assume that FAQ and contact won't be on the same page.
 
 #     re_path(r'^about/$', views.about, name='about'),
@@ -13,9 +13,9 @@ urlpatterns = [
 #     # Tea Catalog URLs. This assumes each sort (popularity, type, origin) will need its own URL.
 #     # I do not know what the difference between tea catalog and tea listings is.
 
-     re_path(r'^teas/catalog/(?P<tea_name_slug>[\w\-]+)/$', views.specific_tea, name='specific_tea'),
-     re_path(r'^teas/catalog/$', views.show_catalog, name='catalog'),
-     re_path(r'^teas/popular/$', views.most_popular, name='popular'),
+    re_path(r'^teas/catalog/(?P<tea_name_slug>[\w\-]+)/$', views.specific_tea, name='specific_tea'),
+    re_path(r'^teas/catalog/$', views.show_catalog, name='catalog'),
+    re_path(r'^teas/popular/$', views.most_popular, name='popular'),
     re_path(r'^teas/type/$', views.type, name='type'),
     re_path(r'^teas/origin/$', views.origin, name='origin'),
 
@@ -28,7 +28,7 @@ urlpatterns = [
 #     # Generic registration and login pages.
 	    re_path(r'^register/$', views.register, name='register'),
       re_path(r'^login/$', views.user_login, name='login'),
-#     re_path(r'^logout/$', views.user_logout, name='logout'),
+      re_path(r'^logout/$', views.user_logout, name='logout'),
 # 
 #     # Account pages. These will only show information if user is logged in.
 #     # Unsure how much is being shown on a single page (do wee need separate URLs for dashboard

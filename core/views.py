@@ -1,7 +1,8 @@
 import json
 from django.core import serializers
 from django.shortcuts import render
-from django.contrib.auth import  authenticate, login
+from django.contrib.auth import  authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
@@ -177,3 +178,7 @@ def user_login(request):
     else:
         return render(request, 'registration/login.html')
 
+@login_required
+def user_logout(request):
+    logout(request)
+    return HttpResponseRedirect(reverse('home'))

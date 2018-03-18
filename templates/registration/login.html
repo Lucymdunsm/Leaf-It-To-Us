@@ -2,12 +2,9 @@
 {% extends "tea/testbase.html" %}
 {% load staticfiles %}
 
-<!--{% extends 'tea/base.html' %}
-{% load staticfiles %}
-
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
-{% endblock %}-->
+{% endblock %}
 
 {% block body_block %}
 <div id="everything">
@@ -28,6 +25,7 @@
 	</p>
 	<br>
 	<p><strong> OR </strong></p>
+	<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
 	<a href="{% url 'social:begin' 'facebook' %}">Log in with Facebook</a><br>
 	<a href="{% url 'social:begin' 'twitter' %}">Log in with Twitter</a><br>
 </div>
