@@ -1,4 +1,5 @@
-{% extends 'tea/base.html' %}
+
+{% extends "tea/testbase.html" %}
 {% load staticfiles %}
 
 {% block style_block %}
@@ -7,20 +8,30 @@
 
 {% block body_block %}
 <div id="everything">
-	<h1>Login</h1>
-	<form method="post" action=".">
-		{% csrf_token %}
-		{{ form.as_p }}
-	<input type="submit" value="Log in" />
-	<input type="hidden" name="next" value="{{ next }}" />
-	</form>
-	<p>
-		Not a member?
-		<a href="{% url 'registration_register' %}">Register</a>
-	</p>
-	<br>
-	<p><strong> OR </strong></p>
-	<a href="{% url 'social:begin' 'facebook' %}">Log in with Facebook</a><br>
-	<a href="{% url 'social:begin' 'twitter' %}">Log in with Twitter</a><br>
+	{% if user.is_authenticated %}
+		<h2> You are logged in as {{ user.username }} </h2>
+		<p> To log in with a different account, you must first <a href="{% url 'logout' %}"> log out.</a></p>
+	{% else %}
+		<h1>Login</h1>
+		<form id="login_form" method="post" action="{% url 'login' %}">
+			{% csrf_token %}
+			Username: <input type="text" name="username" value="" size="50" />
+			<br />
+			<br />
+			Password: <input type="password" name="password" value="" size="50" />
+			<br />
+			<br />
+			<input type="submit" value="Log in" />
+		</form>
+		<p>
+			Not a member?
+			<a href="{% url 'register' %}">Register</a>
+		</p>
+		<br>
+		<p><strong> OR </strong></p>
+		<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
+		<a href="{% url 'social:begin' 'facebook' %}">Log in with Facebook</a><br>
+		<a href="{% url 'social:begin' 'twitter' %}">Log in with Twitter</a><br>
+	{% endif %}
 </div>
 {% endblock %}
