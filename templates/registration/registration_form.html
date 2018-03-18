@@ -1,17 +1,22 @@
-{% extends 'tea/base.html' %}
+{% extends "tea/testbase.html" %}
 {% load staticfiles %}
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/registration_form.css' %}">
 {% endblock %}
 
+>>>>>>> 89886ecb239f56b5dededbbaab03dbf47e5aaf5b
 {% block body_block %}
 <div id = "everything">
 	<h1>Register Here</h1>
-	<form method="post" action=".">
+	<form id = "user_form" method="post" action="{% url 'register' %}" enctype="multipart/form-data">
+
 		{% csrf_token %}
-		{{ form.as_p }}
-		<input type="submit" value="Submit" />
+
+		{{ user_form.as_p }}
+		{{ profile_form.as_p }}
+
+		<input type="submit" name = "submit" value="Register" />
 	</form>
 </div>
 {% endblock %}
