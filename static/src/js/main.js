@@ -2,6 +2,17 @@ $( "#popular" ).on( "click", filter );
 $( "#type" ).on( "click", filter );
 $( "#origin" ).on( "click", filter );
 $( "#atoz" ).on( "click", filter );
+$("#add-favourite").on("click", saveTea);
+
+function saveTea() {
+	var $favButton = $(this);
+	var tea_id = $(this).attr("data-teaid"); 
+	$.get('/leafittous/save/', {tea_id: tea_id}, function(data){ 
+		console.log(data);
+			$favButton.html("Tea Favourited!"); 
+			$favButton.prop('disabled', true);
+	});
+}
 
 function filter(evt) {
 	evt.preventDefault();

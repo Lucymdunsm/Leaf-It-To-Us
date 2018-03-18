@@ -5,6 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.http import HttpResponse, JsonResponse
 from core.models import Tea, User, UserProfile, Review
 from core.models import Category, Tea, Review, UserProfile, SavedTea
+from django.contrib.auth.decorators import login_required
 
 def home(request):
     return render(request, 'tea/home.html')
@@ -29,16 +30,23 @@ def faq(request):
     return render(request, 'tea/faq.html')
 
 def specific_tea(request, tea_name_slug):
+    tea_model = None
     context_dict = {}
     try:
-        tea = Tea.objects.get(slug=tea_name_slug)
-        tea_review = Review.objects.filter(tea=tea)
-        context_dict = {'tea': tea, 'review': tea_review}
+        tea_model = Tea.objects.get(slug=tea_name_slug)
+        tea_review = Review.objects.filter(tea=tea_model)
+        context_dict = {'tea': tea_model, 'review': tea_review}
     except Tea.DoesNotExist:
         context_dict = None 
         
+    if tea_model:
+        increment_tea_page_views(tea_model)
     return render(request, 'tea/specific_tea.html', context_dict)
 
+def increment_tea_page_views(tea):
+        # Update the tea's number of views by 1
+        tea.views += 1
+        tea.save()
 
 def show_account(request):
 
@@ -125,3 +133,21 @@ def origin(request):
 
 def user_login(request):
     return render(request, 'registration/login.html')
+
+## add @login_required when login is working
+## @login_required 
+def add_favourite_tea(request): 
+    tea_id = None
+    if request.method == 'GET':
+        tea_id = request.GET['tea_id'] 
+        if tea_id:
+            tea_model = Tea.objects.get(id = int(tea_id)) 
+            if tea_model: 
+                meghan = "MeghanBright"
+                user_model = User.objects.get(username=meghan)
+                fav = SavedTea.objects.get_or_create(user=user_model,tea=tea_model)[0]
+                fav.user=user_model
+                fav.tea=tea_model
+                fav.save()
+
+    return HttpResponse(201)

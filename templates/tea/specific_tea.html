@@ -25,7 +25,14 @@
                 {% endif %}
             </div>
         </div>
-
+        <!-- Testing grounds for Cameron's favouriting tea code -->
+        {# if user.is_authenticated #}
+        <div class="col-md-12">
+            <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
+                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+            </button>
+        </div>
+        {# endif #}
         <div class="col-md-2">
             <div id="tea-icon-group">
                 {% include 'tea/icon-group.html' %}
