@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Jura|Nanum+Brush+Script|Prompt" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block style_block %}
   {% endblock %}
 </head>
@@ -60,8 +60,7 @@
 {% block searchbar_block %}
         <!-- SEARCH BAR -->
 
-        <div>
-
+        <div class="schbar">
           <form id="search_form" method="post" action="{% url 'search' %}" class="navbar-form d-inline-block align-items-center navbar-left" role="search">
               {% csrf_token %}
               {{ error }}
@@ -78,8 +77,8 @@
 {% block login_block %}
     <div class="login-option">
         <div class="d-inline-block align-top navbar-right">
-          <a href="{% url 'login' %}">Sign up<br>
-          <a href="{% url 'login' %}">Log in</a>
+          <a href="{% url 'login' %}">Log in</a><br>
+          <a href="{% url 'login' %}">Sign up</a> <!-- assuming different redirects? -->
         </div>
     </div>
 {% endblock %}

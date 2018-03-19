@@ -8,6 +8,10 @@ property:value; */
   font-family: 'Josefin Slab', serif;
   color: #353538;
   text-decoration: none; /*not working*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 .login-option {
@@ -37,10 +41,13 @@ property:value; */
   text-decoration: none;
 }
 
-#schbar {
-  padding-left: 30%;
+.schbar {
+  padding-left: 45%;
   margin-top: 4%;
+
 }
+
+
 
 
 

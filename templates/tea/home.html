@@ -5,13 +5,13 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 {% endblock %}
 
-{% if user %}
+<!-- {% if user.is_authenticated %}
 {% block login_block %}
     <div class="d-inline-block align-top navbar-right">
         <a href="#">Log out</a>
     </div>
 {% endblock %}
-{% endif %}
+{% endif %} -->
 
 {% block body_block %}
 
@@ -39,19 +39,6 @@
         {% include 'tea/icon-group.html' %}
         <p class="icon-text">Temperature / Origin / Type / Rating</p>
     </div>
-<!--     <div class="col-md-4">
-        <div class="icon-group">
-            <h3>Search by</h3>
-
-            <div class="img">
-                <img src="http://via.placeholder.com/100x100" alt="icon">
-            </div>
-            <p class="icon-name">Temperature</p>
-            <div class="img">
-                <img src="http://via.placeholder.com/100x100" alt="icon">
-            </div>
-            <p class="icon-name">Temperature</p>
-        </div> -->
 
         <div class="mugshot-api">
             Mugshot
