@@ -28,11 +28,13 @@
                     <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
                 </div>
                 {% endif %}
+                {% if user.is_authenticated %}
                 <div class="fav-button">
                     <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favourite
                     </button>
                 </div>
+                {% endif %}
             </div>
         </div>
 
