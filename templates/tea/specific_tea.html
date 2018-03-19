@@ -11,13 +11,7 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
-{% if user.is_authenticated %}
-{% block login_block %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'logout' %}">Log out</a>
-    </div>
-{% endblock %}
-{% endif %}
+
 
 {% block body_block %}
 
@@ -31,12 +25,12 @@
                 <div id="top-box">
                     <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
                     <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
-                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3><br><p>tag list?</p></div>
+                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
                 </div>
                 {% endif %}
                 <div class="fav-button">
                     <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favourite
                     </button>
                 </div>
             </div>
@@ -62,10 +56,10 @@
         <div class="col-md-9">
             <div class="review-section">
                 <div class="review-sort-bar">
-                    <p class="reviews">Reviews</p>
+                    <p class="review-headline">Reviews</p>
 
                     <div class="review-filter">
-                        <p>order by:</p>
+                        <p class="review-headline">order by:</p>
                         <button>most recent</button> <!-- maybe dont have as button for real -->
                         <button>top rated</button>
                     </div>

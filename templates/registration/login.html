@@ -6,16 +6,9 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 {% endblock %}
 
-{% if user.is_authenticated %}
-{% block login_block %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'logout' %}">Log out</a>
-    </div>
-{% endblock %}
-{% endif %}
 
 {% block body_block %}
-<div id="everything">
+<div id="login-page">
 	{% if user.is_authenticated %}
 		<h2> You are logged in as {{ user.username }} </h2>
 		<p> To log in with a different account, you must first <a href="{% url 'logout' %}"> log out.</a></p>
@@ -31,6 +24,8 @@
 			<br />
 			<input type="submit" value="Log in" />
 		</form>
+		<br>
+		<br>
 		<p>
 			Not a member?
 			<a href="{% url 'register' %}">Register</a>

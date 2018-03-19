@@ -42,7 +42,7 @@
         </button>
 
         <a class="navbar-brand navbar-left" href="{% url 'home' %}">
-          <img class="logo" src="https://d30y9cdsu7xlg0.cloudfront.net/png/17932-200.png" class="d-inline-block align-top" alt="picture of teacup">
+          <img class="logo" src="{{ MEDIA_URL }}/icons/ugogrren.jpg" class="d-inline-block align-top" alt="picture of teacup">
       </div>
 
 
@@ -75,13 +75,19 @@
         <!-- Stuff on the Right -->
 
 {% block login_block %}
-    <div class="login-option">
-        <div class="d-inline-block align-top navbar-right">
-          <a href="{% url 'auth_login' %}">Log in</a><br>
-          <a href="{% url 'login' %}">Sign up</a> <!-- assuming different redirects? -->
-        </div>
+<div id="login-option">
+    {% if user.is_authenticated %}
+    <div class="d-inline-block align-top navbar-right">
+        <a href="{% url 'logout' %}"><h4>Log out</h4></a>
     </div>
+    {% else %}
+    <div class="d-inline-block align-top navbar-right">
+        <a href="{% url 'login' %}"><h4>Login <br> Sign-up</h4></a>
+    </div>
+    {% endif %}
+  </div>
 {% endblock %}
+
   </div>
       <!-- /.navbar-collapse -->
     </div>
@@ -96,8 +102,11 @@
       <a href="{% url 'home' %}"><h4>Home</h4></a>
       <a href="{% url 'catalog' %}"><h4>Browse all</h4></a>
       <a href="{% url 'faq' %}"><h4>FAQ</h4></a>
-      <a href="{% url 'catalog' %}"><h4>Contact info</h4></a>
-      <a href="{% url 'show_account' %}"><h4>Site map</h4></a>
+      <!-- <a href="{% url 'catalog' %}"><h4>Contact info</h4></a> -->
+      {% if user.is_authenticated %}
+      <a href="{% url 'show_account' %}"><h4>My account</h4></a>
+      {% endif %}
+      <a href="{% url 'catalog' %}"><h4>Site map</h4></a>
     </div>
   </nav>
 {% endblock %}

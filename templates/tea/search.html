@@ -7,13 +7,6 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
 {% endblock %}
 
-{% if user.is_authenticated %}
-{% block login_block %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'logout' %}">Log out</a>
-    </div>
-{% endblock %}
-{% endif %}
 
 {% block body_block %}
 

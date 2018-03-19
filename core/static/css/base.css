@@ -14,8 +14,11 @@ property:value; */
   box-sizing: border-box;
 }
 
-.login-option {
-  padding-top: 2%;
+.nav {
+  background-color: #4c5b40;
+}
+
+#login-option {
   margin-right: 10%;
   text-transform: uppercase;
 }
@@ -28,8 +31,8 @@ property:value; */
 }
 
 .logo {
-  width: 50px;
-  height: 50px;
+  width: 100px;
+  height: 100px;
 }
 
 #litu {
@@ -46,9 +49,6 @@ property:value; */
   margin-top: 4%;
 
 }
-
-
-
 
 
 .span{
