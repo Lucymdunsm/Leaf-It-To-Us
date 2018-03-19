@@ -11,6 +11,14 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
+{% if user.is_authenticated %}
+{% block login_block %}
+    <div class="d-inline-block align-top navbar-right">
+        <a href="{% url 'logout' %}">Log out</a>
+    </div>
+{% endblock %}
+{% endif %}
+
 {% block body_block %}
 
     <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}
@@ -27,20 +35,14 @@
                 </div>
                 {% endif %}
                 <div class="fav-button">
-                    {% if user.is_authenticated %}
-
                     <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
-            </button>
-        </div>
-        {% endif %}
+                    </button>
                 </div>
             </div>
         </div>
 
-
-        <div class="col-md-2">
-
+        <div class="col-md-9">
             <div id="tea-icon-group">
 
                 {% include 'tea/icon-group.html' %}
@@ -95,5 +97,6 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 {% endblock %}

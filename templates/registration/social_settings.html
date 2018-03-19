@@ -1,8 +1,14 @@
-{% extends "tea/testbase.html" %}
+{% extends 'tea/base.html' %}
 {% load staticfiles %}
 
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/social_settings.css' %}">
+{% endblock %}
+
 {% block body_block %}
+<div class="everything">
 <h2>Social Authentication Settings</h2>
+
 
 <h3>Twitter</h3>
 	{% if twitter_login %}
@@ -36,4 +42,5 @@
   {% else %}
     <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
   {% endif %}
+</div>
 {% endblock %}
