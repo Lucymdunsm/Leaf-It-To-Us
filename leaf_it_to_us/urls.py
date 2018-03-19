@@ -30,6 +30,7 @@ class MyRegistrationView(RegistrationView):
 urlpatterns = [
     re_path(r'^$', views.home, name = 'home'),
     re_path(r'^leafittous/', include('core.urls')),
+    re_path(r'^oauth/', include('social_django.urls', namespace='social')), 
     re_path(r'^admin/', admin.site.urls),
     re_path(r'^accounts/register/$', MyRegistrationView.as_view(), name = 'registration_register'),
     re_path(r'^accounts/social/$', views.account_settings, name='social_settings'),

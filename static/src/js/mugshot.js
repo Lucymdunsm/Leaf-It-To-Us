@@ -89,6 +89,4 @@ by Cameron Nicolson
     });
   };
 
-$("#display-mugshot").mugshot();
-
 })(jQuery);

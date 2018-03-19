@@ -5,6 +5,8 @@ $( "#atoz" ).on( "click", filter );
 $("#add-favourite").on("click", saveTea);
 $("#recent-reviews").on("click", filter);
 
+$("#display-mugshot").mugshot();
+
 function saveTea() {
 	var $favButton = $(this);
 	var tea_id = $(this).attr("data-teaid"); 
