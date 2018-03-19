@@ -13,19 +13,22 @@
 
 {% block body_block %}
 
-    <div class="breadcrumb">breadcrumb
+    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}
      <!-- should prob be inherting from a block from somewhere? -->
     </div>
 
         <div id="tea-info">
             <div class="col-md-12">
                 {% if tea %}
-                <div class="test">
+                <div id="top-box">
                     <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-                    <div id="tea-name"><p class="name">{{ tea.name }}<p></div>
-                    <div id="tea-desc"><p class="desc">{{ tea.description }}</p><br><p>tag list</p></div>
+                    <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
+                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3><br><p>tag list?</p></div>
                 </div>
                 {% endif %}
+                <div class="fav-button">
+                    <img src="http://via.placeholder.com/50x50" alt="fav icon">
+                </div>
             </div>
         </div>
 
@@ -33,6 +36,7 @@
             <div id="tea-icon-group">
 
                 {% include 'tea/icon-group.html' %}
+
 
                 {% if tea %}
                 <div id="detailed-tea-info">

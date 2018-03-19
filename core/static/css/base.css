@@ -4,10 +4,17 @@
 property:value; */
 
 * {
-  color:#4C5B40;
+  color:#FFFEFC;
   font-family: 'Josefin Slab', serif;
+  color: #353538;
+  text-decoration: none; /*not working*/
 }
 
+.login-option {
+  padding-top: 2%;
+  margin-right: 10%;
+  text-transform: uppercase;
+}
 
 #placeh {
   margin: 10% 10% 0 0;
@@ -55,7 +62,7 @@ from staying on top?*/
 
 #sidebar {
   position: fixed;
-  background-color: #c1f0c1;
+  background-color: #dbd5c9;
   width: 20%;
   padding: 10% 0% 10% 5%;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);

@@ -7,20 +7,19 @@ body {
 }
 
 .col-md-12 {
-    margin-left: 35%;
-    width: 200%;
+
 }
 
-.test {
+#top-box {
     display: inline-flex;
-    width: 200%;
 }
 
 #tea-info {
     background-color: LightSteelBlue;
-    margin-left: 10%;
+    margin-left: 25%;
     display: inline-flex;
     padding: 2%;
+    width: 60%;
 }
 
 .tea-img {
@@ -36,19 +35,23 @@ body {
 
 
 .desc {
-    padding-top: 20%;
+    padding-top: 30%;
+}
+
+.fav-button {
+    padding-left: 90%;
 }
 
 #tea-icon-group {
     margin-top: 3%;
-    margin-left: 30%;
+    margin-left: 45%;
     background-color: lavender;
 }
 
 #icon-group {
     display: inline-flex;
     background-color: beige;
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .icon-img {

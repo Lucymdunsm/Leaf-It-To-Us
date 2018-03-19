@@ -15,26 +15,27 @@
             <div id="filter-options" class="col-md-9">
                 <ul id="filters">
                     <li class="dropdown">
-                        <p>Search filters:</p></li>
+                        <h3>Search filters:</h3></li>
 
-                            <li class="dropdown">temp
+                            <li class="dropdown"><h3>temp</h3>
                                 {% if results %}
                                 <div class="filterable">
                                     {% for tea in results %}
-                                    <div class="dropdown-content"><a href="#">{{ tea.temperature }}</a></div>
+
+                                    <div class="dropdown-content"><a href="#">{{ tea.temperature }}°</a></div>
                                     {% endfor %}
                                 {% endif %}
                             </li>
 
-                    <li class="dropdown">origin
+                    <li class="dropdown"><h3>origin</h3>
                         <div class="dropdown-content">{{ tea.origin }}</li>
-                    <li class="dropdown">type
+                    <li class="dropdown"><h3>type</h3>
                         <div class="dropdown-content">{{ tea.category }}</li>
-                    <li class="dropdown">brew time
+                    <li class="dropdown"><h3>brew time</h3>
                         <div class="dropdown-content">hi</li>
-                    <li class="dropdown">top rated
+                    <li class="dropdown"><h3>top rated</h3>
                         <div class="dropdown-content">{{ tea.rating }}</li>
-                    <li class="dropdown">recently reviewed
+                    <li class="dropdown"><h3>recently reviewed</h3>
                         <div class="dropdown-content">hi</li>
 
                 </ul>
@@ -51,19 +52,22 @@
                 <div class="col-md-2">
                     <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
                     <h3 class="tname"><a href="{% url 'catalog' %}">{{ tea.name }}</a></h3><!-- can't get proper redirect working -->
-
                         <span class="score" data-rating="{{ tea.rating }}">
-                            <h4 class="trating">{{ tea.rating }}</h4>
-                            <h4 class="trating">{{ tea.temperature }}</h4>
-                            <h4 class="trating">{% include 'tea/star_rating.html' %}</h4> <!-- stars not showing -->
+                            {% include 'tea/star_rating.html' %} <!-- stars not showing -->
                         </span>
+
+                        <div class="fetch-tea-details">
+                            <h4 class="trating">{{ tea.rating }}</h4>
+                            <h4 class="trating">{{ tea.temperature }}°</h4>
+                            <h4 class="trating">{{ tea.origin }}</h4>
+                        </div>
 
                 </div>
                 {% endfor %}
             </div>
         </div>
         {% else %}
-            <p>No results matched your search</p>
+            <h3 class="search-fail">No results matched your search</h3>
         {% endif %}
 
     </div>
