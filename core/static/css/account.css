@@ -1,0 +1,58 @@
+.account {
+    margin-left: 20%;
+}
+
+.personal {
+    display: inline-block;
+    background-color: beige;
+    padding: 5%;
+}
+
+#display-name {
+    font-size: 250%;
+}
+
+#profile-img {
+    height: auto;
+    width: auto;
+    max-width: 350px;
+    max-height: 350px;
+}
+
+.social-tea {
+    display: inline-block;
+    background-color: LightSteelBlue;
+    width: 30%;
+}
+
+.recent-posted-review {
+    padding-bottom: 5%;
+    margin-left: 20%;
+}
+
+.review-tea-name {
+    font-size: 150%;
+    text-decoration: bold;
+}
+
+
+.fav-list {
+    list-style: none;
+}
+
+.fav-tea-name {
+    font-size: 125%;
+}
+
+.checked {
+    color: orange;
+}
+
+#review-text {
+    width: 40%;
+}
+
+.recent-fav-tea {
+    padding-top: 4%;
+
+}

@@ -14,7 +14,13 @@ from django.contrib.auth.decorators import login_required
 from core.forms import UserForm, UserProfileForm
 
 def home(request):
-    return render(request, 'tea/home.html')
+    context_dict = {}
+    try:
+        tea_image = Tea.objects.order_by('?')[0]
+        context_dict = {'tea': tea_image}
+    except Tea.DoesNotExist:
+        context_dict = None
+    return render(request, 'tea/home.html', context_dict)
 
 def search(request):
     matches = {}
@@ -56,7 +62,6 @@ def increment_tea_page_views(tea):
 
 @login_required
 def show_account(request):
-
     account = {}
     try:
         userReq = request.user

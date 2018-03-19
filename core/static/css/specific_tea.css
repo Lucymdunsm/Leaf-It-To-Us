@@ -6,57 +6,103 @@ body {
     margin-left: 20%;
 }
 
+.col-md-12 {
+
+}
+
+#top-box {
+    display: inline-flex;
+}
+
 #tea-info {
     background-color: LightSteelBlue;
     margin-left: 25%;
-    display: inline-block;
+    display: inline-flex;
+    padding: 2%;
     width: 60%;
+}
+
+.tea-img {
 
 }
 
 #tea-name {
     text-transform: uppercase;
     font-size: 200%;
+    padding: 2%;
+    display: block;
 }
 
 
+.desc {
+    padding-top: 30%;
+}
+
+.fav-button {
+    padding-left: 20%;
+}
+
 #tea-icon-group {
-    margin-left: 165%; /*lol*/
-    margin-top: 10%;
+    margin-top: 3%;
+    margin-left: 45%;
+    background-color: lavender;
 }
 
 #icon-group {
     display: inline-flex;
+    background-color: beige;
+    margin-left: 10%;
 }
 
 .icon-img {
-    margin-right: 10%;
+    margin-left: 7%;
+    margin-right: 7%;
 }
 
-#icon-headings {
+.icon-name {
     display: inline-flex;
+    padding-left: 16%;
 }
 
 #detailed-tea-info {
     display: inline-flex;
-    margin-right: 10%;
+    padding-left: 16%;
+}
+
+.tea-details {
+    padding-left: 35%;
+}
+
+.review-section {
+    margin-left: 10%;
 }
 
 .review-sort-bar {
     display: inline-flex;
     padding-left: 5%;
-    margin-top: 20%; /*this is hacky af but it works for now*/
+    margin-top: 5%;
+    margin-left: 20%;
     background-color: grey;
     width: 90%;
 }
 
-.review-section {
-    margin-left: 10%;
+.new-review {
+    padding-top: 3%;
+    margin-left: 45%;
+}
 
+.new-review-text {
+    display: block;
+}
+
+.individual-review-boxes {
+    margin-left: 20%;
+    padding: 3% 0 3% 3%;;
 }
 
 .reviews {
     padding-left: 1%;
+    text-transform: uppercase;
 }
 
 .review-filter {
@@ -64,14 +110,8 @@ body {
     display: flex;
 }
 
-#profile-pic {
-    padding-top: 2%;
-    display: flex;
-}
-
-.tea-rating {
-    padding-left: 2%;
-    display: inline-flex;
+.checked {
+    color: orange;
 }
 
 #review-text {

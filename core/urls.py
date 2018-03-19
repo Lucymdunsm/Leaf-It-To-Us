@@ -27,7 +27,7 @@ urlpatterns = [
 #     re_path(r'^reviews/(?P<review_id_slug>[\w\-]+)/$', views.show_review, name='show_review'),
 # 
 #     # Generic registration and login pages.
-	    re_path(r'^register/$', views.register, name='register'),
+	   re_path(r'^register/$', views.register, name='register'),
       re_path(r'^login/$', views.user_login, name='login'),
       re_path(r'^logout/$', views.user_logout, name='logout'),
 # 

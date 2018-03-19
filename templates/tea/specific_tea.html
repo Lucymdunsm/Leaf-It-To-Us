@@ -8,46 +8,50 @@
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/specific_tea.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 {% block body_block %}
 
-    <div class="breadcrumb">breadcrumb
+    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}
      <!-- should prob be inherting from a block from somewhere? -->
     </div>
 
         <div id="tea-info">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 {% if tea %}
+                <div id="top-box">
                     <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-                    <div id="tea-name">{{ tea.name }}</div>
-                    <div id="tea-desc">{{ tea.description }}</div>
+                    <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
+                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3><br><p>tag list?</p></div>
+                </div>
                 {% endif %}
-            </div>
-        </div>
-        <!-- Testing grounds for Cameron's favouriting tea code -->
-        {% if user.is_authenticated %}
-        <div class="col-md-12">
-            <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
-                <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
+                <div class="fav-button">
+                    {% if user.is_authenticated %}
+
+                    <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star
             </button>
         </div>
         {% endif %}
-        <div class="col-md-2">
-            <div id="tea-icon-group">
-                {% include 'tea/icon-group.html' %}
-                <div id="icon-headings">
-                    <h4 class="icon-name">Temperature</h4>
-                    <h4 class="icon-name">Origin</h4>
-                    <h4 class="icon-name">Type</h4>
-                    <h4 class="icon-name">Rating</h4>
                 </div>
+            </div>
+        </div>
+
+
+        <div class="col-md-2">
+
+            <div id="tea-icon-group">
+
+                {% include 'tea/icon-group.html' %}
+
+
                 {% if tea %}
                 <div id="detailed-tea-info">
-                    <h5 class="tea-details">{{ tea.temperature }}</h5>
-                    <h5 class="tea-details">{{ tea.origin }}</h5>
-                    <h5 class="tea-details">{{ tea.category }}</h5>
-                    <h5 class="tea-details">{{ tea.rating }}</h5>
+                    <h3 class="tea-details">{{ tea.temperature }}°</h3>
+                    <h3 class="tea-details">{{ tea.origin }}</h3>
+                    <h3 class="tea-details">{{ tea.category }}</h3>
+                    <h3 class="tea-details">{{ tea.rating }}</h3>
                 </div>
                 {% endif %}
             </div>
@@ -56,7 +60,7 @@
         <div class="col-md-9">
             <div class="review-section">
                 <div class="review-sort-bar">
-                    <p class="reviews">reviews</p>
+                    <p class="reviews">Reviews</p>
 
                     <div class="review-filter">
                         <p>order by:</p>
@@ -65,18 +69,31 @@
                     </div>
                 </div>
 
-                <div class="review-boxes">
+                <div class="new-review">
+                    <div class="new-review-text">
+                        <textarea rows="4" cols="60">
+                            Leave a review
+                        </textarea>
+                    </div>
+                    <button>Submit</button>
+                </div>
+
+                <div class="individual-review-boxes">
                     <div id="review-profile">
                         {% if review %}
                         {% for review in review %}
-                            <div id="profile-pic"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
-                            <div id="tea-rating">{{ review.rating }}</div>
+                            <div id="reviewer-name">{{ review.user }}</div>
+
+                            <span class="score" data-rating="{{ review.rating }}">
+                                {% include 'tea/star_rating.html' %}
+                            </span>
+
+                            <p>{{review.date}}</p>
                             <div id="review-text">{{ review.content }}</div>
                         {% endfor %}
                         {% endif %}
                     </div>
                 </div>
             </div>
-        </div>
 
 {% endblock %}

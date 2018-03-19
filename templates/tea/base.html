@@ -14,7 +14,7 @@
   <link rel="stylesheet" type="text/css" href="{% static 'css/base.css' %}"/>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Jura|Nanum+Brush+Script|Prompt" rel="stylesheet">
-
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   {% block style_block %}
   {% endblock %}
 </head>
@@ -41,8 +41,8 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a class="navbar-brand navbar-left" href="#">
-          <img src="https://d30y9cdsu7xlg0.cloudfront.net/png/17932-200.png" width="50" height="50" class="d-inline-block align-top" alt="picture of teacup">
+        <a class="navbar-brand navbar-left" href="{% url 'home' %}">
+          <img class="logo" src="https://d30y9cdsu7xlg0.cloudfront.net/png/17932-200.png" class="d-inline-block align-top" alt="picture of teacup">
       </div>
 
 
@@ -60,8 +60,7 @@
 {% block searchbar_block %}
         <!-- SEARCH BAR -->
 
-        <div>
-
+        <div class="schbar">
           <form id="search_form" method="post" action="{% url 'search' %}" class="navbar-form d-inline-block align-items-center navbar-left" role="search">
               {% csrf_token %}
               {{ error }}
@@ -76,10 +75,12 @@
         <!-- Stuff on the Right -->
 
 {% block login_block %}
+    <div class="login-option">
         <div class="d-inline-block align-top navbar-right">
-          <a href="{% url 'auth_login' %}">Sign up/ Log in</a>
+          <a href="{% url 'login' %}">Log in</a><br>
+          <a href="{% url 'login' %}">Sign up</a> <!-- assuming different redirects? -->
         </div>
-
+    </div>
 {% endblock %}
   </div>
       <!-- /.navbar-collapse -->
@@ -93,11 +94,10 @@
     <!-- Sidebar Header -->
     <div class="sidenav">
       <a href="{% url 'home' %}"><h4>Home</h4></a>
-      <a href="#"><h4>Reviews</h4></a>
       <a href="{% url 'catalog' %}"><h4>Browse all</h4></a>
       <a href="{% url 'faq' %}"><h4>FAQ</h4></a>
       <a href="{% url 'catalog' %}"><h4>Contact info</h4></a>
-      <!-- <a href="'show_account' %}"><h4>Site map</h4></a> -->
+      <a href="{% url 'show_account' %}"><h4>Site map</h4></a>
     </div>
   </nav>
 {% endblock %}
