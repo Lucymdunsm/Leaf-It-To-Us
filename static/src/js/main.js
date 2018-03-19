@@ -3,6 +3,7 @@ $( "#type" ).on( "click", filter );
 $( "#origin" ).on( "click", filter );
 $( "#atoz" ).on( "click", filter );
 $("#add-favourite").on("click", saveTea);
+$("#recent-reviews").on("click", filter);
 
 function saveTea() {
 	var $favButton = $(this);

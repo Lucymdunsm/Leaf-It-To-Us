@@ -21,14 +21,14 @@ def search(request):
     if request.method == 'POST':
     # make client's request lowercase
         query = request.POST.get('query').lower()
-        print(query)
-        try:
-        # interface with db
-            results = Tea.objects.filter(name__icontains=query)
-            matches["results"] = results 
-        except Tea.DoesNotExist:
-        # Execption, return nothing
-            matches["results"] = None
+        if query != '':
+            try:
+            # interface with db
+                results = Tea.objects.filter(name__icontains=query)
+                matches["results"] = results 
+            except Tea.DoesNotExist:
+            # Execption, return nothing
+                matches["results"] = None
  
     return render(request, 'tea/search.html', matches)
 
@@ -93,8 +93,9 @@ def most_popular(request):
             received_json_data = json.loads(request.body.decode("utf-8"))
             for item in received_json_data["tea_id"]:
                pk_list.append(int(item))
-               queryset = Tea.objects.filter(pk__in=pk_list).order_by("-views")
-               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+            queryset = Tea.objects.filter(pk__in=pk_list).order_by("-views")
+    
+    model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
                 'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
     
     return JsonResponse(model_to_json, safe=False)
@@ -109,10 +110,39 @@ def type(request):
             received_json_data = json.loads(request.body.decode("utf-8"))
             for item in received_json_data["tea_id"]:
                pk_list.append(int(item))
-               queryset = Tea.objects.filter(pk__in=pk_list).order_by("category")
-               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+
+            queryset = Tea.objects.filter(pk__in=pk_list).order_by("category")
+
+    model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
                 'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
     
+    return JsonResponse(model_to_json, safe=False)
+
+@csrf_exempt
+def recently_reviewed(request):
+    response_json_dict = {}
+    pk_list = []
+    ids = []
+    if request.method == 'GET':
+            review_list_model = Review.objects.all()
+            for o in review_list_model:
+                ids.append(int(o.id))
+            print(ids)
+            queryset = Tea.objects.filter(pk__in=ids)
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+            
+            review_list_model = Review.objects.filter(pk__in=pk_list).all()
+            for o in review_list_model:
+                ids.append(int(o.id))
+            print(ids)
+            queryset = Tea.objects.filter(pk__in=ids)
+
+    model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+       
     return JsonResponse(model_to_json, safe=False)
 
 @csrf_exempt
@@ -125,8 +155,10 @@ def origin(request):
             received_json_data = json.loads(request.body.decode("utf-8"))
             for item in received_json_data["tea_id"]:
                pk_list.append(int(item))
-               queryset = Tea.objects.filter(pk__in=pk_list).order_by("origin")
-               model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+            
+            queryset = Tea.objects.filter(pk__in=pk_list).order_by("origin")
+
+    model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
                 'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
 
     return JsonResponse(model_to_json, safe=False)
