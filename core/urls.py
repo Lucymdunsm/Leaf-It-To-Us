@@ -38,10 +38,14 @@ urlpatterns = [
       re_path(r'^account/$', views.show_account, name='show_account'),
 
 #     re_path(r'^account/settings/$', views.settings, name='settings'),
-#     re_path(r'^account/reviews/$', views.user_reviews, name='user_reviews'),
+#      re_path(r'^account/reviews/$', views.user_reviews, name='user_reviews'),
+     re_path(r'^teas/catalog/specific_tea/reviews/$', views.add_review, name='add_review'),
+#     re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 #     re_path(r'^account/saved_teas/$', views.saved_teas, name='saved_teas'),
 # 
 #     # Search URLs. Unsure whether search will be its own page or just a bar on the home page.
 #     # Again, unsure what the difference between Tea catalog and tea listings is.
      re_path(r'^search/$', views.search, name='search'),
+     
+     re_path(r'^contact/$', views.contact_us, name='contact_us'),
 ]

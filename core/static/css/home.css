@@ -2,12 +2,12 @@
 .tea-month {
     margin-left: 75%;
     background-color: BurlyWood;
-    width: 50%;
+    width: 60%;
 }
 
 .tea-desc {
     padding: 7% 2% 7% 2%;
-
+    text-align: center;
 }
 
 #icon-search-text {
@@ -41,14 +41,11 @@
     margin-left: 54%;
 }
 
-.column {
-    display: inline-block;
-    margin-right: 5%;
-}
-
 .mugshot-api {
-    margin-left: 55%;
+    margin-top: 5%;
+    margin-left: 57%;
     background: Bisque;
+    width: 20%;
 }
 
 .mugshot-img {

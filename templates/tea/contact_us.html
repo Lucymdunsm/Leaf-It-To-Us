@@ -1,0 +1,30 @@
+{% extends 'tea/base.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/contact_us.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block body_block %}
+
+<div class="contact-page">
+
+    <h2>Contact Us</h2>
+
+    <h3>Missing your favourite tea? Drop us a line...</h3>
+
+    <form action="mailto:2356031g@student.gla.co.uk" method="post" enctype="text/plain">
+        Name:<br>
+        <input type="text" {% if user.is_authenticated %}value="{{ user.first_name }}"{% endif %} name="name"><br>
+        E-mail:<br>
+        <input type="text" name="mail"><br>
+        Comment:<br>
+        <input type="text" name="comment" size="50"><br><br>
+        <input type="submit" value="Send">
+        <input type="reset" value="Reset">
+    </form>
+
+</div>
+
+{% endblock %}

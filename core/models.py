@@ -47,6 +47,7 @@ class Review(models.Model):
 	content = models.TextField()
 	rating = models.FloatField(default=0)
 	date = models.DateField(default=timezone.now)
+	#ratings = GenericRelation(Rating, related_query_name='reviews')
 	user = models.ForeignKey(User,
 		on_delete = models.CASCADE, null=True)
 	tea = models.ForeignKey(Tea,
@@ -55,7 +56,7 @@ class Review(models.Model):
 
 	def __str__(self):
 		return self.tea
-
+#Review.objects.filter(ratings__isnull=False).order_by('ratings__average')
 
 class SavedTea(models.Model):
 	user = models.ForeignKey(User,

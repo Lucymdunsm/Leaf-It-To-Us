@@ -40,7 +40,7 @@
                     <button id="remove-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg" disabled="">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Tea already saved
                     </button>
-                    {% endif %}  
+                    {% endif %}
                       </div>
                     {% endif %}
 
@@ -68,22 +68,38 @@
         <div class="col-md-9">
             <div class="review-section">
                 <div class="review-sort-bar">
-                    <p class="review-headline">Reviews</p>
+                    <h3 class="review-headline">Reviews</h3>
 
                     <div class="review-filter">
-                        <p class="review-headline">order by:</p>
-                        <button>most recent</button> <!-- maybe dont have as button for real -->
-                        <button>top rated</button>
+                        <!-- <p class="review-headline">order by:</p> -->
+                        <h3 class="order-by"><a href="#">most recent</a></h3>
+                        <h3 class="order-by"><a href="#">top rated</a></h3>
                     </div>
                 </div>
 
                 <div class="new-review">
+                    {% if user.is_authenticated %}
                     <div class="new-review-text">
-                        <textarea rows="4" cols="60">
-                            Leave a review
-                        </textarea>
+
+                        Leave a rating <span class="score" data-rating="{{ review.rating }}">
+                                {% include 'tea/star_rating.html' %}
+                            </span>
+
+                        <form id="review_form" method="post" action="{% url 'add_review' %}">
+                            {% csrf_token %}
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+
+                            {% for field in form.visible_fields %}
+                                {{ field }}
+                            {% endfor %}
+                            <input type="submit" name="submit" value="Submit"/>
+                        </form>
+
                     </div>
-                    <button>Submit</button>
+
+                    {% endif %}
                 </div>
 
                 <div class="individual-review-boxes">

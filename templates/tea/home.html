@@ -11,13 +11,14 @@
     <div class="col-md-4">
         <div class="tea-month"> <!-- could text be a block from somewhere? -->
             {% if tea %}
-            Tea of the moment
-            <div class="img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"></div>
+            <h2>Tea of the moment</h2>
+            <div class="img"><img src="http://via.placeholder.com/350x350">
+                <!-- <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"> --></div>
             <div class="tea-desc">
-                <p>{{ tea.name }}</p>
-                <p>{{ tea.description }}</p>
-                <p>country of origin: {{ tea.origin }}</p>
-                <p>brewed at {{ tea.temperature }} degrees</p>
+                <h3><strong>{{ tea.name }}</strong></h3>
+                <h4>{{ tea.description }}</h4>
+                <h4>Origin: {{ tea.origin }}</h4>
+                <h4>Brewed at {{ tea.temperature }} degrees</h4>
             </div>
             {% endif %}
         </div>
