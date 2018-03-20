@@ -79,6 +79,6 @@ $(document).on('_filter_refresh', function() {
 	updateScores();
 });
 
-$(".filterable, .review-section").trigger('_filter_refresh', function() {
+$(".filterable, .review-section, .recent-posted-review").trigger('_filter_refresh', function() {
 	updateScores();
 });
