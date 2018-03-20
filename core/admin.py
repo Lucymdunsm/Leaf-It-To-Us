@@ -1,17 +1,8 @@
 
 from django.contrib import admin
-from core.models import UserProfile
+# Import models here.
+from core.models import Category, Tea, Review, UserProfile, SavedTea
 
-admin.site.register(UserProfile)
-
-# Register your models here.
-
-# from django.contrib import admin
-# from core.models import Category, Tea, Review
-#   
-#   
-# class CategoryAdmin(admin.ModelAdmin):
-#     prepopulated_fields = {'slug':('name',)}
-#  
-# admin.site.register(Category, CategoryAdmin)
-
+# Register models here.
+register_model_list = [Category, Tea, Review, UserProfile, SavedTea]
+admin.site.register(register_model_list)
