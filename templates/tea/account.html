@@ -14,7 +14,11 @@
 		<div id="display-name">
 			Welcome, {{ user.first_name }} {{ user.last_name }}!
 		</div>
+		{% if profile %}
 		<img id="profile-img" img src="{{ MEDIA_URL }}{{ profile.profile_pic }}">
+		{% else %}
+		<strong>Finish updating your profile by adding a profile picture</strong>
+		{% endif %}
 	{% endif %}
 	</div>
 
