@@ -40,7 +40,7 @@
                     <button id="remove-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg" disabled="">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Tea already saved
                     </button>
-                    {% endif %}  
+                    {% endif %}
                       </div>
                     {% endif %}
 
@@ -78,12 +78,28 @@
                 </div>
 
                 <div class="new-review">
+                    {% if user.is_authenticated %}
                     <div class="new-review-text">
-                        <textarea rows="4" cols="60">
-                            Leave a review
-                        </textarea>
+
+                        Leave a rating <span class="score" data-rating="{{ review.rating }}">
+                                {% include 'tea/star_rating.html' %}
+                            </span>
+
+                        <form id="review_form" method="post" action="{% url 'add_review' %}">
+                            {% csrf_token %}
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+
+                            {% for field in form.visible_fields %}
+                                {{ field }}
+                            {% endfor %}
+                            <input type="submit" name="submit" value="Submit"/>
+                        </form>
+
                     </div>
-                    <button>Submit</button>
+
+                    {% endif %}
                 </div>
 
                 <div class="individual-review-boxes">

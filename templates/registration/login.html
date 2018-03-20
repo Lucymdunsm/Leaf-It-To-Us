@@ -16,13 +16,13 @@
 		<h1>Login</h1>
 		<form id="login_form" method="post" action="{% url 'login' %}">
 			{% csrf_token %}
-			Username: <input type="text" name="username" value="" size="50" />
+			<h5>Username:</h5><input type="text" name="username" value="" size="50" />
 			<br />
 			<br />
-			Password: <input type="password" name="password" value="" size="50" />
+			<h5>Password:</h5><input type="password" name="password" value="" size="50" />
 			<br />
 			<br />
-			<input type="submit" value="Log in" />
+			<button type="submit" value="Log in">Log in </button>
 		</form>
 		<br>
 		<br>
@@ -32,9 +32,22 @@
 		</p>
 		<br>
 		<p><strong> OR </strong></p>
-		<a href="{% url 'social:begin' 'github' %}">Login with GitHub</a><br>
-		<a href="{% url 'social:begin' 'facebook' %}">Log in with Facebook</a><br>
-		<a href="{% url 'social:begin' 'twitter' %}">Log in with Twitter</a><br>
+
+		<div id="social-login-button">
+		<a href="{% url 'social:begin' 'github' %}">
+			<img src="{{ MEDIA_URL }}icons/sign-in-github.png" class="social-login"></a>
+		</div>
+		<br>
+		<div class="social-login-button">
+		<a href="{% url 'social:begin' 'facebook' %}">
+			<img src="{{ MEDIA_URL }}icons/sign-in-facebook.png" class="social-login"></a>
+		</div>
+		<br>
+		<div class="social-login-button">
+		<a href="{% url 'social:begin' 'twitter' %}">
+			<img src="{{ MEDIA_URL }}icons/sign-in-twitter.png" class="social-login"></a>
+		</div>
+		<br>
 	{% endif %}
 </div>
 {% endblock %}

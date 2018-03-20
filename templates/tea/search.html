@@ -16,7 +16,7 @@
             <div id="filter-options" class="col-md-9">
                 <h3>Search Filters:</h3>
         <ul class="nav nav-pills">
-                    <li role="presentation"><a id="popular" href="#">Most Popular</a></li>     
+                    <li role="presentation"><a id="popular" href="#">Most Popular</a></li>
                     <li role="presentation"><a id="origin" href="#">Origin</a></li>
                     <li role="presentation"><a id="type" href="#">Type</a></li>
                     <li role="presentation"><a id="recent-reviews" href="#">Recently Reviewed</a></li>
@@ -36,12 +36,14 @@
                     <!-- replace img src with #{{ MEIDA_URL }}# #{{ tea.image }}# -->
                     <img src="http://via.placeholder.com/150x150" alt="{{ tea.name }}"/>
                     <h3 class="tname">{{tea.name}}</h3>
-                    <span class="badge"> views {{ tea.views }}</span>
-                        <span class="score" data-rating="{{ tea.rating }}">
-                            {% include 'tea/star_rating.html' %} 
-                        </span>
+
                         <div class="fetch-tea-details">
-                            <h4 class="trating">{{ tea.rating }}</h4>
+                            <h4 class="trating">
+                                <!-- <span class="badge"> views {{ tea.views }}</span> -->
+                                <span class="score" data-rating="{{ tea.rating }}">
+                                    {% include 'tea/star_rating.html' %}
+                                </span>
+                            </h4>
                             <h4 class="trating">{{ tea.temperature }}°</h4>
                             <h4 class="trating">{{ tea.origin }}</h4>
                         </div>
@@ -53,7 +55,8 @@
             </div>
         </div>
         {% else %}
-            <h3 class="search-fail">No results matched your search</h3>
+            <h3 class="search-fail">No results matched your search<br>
+                Think we're missing something? <a href="{% url 'contact_us' %}">Let us know!</a></h3>
         {% endif %}
 
     </div>

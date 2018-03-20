@@ -105,7 +105,7 @@ body {
 
 .individual-review-boxes {
     margin-left: 20%;
-    padding: 3% 0 3% 3%;;
+    padding: 3% 0 3% 3%;
 }
 
 .review-filter {
@@ -115,6 +115,12 @@ body {
 
 .checked {
     color: orange;
+}
+
+#review-profile {
+    border: 5px solid black;
+    display: inline-block;
+    width: 30%;
 }
 
 #review-text {

@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.views.decorators.csrf import csrf_exempt
 from core.models import Category, Tea, Review, UserProfile, SavedTea, User
 from django.contrib.auth.decorators import login_required
-from core.forms import UserForm, UserProfileForm
+from core.forms import UserForm, UserProfileForm, ReviewForm
 
 def home(request):
     context_dict = {}
@@ -195,6 +195,21 @@ def origin(request):
                 'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
 
     return JsonResponse(model_to_json, safe=False)
+
+@login_required 
+def add_review(request):
+    form = ReviewForm()
+
+    if request.method == 'POST':
+        form = ReviewForm(request.POST)
+
+        if form.is_valid():
+            form.save(commit=True)
+            return reviews(request)
+        else:
+            print(form.errors)
+
+    return render(request, 'tea/specific_tea.html', {'form': form})
 
 @login_required 
 def add_favourite_tea(request): 
