@@ -20,9 +20,8 @@
                     <li role="presentation"><a id="origin" href="#">Origin</a></li>
                     <li role="presentation"><a id="type" href="#">Type</a></li>
                     <li role="presentation"><a id="recent-reviews" href="#">Recently Reviewed</a></li>
-                    <!-- <li role="presentation"><a id="temp" href="#">Temperature</a></li> -->
-                    <!-- <li role="presentation"><a id="temp" href="#">top rated</a></li> -->
-                    <!-- <li role="presentation"><a id="temp" href="#">brew time</a></li> -->
+                    <li role="presentation"><a id="temperatures" href="#">Brew Temp</a></li>
+                    <li role="presentation"><a id="top" href="#">Top Rated</a></li>
                 </ul>
             </div>
         </div>
@@ -33,8 +32,7 @@
                  {% if forloop.first %}<div class="row">{% endif %}
                 <div class="col-xs-6" >
                 <a class="list-group-item filter-item" href="{% url 'catalog' %}{{tea.slug}}" data-teaid="{{ tea.id }}">
-                    <!-- replace img src with #{{ MEIDA_URL }}# #{{ tea.image }}# -->
-                    <img src="http://via.placeholder.com/150x150" alt="{{ tea.name }}"/>
+                    <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image">
                     <h3 class="tname">{{tea.name}}</h3>
 
                         <div class="fetch-tea-details">

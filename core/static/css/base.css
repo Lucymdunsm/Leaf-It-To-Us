@@ -80,6 +80,7 @@ from staying on top?*/
   background-color: BurlyWood;
   /*#dbd5c9;*/
   width: 20%;
+  z-index: 1;
   padding: 10% 0% 10% 5%;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 }

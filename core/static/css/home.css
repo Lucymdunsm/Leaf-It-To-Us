@@ -5,6 +5,16 @@
     width: 60%;
 }
 
+.tea-image {
+    width: auto;
+    height: auto;
+    max-width: 350px;
+    max-height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+}
+
 .tea-desc {
     padding: 7% 2% 7% 2%;
     text-align: center;

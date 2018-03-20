@@ -21,13 +21,14 @@ urlpatterns = [
     re_path(r'^save/$', views.add_favourite_tea, name='add_favourite_tea'),
     re_path(r'^teas/recent-reviews/$', views.recently_reviewed, name='recent-reviews'),
     re_path(r'^teas/top/$', views.top_rated, name='top_rated'),
+    re_path(r'^teas/temperatures/$', views.brew_temp, name='brew_time'),  
 # 
 #     # Specific review pages have an id slug that is passed on to the view function.
 #     re_path(r'^reviews/$', views.reviews, name='reviews'),
 #     re_path(r'^reviews/(?P<review_id_slug>[\w\-]+)/$', views.show_review, name='show_review'),
 # 
 #     # Generic registration and login pages.
-	   re_path(r'^register/$', views.register, name='register'),
+       re_path(r'^register/$', views.register, name='register'),
       re_path(r'^login/$', views.user_login, name='login'),
       re_path(r'^logout/$', views.user_logout, name='logout'),
 # 
@@ -39,7 +40,7 @@ urlpatterns = [
 
 #     re_path(r'^account/settings/$', views.settings, name='settings'),
 #      re_path(r'^account/reviews/$', views.user_reviews, name='user_reviews'),
-#      re_path(r'^teas/catalog/(?P<tea_name_slug>[\w\-]+)/reviews/$', views.add_review, name='add_review'),
+     re_path(r'^teas/catalog/specific_tea/reviews/$', views.add_review, name='add_review'),
 #     re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 #     re_path(r'^account/saved_teas/$', views.saved_teas, name='saved_teas'),
 # 

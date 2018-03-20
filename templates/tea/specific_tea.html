@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 {% if tea %}
                 <div id="top-box">
-                    <div class="tea-img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"></div>
+                    <div><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-img"></div>
                     <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
                     <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
                 </div>

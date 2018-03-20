@@ -97,11 +97,3 @@ def callback(sender, **kwargs):
 	    	except Exception as e:
 	    		print('fail')
 	    		print(e)
-
-# work around for adding User profiles automatically
-
-def create_profile(sender,**kwargs ):
-    if kwargs['created']:
-        user_profile=UserProfile.objects.create(user=kwargs['instance'])
-
-post_save.connect(create_profile,sender=User)

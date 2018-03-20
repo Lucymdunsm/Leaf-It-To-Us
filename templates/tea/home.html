@@ -12,8 +12,8 @@
         <div class="tea-month"> <!-- could text be a block from somewhere? -->
             {% if tea %}
             <h2>Tea of the moment</h2>
-            <div class="img"><img src="http://via.placeholder.com/350x350">
-                <!-- <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"> --></div>
+            <div class="img"><!-- <img src="http://via.placeholder.com/350x350"> -->
+                <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image"></div>
             <div class="tea-desc">
                 <h3><strong><a href="{% url 'catalog'%}{{ tea.slug }}">{{ tea.name }}</a></strong></h3>
                 <h4>{{ tea.description }}</h4>
