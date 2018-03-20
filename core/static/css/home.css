@@ -5,6 +5,11 @@
     width: 60%;
 }
 
+.tea-month h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
 .tea-image {
     width: auto;
     height: auto;
@@ -18,6 +23,10 @@
 .tea-desc {
     padding: 7% 2% 7% 2%;
     text-align: center;
+}
+
+.tea-desc h3 {
+    text-transform: uppercase;
 }
 
 #icon-search-text {

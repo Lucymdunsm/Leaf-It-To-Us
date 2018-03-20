@@ -43,13 +43,13 @@ body {
 
 #tea-icon-group {
     margin-top: 3%;
-    margin-left: 45%;
+    margin-left: 37%;
     background-color: lavender;
+    width: 70%;
 }
 
 #icon-group {
     display: inline-flex;
-    background-color: beige;
     margin-left: 10%;
 }
 
@@ -65,16 +65,15 @@ body {
 
 .icon-name {
     display: inline-flex;
-    padding-left: 16%;
+    padding-left: 14.2%;
 }
 
 #detailed-tea-info {
     display: inline-flex;
-    padding-left: 16%;
 }
 
 .tea-details {
-    padding-left: 35%;
+    padding-left: 43%;
 }
 
 .review-section {
@@ -116,7 +115,7 @@ body {
 }
 
 .review-filter {
-    padding: 5% 0 5% 50%; /*t&b doing nothing*/
+    padding: 5% 0 5% 50%;
     display: flex;
 }
 
@@ -125,7 +124,7 @@ body {
 }
 
 #review-profile {
-    border: 5px solid black;
+    border: 3px solid black; /*just to see its perimeter*/
     display: inline-block;
     width: 30%;
 }
