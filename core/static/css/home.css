@@ -27,8 +27,18 @@
     display: inline-flex;
 }
 
-.icon-text {
-    margin-left: 55%;
+.single-icon {
+    width: 120px;
+    height: 120px;
+}
+
+.icon-name {
+    display: inline-flex;
+    padding-left: 7%
+}
+
+.name-row {
+    margin-left: 54%;
 }
 
 .column {

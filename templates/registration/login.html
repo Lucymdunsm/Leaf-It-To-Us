@@ -1,13 +1,14 @@
 
-{% extends "tea/testbase.html" %}
+{% extends 'tea/base.html' %}
 {% load staticfiles %}
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 {% endblock %}
 
+
 {% block body_block %}
-<div id="everything">
+<div id="login-page">
 	{% if user.is_authenticated %}
 		<h2> You are logged in as {{ user.username }} </h2>
 		<p> To log in with a different account, you must first <a href="{% url 'logout' %}"> log out.</a></p>
@@ -23,6 +24,8 @@
 			<br />
 			<input type="submit" value="Log in" />
 		</form>
+		<br>
+		<br>
 		<p>
 			Not a member?
 			<a href="{% url 'register' %}">Register</a>

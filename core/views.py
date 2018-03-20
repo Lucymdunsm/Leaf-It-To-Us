@@ -271,7 +271,7 @@ def account_settings(request):
         facebook_login = None
     can_disconnect = (user.social_auth.count() > 1 or user.has_usable_password())
 
-    return render(request, 'registration/social_settings.html', {'twitter_login': twitter_login, 'facebook_login': facebook_login, 'can_disconnect': can_disconnect})
+    return render(request, 'tea/account.html', {'twitter_login': twitter_login, 'facebook_login': facebook_login, 'can_disconnect': can_disconnect})
 
 @login_required
 def manage_password(request):

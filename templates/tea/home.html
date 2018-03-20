@@ -6,18 +6,6 @@
 {% endblock %}
 
 
-{% block login_block %}
-{% if user.is_authenticated %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'logout' %}">Log out</a>
-    </div>
-    {% else %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'login' %}">Login / Sign-up</a>
-    </div>
-    {% endif %}
-{% endblock %}
-
 {% block body_block %}
 
     <div class="col-md-4">
@@ -42,7 +30,6 @@
     <div class="included-icon-group">
         <h3 id="icon-search-text">Search by</h3>
         {% include 'tea/icon-group.html' %}
-        <p class="icon-text">Temperature / Origin / Type / Rating</p>
     </div>
 
         <div class="mugshot-api">

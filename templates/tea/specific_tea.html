@@ -11,6 +11,8 @@
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
+
+
 {% block body_block %}
 
     <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}
@@ -23,29 +25,30 @@
                 <div id="top-box">
                     <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
                     <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
-                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3><br><p>tag list?</p></div>
+                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
                 </div>
                 {% endif %}
+                {% if user.is_authenticated %}
+               {% if not is_user_favourite %}
                 <div class="fav-button">
-                    {% if user.is_authenticated %}
-                    {% if not is_user_favourite %}
                     <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
-                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Save
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favourite
                     </button>
+
+
                     {% else %}
                     <button id="remove-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg" disabled="">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Tea already saved
                     </button>
+                    {% endif %}  
+                      </div>
                     {% endif %}
-                </div>
-        {% endif %}
+
                 </div>
             </div>
         </div>
 
-
-        <div class="col-md-2">
-
+        <div class="col-md-9">
             <div id="tea-icon-group">
 
                 {% include 'tea/icon-group.html' %}
@@ -65,10 +68,10 @@
         <div class="col-md-9">
             <div class="review-section">
                 <div class="review-sort-bar">
-                    <p class="reviews">Reviews</p>
+                    <p class="review-headline">Reviews</p>
 
                     <div class="review-filter">
-                        <p>order by:</p>
+                        <p class="review-headline">order by:</p>
                         <button>most recent</button> <!-- maybe dont have as button for real -->
                         <button>top rated</button>
                     </div>
@@ -100,5 +103,6 @@
                     </div>
                 </div>
             </div>
+        </div>
 
 {% endblock %}
