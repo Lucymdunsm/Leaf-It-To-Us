@@ -275,3 +275,6 @@ def manage_password(request):
     else:
         form = PasswordForm(request.user)
     return render(request, 'registration/password.html', {'form': form})
+
+def contact_us(request):
+    return render(request, 'tea/contact_us.html')

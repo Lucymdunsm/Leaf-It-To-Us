@@ -44,4 +44,6 @@ urlpatterns = [
 #     # Search URLs. Unsure whether search will be its own page or just a bar on the home page.
 #     # Again, unsure what the difference between Tea catalog and tea listings is.
      re_path(r'^search/$', views.search, name='search'),
+     
+     re_path(r'^contact/$', views.contact_us, name='contact_us'),
 ]
