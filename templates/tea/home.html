@@ -15,7 +15,7 @@
             <div class="img"><img src="http://via.placeholder.com/350x350">
                 <!-- <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"> --></div>
             <div class="tea-desc">
-                <h3><strong>{{ tea.name }}</strong></h3>
+                <h3><strong><a href="{% url 'catalog'%}{{ tea.slug }}">{{ tea.name }}</a></strong></h3>
                 <h4>{{ tea.description }}</h4>
                 <h4>Origin: {{ tea.origin }}</h4>
                 <h4>Brewed at {{ tea.temperature }} degrees</h4>

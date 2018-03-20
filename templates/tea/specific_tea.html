@@ -23,7 +23,7 @@
             <div class="col-md-12">
                 {% if tea %}
                 <div id="top-box">
-                    <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
+                    <div class="tea-img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"></div>
                     <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
                     <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
                 </div>
@@ -85,17 +85,7 @@
                                 {% include 'tea/star_rating.html' %}
                             </span>
 
-                        <form id="review_form" method="post" action="{% url 'add_review' %}">
-                            {% csrf_token %}
-                            {% for hidden in form.hidden_fields %}
-                                {{ hidden }}
-                            {% endfor %}
 
-                            {% for field in form.visible_fields %}
-                                {{ field }}
-                            {% endfor %}
-                            <input type="submit" name="submit" value="Submit"/>
-                        </form>
 
                     </div>
 

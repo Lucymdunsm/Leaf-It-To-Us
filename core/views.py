@@ -197,9 +197,17 @@ def origin(request):
     return JsonResponse(model_to_json, safe=False)
 
 @login_required 
-def add_review(request):
+def add_review(request, tea_name_slug):
     form = ReviewForm()
-
+    
+    tea_model = None
+    context_dict = {}
+    
+    try:
+        tea_model = Tea.objects.get(slug=tea_name_slug)
+    except Tea.DoesNotExist:
+        context_dict = None
+    
     if request.method == 'POST':
         form = ReviewForm(request.POST)
 
@@ -209,7 +217,7 @@ def add_review(request):
         else:
             print(form.errors)
 
-    return render(request, 'tea/specific_tea.html', {'form': form})
+    return render(request, 'tea/specific_tea.html', {'form': form}, context_dict)
 
 @login_required 
 def add_favourite_tea(request): 
