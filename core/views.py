@@ -143,11 +143,45 @@ def type(request):
 
 @csrf_exempt
 def top_rated(request):
-    context_dict = {}
-    if request.method == 'GET':
-            context_dict["teas"] = Tea.objects.order_by('-rating')
+    response_json_dict = {}
+    pk_list = []
 
-    return render(request, 'tea/tea_catalog.html', context_dict)
+    if request.method == 'GET':
+            context_dict = {}
+            context_dict["teas"] = Tea.objects.order_by('-rating')
+            return render(request, 'tea/tea_catalog.html', context_dict)
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+            
+            queryset = Tea.objects.filter(pk__in=pk_list).order_by("-rating")
+
+    model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+
+    return JsonResponse(model_to_json, safe=False)
+
+
+@csrf_exempt
+def brew_temp(request):
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+            context_dict = {}
+            context_dict["teas"] = Tea.objects.order_by('-temperature')
+            return render(request, 'tea/tea_catalog.html', context_dict)
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+            
+            queryset = Tea.objects.filter(pk__in=pk_list).order_by("-temperature")
+
+    model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+
+    return JsonResponse(model_to_json, safe=False)
 
 @csrf_exempt
 def recently_reviewed(request):
