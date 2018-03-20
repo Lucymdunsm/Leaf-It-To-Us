@@ -126,7 +126,9 @@ def type(request):
     response_json_dict = {}
     pk_list = []
     if request.method == 'GET':
-            model_to_json =  Tea.objects.order_by('category')
+            context_dict = {}
+            context_dict["teas"] = Tea.objects.order_by('category')
+            return render(request, 'tea/tea_catalog.html', context_dict)
     elif request.method == 'POST':
             received_json_data = json.loads(request.body.decode("utf-8"))
             for item in received_json_data["tea_id"]:
@@ -138,6 +140,14 @@ def type(request):
                 'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
     
     return JsonResponse(model_to_json, safe=False)
+
+@csrf_exempt
+def top_rated(request):
+    context_dict = {}
+    if request.method == 'GET':
+            context_dict["teas"] = Tea.objects.order_by('-rating')
+
+    return render(request, 'tea/tea_catalog.html', context_dict)
 
 @csrf_exempt
 def recently_reviewed(request):
@@ -171,7 +181,9 @@ def origin(request):
     response_json_dict = {}
     pk_list = []
     if request.method == 'GET':
-            model_to_json =  Tea.objects.order_by('origin')
+            context_dict = {}
+            context_dict["teas"] = Tea.objects.order_by('origin')
+            return render(request, 'tea/tea_catalog.html', context_dict)
     elif request.method == 'POST':
             received_json_data = json.loads(request.body.decode("utf-8"))
             for item in received_json_data["tea_id"]:

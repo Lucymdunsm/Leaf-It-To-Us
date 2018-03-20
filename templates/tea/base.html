@@ -47,15 +47,9 @@
 
         <a class="navbar-brand navbar-left" href="{% url 'home' %}">
           <img class="logo" src="{{ MEDIA_URL }}/icons/ugogrren.jpg" class="d-inline-block align-top" alt="picture of teacup">
+        </a>
+         <h4 class="navbar-text">Leaf It To Us</h4>
       </div>
-
-
-
-<!-- HEADER -->
-      <div class="Container">
-            <div class="nav navbar-nav">
-                <h1 id="litu"><a href="{% url 'home' %}">Leaf it to us</a></h1>
-            </div>
 
       <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -64,7 +58,6 @@
 {% block searchbar_block %}
         <!-- SEARCH BAR -->
 
-        <div class="schbar">
           <form id="search_form" method="post" action="{% url 'search' %}" class="navbar-form d-inline-block align-items-center navbar-left" role="search">
               {% csrf_token %}
               {{ error }}
@@ -73,22 +66,24 @@
             </div>
             <button href="#" type="submit" class="btn btn-default">Submit</button>
           </form>
-        </div>
 {% endblock %}
 
         <!-- Stuff on the Right -->
 
+
 {% block login_block %}
-<div id="login-option">
+
+<div id="login-option">    
+  <div class="d-inline-block align-top navbar-right">
+      <ul class="nav navbar-nav">
     {% if user.is_authenticated %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'logout' %}"><h4>Log out</h4></a>
-    </div>
+        <li><a href="{% url 'logout' %}">Log out</a></li>
     {% else %}
-    <div class="d-inline-block align-top navbar-right">
-        <a href="{% url 'login' %}"><h4>Login <br> Sign-up</h4></a>
-    </div>
+        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'login' %}">Sign-up</a></li>
     {% endif %}
+          </ul>
+    </div>
   </div>
 {% endblock %}
 

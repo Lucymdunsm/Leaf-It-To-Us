@@ -20,7 +20,7 @@ urlpatterns = [
     re_path(r'^teas/origin/$', views.origin, name='origin'),
     re_path(r'^save/$', views.add_favourite_tea, name='add_favourite_tea'),
     re_path(r'^teas/recent-reviews/$', views.recently_reviewed, name='recent-reviews'),
-
+    re_path(r'^teas/top/$', views.top_rated, name='top_rated'),
 # 
 #     # Specific review pages have an id slug that is passed on to the view function.
 #     re_path(r'^reviews/$', views.reviews, name='reviews'),
