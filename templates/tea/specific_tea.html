@@ -29,12 +29,22 @@
                 </div>
                 {% endif %}
                 {% if user.is_authenticated %}
+               {% if not is_user_favourite %}
                 <div class="fav-button">
                     <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
                     <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favourite
                     </button>
+
+
+                    {% else %}
+                    <button id="remove-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg" disabled="">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Tea already saved
+                    </button>
+                    {% endif %}  
+                      </div>
+                    {% endif %}
+
                 </div>
-                {% endif %}
             </div>
         </div>
 

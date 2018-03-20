@@ -5,6 +5,7 @@
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 
@@ -13,56 +14,41 @@
     <div class ="container-fluid">
         <div class="row">
             <div id="filter-options" class="col-md-9">
-                <ul id="filters">
-                    <li class="dropdown">
-                        <h3>Search filters:</h3></li>
-
-                            <li class="dropdown"><h3>temp</h3>
-                                {% if results %}
-                                <div class="filterable">
-                                    {% for tea in results %}
-
-                                    <div class="dropdown-content"><a href="#">{{ tea.temperature }}°</a></div>
-                                    {% endfor %}
-                                {% endif %}
-                            </li>
-
-                    <li class="dropdown"><h3>origin</h3>
-                        <div class="dropdown-content">{{ tea.origin }}</li>
-                    <li class="dropdown"><h3>type</h3>
-                        <div class="dropdown-content">{{ tea.category }}</li>
-                    <li class="dropdown"><h3>brew time</h3>
-                        <div class="dropdown-content">hi</li>
-                    <li class="dropdown"><h3>top rated</h3>
-                        <div class="dropdown-content">{{ tea.rating }}</li>
-                    <li class="dropdown"><h3>recently reviewed</h3>
-                        <div class="dropdown-content">hi</li>
-
+                <h3>Search Filters:</h3>
+        <ul class="nav nav-pills">
+                    <li role="presentation"><a id="popular" href="#">Most Popular</a></li>     
+                    <li role="presentation"><a id="origin" href="#">Origin</a></li>
+                    <li role="presentation"><a id="type" href="#">Type</a></li>
+                    <li role="presentation"><a id="recent-reviews" href="#">Recently Reviewed</a></li>
+                    <!-- <li role="presentation"><a id="temp" href="#">Temperature</a></li> -->
+                    <!-- <li role="presentation"><a id="temp" href="#">top rated</a></li> -->
+                    <!-- <li role="presentation"><a id="temp" href="#">brew time</a></li> -->
                 </ul>
-
-
-
-
             </div>
         </div>
     {% if results %}
         <div class="toprow">
-            <div class="teabox">
-                {% for tea in results %}
-                <div class="col-md-2">
-                    <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                    <h3 class="tname"><a href="{% url 'catalog' %}">{{ tea.name }}</a></h3><!-- can't get proper redirect working -->
+            <div class="teabox filterable col-xs-12">
+            {% for tea in results %}
+                 {% if forloop.first %}<div class="row">{% endif %}
+                <div class="col-xs-6" >
+                <a class="list-group-item filter-item" href="{% url 'catalog' %}{{tea.slug}}" data-teaid="{{ tea.id }}">
+                    <!-- replace img src with #{{ MEIDA_URL }}# #{{ tea.image }}# -->
+                    <img src="http://via.placeholder.com/150x150" alt="{{ tea.name }}"/>
+                    <h3 class="tname">{{tea.name}}</h3>
+                    <span class="badge"> views {{ tea.views }}</span>
                         <span class="score" data-rating="{{ tea.rating }}">
-                            {% include 'tea/star_rating.html' %} <!-- stars not showing -->
+                            {% include 'tea/star_rating.html' %} 
                         </span>
-
                         <div class="fetch-tea-details">
                             <h4 class="trating">{{ tea.rating }}</h4>
                             <h4 class="trating">{{ tea.temperature }}°</h4>
                             <h4 class="trating">{{ tea.origin }}</h4>
                         </div>
-
-                </div>
+                        </a>
+                </div> <!-- end of column -->
+                {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+                {% if forloop.last %}</div>{% endif %}
                 {% endfor %}
             </div>
         </div>

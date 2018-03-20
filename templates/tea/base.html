@@ -15,6 +15,10 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link href="https://fonts.googleapis.com/css?family=Josefin+Slab|Jura|Nanum+Brush+Script|Prompt" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Django dynamically generates global variables for JS scripts to use -->
+  <script type="text/javascript"> 
+   var static_media_url = "{{ MEDIA_URL }}";
+  </script>
   {% block style_block %}
   {% endblock %}
 </head>
