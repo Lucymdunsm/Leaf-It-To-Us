@@ -19,10 +19,11 @@ function saveTea() {
 
 function filter(evt) {
 	evt.preventDefault();
-	if(evt.target.id == null) return;
+	if(evt.currentTarget.id == null || evt.currentTarget.id == '') return;
 	var endpoint
-	if(evt.target.id != null) {
-		endpoint = evt.target.id
+	if(evt.currentTarget.id != null) {
+		endpoint = evt.currentTarget.id
+		console.log("endpoint " + endpoint)
 	}
 	var teaids = findTeaIds();
 	url = '/leafittous/teas/'+endpoint+"/";
@@ -50,24 +51,34 @@ function findTeaIds(selector) {
 	return found;
 } 
 
-function refresh_listview(json) {
+function refresh_listview(json, container) {
 	console.log(json)
-	var $container = $("#catalog-list");
-	$container.hide();
-	var htmlNewList = '';
+	var $container = $(".filterable");
+	$container.find(".filter-item").hide();
+
 	$.each(json, function(i, item) {
-		htmlNewList += '<a href="#" class="list-group-item" data-teaid="'+item.pk+'">'
-		htmlNewList += '<span class="badge"> views '+ item.fields.views +'</span>'
-		htmlNewList += '<h4 class="list-group-item-heading">' + item.fields.name + '</h4>'
-		htmlNewList += '<p>'+ item.fields.description + '</p>'
- 		htmlNewList += '</a>'
+		$container.find('[data-teaid="'+item.pk+'"]').appendTo( $container ).show();
 	});
-	$container.html(htmlNewList).fadeIn();
+
+	$container.hide();
+	$container.fadeIn();
+	$(document).trigger('_filter_refresh');
 }
 
-$( ".score" ).each( function( index, element ){
-	t = $(this).data("rating");
-    for (var e = t, r = 0; r <= e; r++) {
-    	$(this).find('span:nth-child(' + r + ')').addClass("checked");
-    }
+
+function updateScores() {
+	$( ".score" ).each( function( index, element ){
+		t = $(this).data("rating");
+	    for (var e = t, r = 0; r <= e; r++) {
+	    	$(this).find('span:nth-child(' + r + ')').addClass("checked");
+	    }
+	});
+}
+
+$(document).on('_filter_refresh', function() { 
+	updateScores();
+});
+
+$(".filterable, .review-section").trigger('_filter_refresh', function() {
+	updateScores();
 });

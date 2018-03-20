@@ -31,7 +31,7 @@
 {% if teas %}
 	<div class="list-group filterable" id="catalog-list">
 	{% for tea in teas %}
-	<a href="{{ tea.slug }}" class="list-group-item" data-teaid="{{ tea.id }}">
+	<a href="{{ tea.slug }}" class="list-group-item filter-item" data-teaid="{{ tea.id }}">
 		<span class="badge">Views {{ tea.views }}</span>
 	<h4 class="list-group-item-heading">{{ tea.name }}</h4>
     <p class="list-group-item-text">{{ tea.description }}</p>
