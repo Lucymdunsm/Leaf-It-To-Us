@@ -47,13 +47,29 @@ def specific_tea(request, tea_name_slug):
     try:
         tea_model = Tea.objects.get(slug=tea_name_slug)
         tea_review = Review.objects.filter(tea=tea_model)
-        context_dict = {'tea': tea_model, 'review': tea_review}
+        context_dict = {'tea': tea_model, 'review': tea_review, 'is_user_favourite': is_user_favourite(tea_model, request.user) }
     except Tea.DoesNotExist:
         context_dict = None 
         
     if tea_model:
         increment_tea_page_views(tea_model)
     return render(request, 'tea/specific_tea.html', context_dict)
+
+
+def is_user_favourite(tea_model, user):
+        if not user.is_anonymous:
+            try:
+                is_tea_found = SavedTea.objects.filter(tea=tea_model, user=user).exists()
+                if is_tea_found:
+                    return True
+            except Exception as e:
+                return False
+        else: 
+            return False
+
+        return False
+
+
 
 def increment_tea_page_views(tea):
         # Update the tea's number of views by 1
