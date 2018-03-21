@@ -34,7 +34,7 @@ urlpatterns = [
     re_path(r'^admin/', admin.site.urls),
 
     re_path(r'^accounts/register/$', MyRegistrationView.as_view(), name = 'registration_register'),
-    re_path(r'^accounts/social/$', views.account_settings, name='social_settings'),
+    re_path(r'^leafittous/account/$', views.account_settings, name='social_settings'),
     re_path(r'^accounts/pasword/$', views.manage_password, name = 'password'),
     re_path(r'^accounts/', include('registration.backends.simple.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

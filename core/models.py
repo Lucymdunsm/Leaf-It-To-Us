@@ -89,7 +89,7 @@ class UserProfile(models.Model):
 	)
 
 	def __str__(self):
-		return self.user
+		return str(self.user)
 
 @receiver(post_save)
 def callback(sender, **kwargs):

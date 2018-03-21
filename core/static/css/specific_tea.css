@@ -23,6 +23,7 @@ body {
     max-width: 350px;
     width: auto;
     height: auto;
+
 }
 
 #tea-name {
@@ -34,15 +35,18 @@ body {
 
 
 .desc {
-    padding-top: 30%;
+    padding-top: 20%;
 }
 
 .fav-button {
     padding-left: 60%;
 }
 
+#remove-favourite {
+    margin-left: 60%;
+}
+
 #tea-icon-group {
-    margin-top: 3%;
     margin-left: 37%;
     background-color: lavender;
     width: 70%;
@@ -83,8 +87,7 @@ body {
 .review-sort-bar {
     display: inline-flex;
     padding-left: 5%;
-    margin-top: 5%;
-    margin-left: 20%;
+    margin-left: 25%;
     background-color: #4c5b40;
     width: 90%;
 }
@@ -127,11 +130,12 @@ body {
     border: 3px solid black; /*just to see its perimeter*/
     display: inline-block;
     width: 30%;
+    padding-left: 2%;
 }
 
 #review-text {
     padding-top: 2%;
-    width: 20%;
+
 }
 
 /*this isn't exactly nice but it's nicer than not having it imo*/
