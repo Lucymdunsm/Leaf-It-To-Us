@@ -4,6 +4,7 @@ $( "#origin" ).on( "click", filter );
 $( "#atoz" ).on( "click", filter );
 $( "#temperatures" ).on( "click", filter );
 $( "#top" ).on( "click", filter );
+$( "#catalog" ).on( "click", filter );
 $("#recent-reviews").on("click", filter);
 $("#add-favourite").on("click", saveTea);
 $("#display-mugshot").mugshot();
@@ -93,7 +94,6 @@ $(document).on('_filter_refresh', function() {
 
 $("#catalog-filter li a").on("click", function() {
 	var $filterOption = $(this).text();
-	console.log("hi"+$filterOption);
 	$("#filter-menu .filter-option").text($filterOption);
 	$(".active").removeClass("active");
 	$(this).addClass("active");

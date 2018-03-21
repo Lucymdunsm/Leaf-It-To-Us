@@ -95,16 +95,31 @@ def show_account(request):
 
     return render(request, 'tea/account.html', account)
 
-
+@csrf_exempt
 def show_catalog(request):
-	context_dict = {}
-	try:
-		teaList = Tea.objects.order_by('name')
-		context_dict["teas"] = teaList
-	except Tea.DoesNotExist:
-		teaList["teas"] = None
+    context_dict = {}
+    response_json_dict = {}
+    pk_list = []
+    if request.method == 'GET':
+        try:
+            teaList = Tea.objects.order_by('name')
+            context_dict["teas"] = teaList
+        except Tea.DoesNotExist:
+            teaList["teas"] = None
+        return render(request, 'tea/tea_catalog.html', context_dict)
 
-	return render(request, 'tea/tea_catalog.html', context_dict)
+    elif request.method == 'POST':
+            received_json_data = json.loads(request.body.decode("utf-8"))
+            for item in received_json_data["tea_id"]:
+               pk_list.append(int(item))
+            queryset = Tea.objects.filter(pk__in=pk_list).order_by("-views")
+    
+            model_to_json = serializers.serialize("json", queryset, fields = ('id', 'name', 'price', 'description', 
+                'origin', 'rating', 'temperature', 'category', 'views', 'slug', 'image'))
+    
+            return JsonResponse(model_to_json, safe=False)
+
+    return render(request, 'tea/tea_catalog.html', context_dict)
 
 @csrf_exempt
 def most_popular(request):
