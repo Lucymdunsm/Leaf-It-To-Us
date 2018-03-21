@@ -19,13 +19,8 @@ class UserProfileForm(forms.ModelForm):
 class ReviewForm(forms.ModelForm):
     content = forms.CharField(max_length=500, widget=forms.Textarea(attrs={'placeholder': 'Leave a review'}))
     rating = forms.IntegerField(initial=0)
-    date = forms.DateTimeField(widget=forms.HiddenInput(), disabled=True)
-    user = forms.ModelChoiceField(queryset=User.objects.all(), widget=forms.HiddenInput(), disabled=True)
-    tea = forms.ModelChoiceField(queryset=Tea.objects.all(), widget=forms.HiddenInput(), disabled=True)
-    slug = forms.CharField(widget=forms.HiddenInput(), required =False)
 
     class Meta:
         model = Review
         fields = ('content',
-                  'rating',
-                  'date',)
+                  'rating',)

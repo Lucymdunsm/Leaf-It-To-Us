@@ -42,6 +42,7 @@ def faq(request):
     return render(request, 'tea/faq.html')
 
 def specific_tea(request, tea_name_slug):
+    form = ReviewForm()
     tea_model = None
     context_dict = {}
     try:
@@ -50,7 +51,8 @@ def specific_tea(request, tea_name_slug):
         context_dict = {'tea': tea_model, 'review': tea_review, 'is_user_favourite': is_user_favourite(tea_model, request.user) }
     except Tea.DoesNotExist:
         context_dict = None 
-        
+    
+    context_dict["form"] = form
     if tea_model:
         increment_tea_page_views(tea_model)
     return render(request, 'tea/specific_tea.html', context_dict)
@@ -231,27 +233,32 @@ def origin(request):
     return JsonResponse(model_to_json, safe=False)
 
 @login_required 
-def add_review(request, tea_name_slug):
-    form = ReviewForm()
-    
-    tea_model = None
-    context_dict = {}
-    
-    try:
-        tea_model = Tea.objects.get(slug=tea_name_slug)
-    except Tea.DoesNotExist:
-        context_dict = None
-    
+def add_review(request):
     if request.method == 'POST':
+        request_slug = request.POST.get("slug")
+        # Create a form instance with POST data.
         form = ReviewForm(request.POST)
-
         if form.is_valid():
-            form.save(commit=True)
-            return reviews(request)
+            # Create, but don't save the new author instance.
+            new_review = form.save(commit=False)
+
+            reviewer = User.objects.get(username=request.user)
+            breakfast = Tea.objects.get(slug=request_slug)
+            reviewed_tea = breakfast
+            # Modify the review and add user and tea
+            new_review.user = reviewer
+            new_review.tea = reviewed_tea
+            # Save the new instance.
+            new_review.save()
+            # Now, save the many-to-many data for the form.
+            form.save_m2m()
+            success = True
         else:
             print(form.errors)
+            success = False
 
-    return render(request, 'tea/specific_tea.html', {'form': form}, context_dict)
+    return JsonResponse(json.dumps({"errors":form.errors, "success": success}), safe=False)
+
 
 @login_required 
 def add_favourite_tea(request): 
