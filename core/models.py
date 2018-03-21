@@ -100,5 +100,12 @@ def callback(sender, **kwargs):
     		try:
     			r.tea.update_rating()
     		except Exception as e:
-		    	print('fail')
 		    	print(e)
+
+# work around for adding User profiles automatically
+
+def create_profile(sender,**kwargs ):
+    if kwargs['created']:
+        user_profile=UserProfile.objects.get_or_create(user=kwargs['instance'])[0]
+
+post_save.connect(create_profile,sender=User)

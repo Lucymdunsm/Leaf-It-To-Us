@@ -303,19 +303,22 @@ def register(request):
     if request.method == 'POST':
         # Take information from both forms.
         user_form = UserForm(data=request.POST)
-        profile_form = UserProfileForm(data=request.POST)
-    
-        if user_form.is_valid() and profile_form.is_valid():
+        profile_form = None
+        if user_form.is_valid():
             # Save user data to database and hash passwrod.
             user = user_form.save()
             user.set_password(user.password)
             user.save()
-            # Save userprofil form data, delaying commiting until user foreign key is fileld.
-            profile = profile_form.save(commit=False)
-            profile.user = user
-            if 'picture' in request.FILES:
-                profile.profile_pic = request.FILES['picture']
-            profile.save()
+
+            instance = UserProfile.objects.get(user=user)
+            profile_form = UserProfileForm(request.POST or None, instance=instance)
+            if profile_form.is_valid:
+                profile = profile_form.save(commit=False)
+                profile.user = user
+                # Save userprofil form data, delaying commiting until user foreign key is fileld.
+                if 'picture' in request.FILES:
+                    profile.profile_pic = request.FILES['picture']
+                profile.save()
             
             registered = True
         else:
