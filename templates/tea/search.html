@@ -30,7 +30,7 @@
             <div class="teabox filterable col-xs-12">
             {% for tea in results %}
                  {% if forloop.first %}<div class="row">{% endif %}
-                <div class="col-xs-6" >
+                <div class="col-lg-12" >
                 <a class="list-group-item filter-item" href="{% url 'catalog' %}{{tea.slug}}" data-teaid="{{ tea.id }}">
                     <!-- replace img src with #{{ MEIDA_URL }}# #{{ tea.image }}# -->
                     <img src="http://via.placeholder.com/150x150" alt="{{ tea.name }}"/>
