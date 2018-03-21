@@ -93,3 +93,25 @@ $("#catalog-filter li a").on("click", function() {
 $(".filterable, .review-section, .recent-posted-review").trigger('_filter_refresh', function() {
 	updateScores();
 });
+
+$('#sub_review_btn').on("click", function(e){
+    e.preventDefault();
+    var slug_str = '&slug=' + tea_name_slug;    
+    var review_to_send = $('form').serialize();
+    review_to_send += slug_str;
+    console.log(review_to_send);
+    $.post('/leafittous/teas/reviews/', review_to_send).done(function(data){
+    	data = JSON.parse(data);
+    	console.log(data);
+        $('#form-messages').empty();
+
+        if(data.success === true) {
+        	$('.new-review-text').hide();
+        	$('#form-messages').html("review submitted");
+        }
+	    $.each(data.errors, function(i, item){ 
+			$("#form-messages").append("<li>"+ i + " " + item[0]+"</li>");
+		});
+
+    });
+});

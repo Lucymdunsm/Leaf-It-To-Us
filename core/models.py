@@ -54,8 +54,13 @@ class Review(models.Model):
 		on_delete = models.CASCADE, related_name='reviews', null=True)
 	slug = models.SlugField(unique=True)
 
+	def save(self, *args, **kwargs): 
+		slug_str = "%s %s" % ( self.date, self.rating) 
+		self.slug = slugify(slug_str)
+		super(Review, self).save(*args, **kwargs)
+
 	def __str__(self):
-		return self.tea
+		return str(self.tea)
 #Review.objects.filter(ratings__isnull=False).order_by('ratings__average')
 
 class SavedTea(models.Model):
@@ -88,12 +93,12 @@ class UserProfile(models.Model):
 
 @receiver(post_save)
 def callback(sender, **kwargs):
-    r = kwargs['instance']
 
-    if (isinstance(r, Review)):
-    	# if kwargs['created']:
-	    	try:
-	    		r.tea.update_rating()
-	    	except Exception as e:
-	    		print('fail')
-	    		print(e)
+    if kwargs['created']:
+    	r = kwargs['instance']
+    	if (isinstance(r, Review)):
+    		try:
+    			r.tea.update_rating()
+    		except Exception as e:
+		    	print('fail')
+		    	print(e)

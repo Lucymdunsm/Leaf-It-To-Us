@@ -132,3 +132,24 @@ body {
 #review-text {
     padding-top: 2%;
     width: 20%;
+}
+
+/*this isn't exactly nice but it's nicer than not having it imo*/
+#sub_review_btn {
+    width: 53%;
+}
+
+#form-messages {
+    list-style: none;
+}
+
+/*removes HTML default number spin box, Firefox has different behaviour*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}
