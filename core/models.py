@@ -93,12 +93,12 @@ class UserProfile(models.Model):
 
 @receiver(post_save)
 def callback(sender, **kwargs):
-    r = kwargs['instance']
 
-    if (isinstance(r, Review)):
-    	# if kwargs['created']:
-	    	try:
-	    		r.tea.update_rating()
-	    	except Exception as e:
-	    		print('fail')
-	    		print(e)
+    if kwargs['created']:
+    	r = kwargs['instance']
+    	if (isinstance(r, Review)):
+    		try:
+    			r.tea.update_rating()
+    		except Exception as e:
+		    	print('fail')
+		    	print(e)
