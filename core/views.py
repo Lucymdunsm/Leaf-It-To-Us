@@ -257,6 +257,7 @@ def add_review(request):
         else:
             print(form.errors)
             success = False
+
     return JsonResponse(json.dumps({"errors":form.errors, "success": success}), safe=False)
 
 @login_required 

@@ -80,9 +80,6 @@
                     <ul id="form-messages"></ul>
                     {% if user.is_authenticated %}
                     <div class="new-review-text">
-                        <!-- Leave a rating <span class="score" data-rating="{{ review.rating }}">
-                                {% include 'tea/star_rating.html' %}
-                            </span> -->
 
                         <form id="review_form" method="post">
                             {% csrf_token %}
