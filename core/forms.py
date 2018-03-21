@@ -17,8 +17,11 @@ class UserProfileForm(forms.ModelForm):
 		fields = ('profile_pic',)
 
 class ReviewForm(forms.ModelForm):
-    content = forms.CharField(max_length=500, widget=forms.Textarea(attrs={'placeholder': 'Leave a review'}))
-    rating = forms.IntegerField(initial=0)
+    content = forms.CharField(max_length=500,
+							error_messages={'required': 'is missing, please enter your review'},
+							widget=forms.Textarea(attrs={'placeholder': 'Leave a review', 'cols': 70, 'rows': 5}))
+    rating = forms.IntegerField(initial=0,
+							error_messages={'required': 'is missing, please try again'})
 
     class Meta:
         model = Review

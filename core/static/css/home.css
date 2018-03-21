@@ -5,9 +5,28 @@
     width: 60%;
 }
 
+.tea-month h2 {
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.tea-image {
+    width: auto;
+    height: auto;
+    max-width: 350px;
+    max-height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
+}
+
 .tea-desc {
     padding: 7% 2% 7% 2%;
     text-align: center;
+}
+
+.tea-desc h3 {
+    text-transform: uppercase;
 }
 
 #icon-search-text {

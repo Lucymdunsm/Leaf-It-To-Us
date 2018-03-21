@@ -32,8 +32,7 @@
                  {% if forloop.first %}<div class="row">{% endif %}
                 <div class="col-xs-6" >
                 <a class="list-group-item filter-item" href="{% url 'catalog' %}{{tea.slug}}" data-teaid="{{ tea.id }}">
-                    <!-- replace img src with #{{ MEIDA_URL }}# #{{ tea.image }}# -->
-                    <img src="http://via.placeholder.com/150x150" alt="{{ tea.name }}"/>
+                    <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image">
                     <h3 class="tname">{{tea.name}}</h3>
 
                         <div class="fetch-tea-details">

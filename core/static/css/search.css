@@ -15,10 +15,27 @@
 .teabox {
     margin-top: 3%;
     margin-left: 25%;
-    display: flex;
+    /*display: flex;*/
     background-color:#5b2424;
     border: 2px solid #353538;
     width: 60%;
+}
+
+.col-xs-6 {
+    width: 20%;
+}
+
+.filter-item {
+    max-width: 310px;
+    display: inline-block;
+    margin: 1%;
+}
+
+.tea-image {
+    max-height: 150px;
+    max-width: 150px;
+    width: auto;
+    height: auto;
 }
 
 .tname {

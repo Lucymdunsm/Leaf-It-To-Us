@@ -60,7 +60,7 @@ class Review(models.Model):
 		super(Review, self).save(*args, **kwargs)
 
 	def __str__(self):
-		return self.tea
+		return str(self.tea)
 #Review.objects.filter(ratings__isnull=False).order_by('ratings__average')
 
 class SavedTea(models.Model):

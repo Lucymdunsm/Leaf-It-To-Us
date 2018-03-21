@@ -234,7 +234,6 @@ def origin(request):
 
 @login_required 
 def add_review(request):
-
     if request.method == 'POST':
         request_slug = request.POST.get("slug")
         # Create a form instance with POST data.
@@ -254,6 +253,7 @@ def add_review(request):
             # Now, save the many-to-many data for the form.
             form.save_m2m()
             success = True
+            form = ReviewForm()
         else:
             print(form.errors)
             success = False
