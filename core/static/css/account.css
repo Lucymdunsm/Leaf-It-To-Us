@@ -4,25 +4,25 @@
 
 .personal {
     display: inline-block;
-    background-color: beige;
-    padding: 5%;
-}
 
-#display-name {
-    font-size: 250%;
+
+    padding: 5%;
 }
 
 #profile-img {
     height: auto;
     width: auto;
-    max-width: 350px;
-    max-height: 350px;
+    max-width: 300px;
+    max-height: 300px;
+
 }
 
 .social-tea {
     display: inline-block;
-    background-color: LightSteelBlue;
-    width: 30%;
+
+    width: 25%;
+
+
 }
 
 .recent-posted-review {
@@ -53,6 +53,8 @@
 }
 
 .recent-fav-tea {
+
     padding-top: 4%;
+
 
 }

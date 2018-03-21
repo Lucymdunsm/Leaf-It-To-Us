@@ -6,7 +6,9 @@ property:value; */
 * {
   color:#FFFEFC;
   font-family: 'Josefin Slab', serif;
+
   font-size: Large;
+
   color: #353538;
   text-decoration: none; /*not working*/
   -webkit-box-sizing: border-box;
@@ -16,6 +18,7 @@ property:value; */
 }
 
 .nav {
+
 
 }
 
@@ -79,8 +82,11 @@ from staying on top?*/
 
 #sidebar {
   position: fixed;
+
   background-color:none;
   /*#fffcff;*/
+
+
   width: 20%;
   z-index: 1;
   padding: 10% 0% 10% 5%;

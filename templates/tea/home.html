@@ -11,7 +11,9 @@
     <div class="col-md-4">
         <div class="tea-month">
             {% if tea %}
+
             <h2><B>Tea of the moment</B></h2>
+
             <div class="img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image"></div>
             <div class="tea-desc">
                 <h3><strong><a href="{% url 'catalog'%}{{ tea.slug }}">{{ tea.name }}</a></strong></h3><br>
@@ -23,17 +25,15 @@
         </div>
     </div>
 
-<!--     basically i want this as a cube here, but in a row on a spectea page
-    and i can't work out how to do different things with an included block
-    so this is a row too right now
-    dk whether to put the text in the block or if that'll complicate things further-->
-    <div class="included-icon-group">
-        <h3 id="icon-search-text"><B>Search by</B></h3>
+
         {% include 'tea/icon-group2.html' %}
     </div>
 
         <div class="mugshot-api">
+
             <h2><B>Mugshot</B></h2>
+
+
             <div id="display-mugshot">
             </div>
         </div>

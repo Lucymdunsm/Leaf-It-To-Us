@@ -11,7 +11,7 @@ body {
 }
 
 #tea-info {
-    background-color: LightSteelBlue;
+
     margin-left: 25%;
     display: inline-flex;
     padding: 2%;
@@ -31,8 +31,22 @@ body {
     font-size: 200%;
     padding: 2%;
     display: block;
+
 }
 
+
+.desc {
+    padding-top: 20%;
+}
+
+.fav-button {
+    padding-left: 60%;
+
+}
+
+#remove-favourite {
+    margin-left: 60%;
+}
 
 .desc {
     padding-top: 20%;
@@ -47,8 +61,13 @@ body {
 }
 
 #tea-icon-group {
+
+
+
+
+    padding-top: 2%;
     margin-left: 37%;
-    background-color: lavender;
+
     width: 70%;
 }
 
@@ -74,6 +93,7 @@ body {
 
 #detailed-tea-info {
     display: inline-flex;
+
 }
 
 .tea-details {
@@ -84,7 +104,7 @@ body {
     margin-left: 10%;
 }
 
-.review-sort-bar {
+.review-bar {
     display: inline-flex;
     padding-left: 5%;
     margin-left: 25%;
@@ -102,6 +122,7 @@ body {
     display: inline-block;
     color: #dbd5c9;
 }
+
 
 .new-review {
     padding-top: 3%;
@@ -127,7 +148,7 @@ body {
 }
 
 #review-profile {
-    border: 3px solid black; /*just to see its perimeter*/
+
     display: inline-block;
     width: 30%;
     padding-left: 2%;
@@ -138,7 +159,6 @@ body {
 
 }
 
-/*this isn't exactly nice but it's nicer than not having it imo*/
 #sub_review_btn {
     width: 53%;
 }

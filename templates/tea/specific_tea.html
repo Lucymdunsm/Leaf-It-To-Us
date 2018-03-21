@@ -51,7 +51,6 @@
 
                 {% include 'tea/icon-group2.html' %}
 
-
                 {% if tea %}
                 <div id="detailed-tea-info">
                     <h3 class="tea-details">{{ tea.temperature }}°</h3>
@@ -65,13 +64,42 @@
 
         <div class="col-md-9">
             <div class="review-section">
-                <div class="review-sort-bar">
-                    <h3 class="review-headline">Reviews</h3>
 
-                    <div class="review-filter">
-                        <h3 class="order-by"><a href="#">most recent</a></h3>
-                        <h3 class="order-by"><a href="#">top rated</a></h3>
+                <div class="review-bar">
+                    <h3 class="review-headline">Reviews</h3>
+                </div>
+
+                <script type="text/javascript">
+                    var tea_name_slug = "{{ tea.slug }}";
+                </script>
+
+                <div class="new-review">
+                    <ul id="form-messages"></ul>
+                    {% if user.is_authenticated %}
+                    <div class="new-review-text">
+
+                        <form id="review_form" method="post">
+                            {% csrf_token %}
+
+                            <!-- <b>{{ form.errors }}</b> -->
+                            {% for error in form.errors %}
+                                    Output error text message only
+                                    <div>{{ form.errors }}</div>
+                                {% endfor %}
+
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+
+                            {% for field in form.visible_fields %}
+                                {{ field }}
+                            {% endfor %}
+                            <input type="submit" id="sub_review_btn" name="submit" value="Submit"/>
+                        </form>
+
                     </div>
+
+                    {% endif %}
                 </div>
                 <script type="text/javascript">
                     var tea_name_slug = "{{ tea.slug }}";

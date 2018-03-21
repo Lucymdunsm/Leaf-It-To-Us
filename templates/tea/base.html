@@ -46,9 +46,13 @@
         </button>
 
         <a class="navbar-brand navbar-left" href="{% url 'home' %}">
+
           <img class="logo" src="{{ MEDIA_URL }}/icons/Untitled-1.png" class="d-inline-block align-top" alt="picture of teacup">
         </a>
          <h4 class="navbar-text"><B>Leaf It To Us</b></h4>
+
+       
+
       </div>
 
       <!-- Anything inside of collapse navbar-collapse goes into the "hamburger" -->
@@ -98,12 +102,14 @@
   <nav id="sidebar" class="col-md-2">
     <!-- Sidebar Header -->
     <div class="sidenav">
+
       <a href="{% url 'home' %}"><h4><B>Home</B></h4></a>
       <a href="{% url 'catalog' %}"><h4><b>Browse all</b></h4></a>
       <a href="{% url 'faq' %}"><h4><b>FAQ</h4></b></a>
       <a href="{% url 'contact_us' %}"><h4><b>Contact us</b></h4></a>
       {% if user.is_authenticated %}
       <a href="{% url 'show_account' %}"><h4><b>My account</b></h4></a>
+
       {% endif %}
     </div>
   </nav>
