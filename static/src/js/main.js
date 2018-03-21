@@ -53,8 +53,13 @@ function findTeaIds(selector) {
 } 
 
 function refresh_listview(json, container) {
-	console.log(json)
+	console.log(json);
+	// if returned json is empty
 	var $container = $(".filterable");
+		if(jQuery.isEmptyObject(json) ) {
+			$container.prepend('<div id="clear"><h4>No matches</h4><button class="btn btn-default" onClick="clearResults()" type="button">Clear results</button></div>');
+		}	
+	
 	$container.find(".filter-item").hide();
 
 	$.each(json, function(i, item) {
@@ -66,6 +71,11 @@ function refresh_listview(json, container) {
 	$(document).trigger('_filter_refresh');
 }
 
+function clearResults() {
+	var $container = $(".filterable");
+	$container.find("#clear").hide();
+	$container.find(".filter-item").show();
+}
 
 function updateScores() {
 	$( ".score" ).each( function( index, element ){
