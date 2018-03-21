@@ -16,8 +16,12 @@ from core.forms import UserForm, UserProfileForm, ReviewForm
 def home(request):
     context_dict = {}
     try:
-        tea_image = Tea.objects.order_by('?')[0]
-        context_dict = {'tea': tea_image}
+        tea_image = Tea.objects.order_by('?')
+        if tea_image:
+            tea_image = tea_image[0]
+            context_dict = {'tea': tea_image}
+        else:
+            context_dict = None
     except Tea.DoesNotExist:
         context_dict = None
     return render(request, 'tea/home.html', context_dict)
