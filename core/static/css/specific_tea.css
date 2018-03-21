@@ -18,6 +18,14 @@ body {
     width: 60%;
 }
 
+.tea-img {
+    max-height: 350px;
+    max-width: 350px;
+    width: auto;
+    height: auto;
+
+}
+
 #tea-name {
     text-transform: uppercase;
     font-size: 200%;
@@ -27,22 +35,25 @@ body {
 
 
 .desc {
-    padding-top: 30%;
+    padding-top: 20%;
 }
 
 .fav-button {
     padding-left: 60%;
 }
 
+#remove-favourite {
+    margin-left: 60%;
+}
+
 #tea-icon-group {
-    margin-top: 3%;
-    margin-left: 45%;
+    margin-left: 37%;
     background-color: lavender;
+    width: 70%;
 }
 
 #icon-group {
     display: inline-flex;
-    background-color: beige;
     margin-left: 10%;
 }
 
@@ -58,16 +69,15 @@ body {
 
 .icon-name {
     display: inline-flex;
-    padding-left: 16%;
+    padding-left: 14.2%;
 }
 
 #detailed-tea-info {
     display: inline-flex;
-    padding-left: 16%;
 }
 
 .tea-details {
-    padding-left: 35%;
+    padding-left: 43%;
 }
 
 .review-section {
@@ -77,8 +87,7 @@ body {
 .review-sort-bar {
     display: inline-flex;
     padding-left: 5%;
-    margin-top: 5%;
-    margin-left: 20%;
+    margin-left: 25%;
     background-color: #4c5b40;
     width: 90%;
 }
@@ -109,7 +118,7 @@ body {
 }
 
 .review-filter {
-    padding: 5% 0 5% 50%; /*t&b doing nothing*/
+    padding: 5% 0 5% 50%;
     display: flex;
 }
 
@@ -118,11 +127,33 @@ body {
 }
 
 #review-profile {
-    border: 5px solid black;
+    border: 3px solid black; /*just to see its perimeter*/
     display: inline-block;
     width: 30%;
+    padding-left: 2%;
 }
 
 #review-text {
     padding-top: 2%;
-    width: 20%;
+
+}
+
+/*this isn't exactly nice but it's nicer than not having it imo*/
+#sub_review_btn {
+    width: 53%;
+}
+
+#form-messages {
+    list-style: none;
+}
+
+/*removes HTML default number spin box, Firefox has different behaviour*/
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance:textfield;
+}

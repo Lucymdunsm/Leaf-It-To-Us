@@ -9,16 +9,15 @@
 {% block body_block %}
 
     <div class="col-md-4">
-        <div class="tea-month"> <!-- could text be a block from somewhere? -->
+        <div class="tea-month">
             {% if tea %}
             <h2>Tea of the moment</h2>
-            <div class="img"><img src="http://via.placeholder.com/350x350">
-                <!-- <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}"> --></div>
+            <div class="img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image"></div>
             <div class="tea-desc">
-                <h3><strong>{{ tea.name }}</strong></h3>
-                <h4>{{ tea.description }}</h4>
-                <h4>Origin: {{ tea.origin }}</h4>
-                <h4>Brewed at {{ tea.temperature }} degrees</h4>
+                <h3><strong><a href="{% url 'catalog'%}{{ tea.slug }}">{{ tea.name }}</a></strong></h3><br>
+                <h4>{{ tea.description }}</h4><br>
+                <h4>Origin: {{ tea.origin }}</h4><br>
+                <h4>Brewed at {{ tea.temperature }} degrees</h4><br>
             </div>
             {% endif %}
         </div>
@@ -30,11 +29,11 @@
     dk whether to put the text in the block or if that'll complicate things further-->
     <div class="included-icon-group">
         <h3 id="icon-search-text">Search by</h3>
-        {% include 'tea/icon-group.html' %}
+        {% include 'tea/icon-group2.html' %}
     </div>
 
         <div class="mugshot-api">
-            Mugshot
+            <h2>Mugshot</h2>
             <div id="display-mugshot">
             </div>
         </div>

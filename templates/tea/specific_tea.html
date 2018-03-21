@@ -15,15 +15,13 @@
 
 {% block body_block %}
 
-    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}
-     <!-- should prob be inherting from a block from somewhere? -->
-    </div>
+    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}</div>
 
         <div id="tea-info">
             <div class="col-md-12">
                 {% if tea %}
                 <div id="top-box">
-                    <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
+                    <div><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-img"></div>
                     <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
                     <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
                 </div>
@@ -51,7 +49,7 @@
         <div class="col-md-9">
             <div id="tea-icon-group">
 
-                {% include 'tea/icon-group.html' %}
+                {% include 'tea/icon-group2.html' %}
 
 
                 {% if tea %}
@@ -71,7 +69,6 @@
                     <h3 class="review-headline">Reviews</h3>
 
                     <div class="review-filter">
-                        <!-- <p class="review-headline">order by:</p> -->
                         <h3 class="order-by"><a href="#">most recent</a></h3>
                         <h3 class="order-by"><a href="#">top rated</a></h3>
                     </div>
@@ -83,12 +80,16 @@
                     <ul id="form-messages"></ul>
                     {% if user.is_authenticated %}
                     <div class="new-review-text">
-                        Leave a rating <span class="score" data-rating="{{ review.rating }}">
-                                {% include 'tea/star_rating.html' %}
-                            </span>
+
                         <form id="review_form" method="post">
                             {% csrf_token %}
-                            <b>{{ form.errors }}</b>
+
+                            <!-- <b>{{ form.errors }}</b> -->
+                            {% for error in form.errors %}
+                                    Output error text message only
+                                    <div>{{ form.errors }}</div>
+                                {% endfor %}
+
                             {% for hidden in form.hidden_fields %}
                                 {{ hidden }}
                             {% endfor %}
@@ -98,17 +99,17 @@
                             {% endfor %}
                             <input type="submit" id="sub_review_btn" name="submit" value="Submit"/>
                         </form>
-
                     </div>
 
                     {% endif %}
                 </div>
 
                 <div class="individual-review-boxes">
-                    <div id="review-profile">
+
                         {% if review %}
                         {% for review in review %}
-                            <div id="reviewer-name">{{ review.user }}</div>
+                        <div id="review-profile">
+                            <h4 id="reviewer-name">{{ review.user }}</h4>
 
                             <span class="score" data-rating="{{ review.rating }}">
                                 {% include 'tea/star_rating.html' %}
@@ -116,9 +117,10 @@
 
                             <p>{{review.date}}</p>
                             <div id="review-text">{{ review.content }}</div>
+
+                        </div>
                         {% endfor %}
                         {% endif %}
-                    </div>
                 </div>
             </div>
         </div>
