@@ -40,7 +40,7 @@ urlpatterns = [
 
 #     re_path(r'^account/settings/$', views.settings, name='settings'),
 #      re_path(r'^account/reviews/$', views.user_reviews, name='user_reviews'),
-     re_path(r'^teas/catalog/specific_tea/reviews/$', views.add_review, name='add_review'),
+     re_path(r'^teas/reviews/', views.add_review, name='add_review'),
 #     re_path(r'^ratings/', include('star_ratings.urls', namespace='ratings')),
 #     re_path(r'^account/saved_teas/$', views.saved_teas, name='saved_teas'),
 # 

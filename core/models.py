@@ -54,6 +54,11 @@ class Review(models.Model):
 		on_delete = models.CASCADE, related_name='reviews', null=True)
 	slug = models.SlugField(unique=True)
 
+	def save(self, *args, **kwargs): 
+		slug_str = "%s %s" % ( self.date, self.rating) 
+		self.slug = slugify(slug_str)
+		super(Review, self).save(*args, **kwargs)
+
 	def __str__(self):
 		return self.tea
 #Review.objects.filter(ratings__isnull=False).order_by('ratings__average')

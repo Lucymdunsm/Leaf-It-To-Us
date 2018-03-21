@@ -76,17 +76,19 @@
                         <h3 class="order-by"><a href="#">top rated</a></h3>
                     </div>
                 </div>
-
+                <script type="text/javascript">
+                    var tea_name_slug = "{{ tea.slug }}";
+                </script>
                 <div class="new-review">
+                    <ul id="form-messages"></ul>
                     {% if user.is_authenticated %}
                     <div class="new-review-text">
-
                         Leave a rating <span class="score" data-rating="{{ review.rating }}">
                                 {% include 'tea/star_rating.html' %}
                             </span>
-
-                        <form id="review_form" method="post" action="{% url 'add_review' %}">
+                        <form id="review_form" method="post">
                             {% csrf_token %}
+                            <b>{{ form.errors }}</b>
                             {% for hidden in form.hidden_fields %}
                                 {{ hidden }}
                             {% endfor %}
