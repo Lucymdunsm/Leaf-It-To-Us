@@ -94,7 +94,7 @@ $(".filterable, .review-section, .recent-posted-review").trigger('_filter_refres
 	updateScores();
 });
 
-$('form').submit(function(e){
+$('#sub_review_btn').on("click", function(e){
     e.preventDefault();
     var slug_str = '&slug=' + tea_name_slug;    
     var review_to_send = $('form').serialize();
@@ -112,7 +112,6 @@ $('form').submit(function(e){
 	    $.each(data.errors, function(i, item){ 
 			$("#form-messages").append("<li>"+ i + " " + item[0]+"</li>");
 		});
-
 
     });
 });
