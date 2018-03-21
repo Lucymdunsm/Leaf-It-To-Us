@@ -6,37 +6,36 @@
 {% endblock %}
 
 
-
 {% block body_block %}
 
     <div class="col-md-4">
-        <div class="tea-month"> <!-- could text be a block from somewhere? -->
-            Tea of the month
-            <div class="img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-            <div class="tea-desc">Religionsfrihet är en mänsklig rättighet och en viktig hörnsten i den svenska demokratin. Samtidigt kan det i ett demokratiskt samhälle uppstå konfliktytor mellan religionsfriheten och andra mänskliga fri- och rättigheter, till exempel i frågor om jämställdhet, barns rättigheter och alla människors lika värde. I debatten framförs inte så sällan ståndpunkten att staten borde ha skarpare verktyg för att förhindra att statligt stöd går till trossamfund som inte lever upp till demokratiska principer.</div>
+        <div class="tea-month">
+            {% if tea %}
+            <h2><B>Tea of the moment</B></h2>
+            <div class="img"><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image"></div>
+            <div class="tea-desc">
+                <h3><strong><a href="{% url 'catalog'%}{{ tea.slug }}">{{ tea.name }}</a></strong></h3><br>
+                <h4>{{ tea.description }}</h4><br>
+                <h4>Origin: {{ tea.origin }}</h4><br>
+                <h4>Brewed at {{ tea.temperature }} degrees</h4><br>
+            </div>
+            {% endif %}
         </div>
     </div>
 
-    <div class="icon-group">
-        <h3 id="icon-search-text">Search by</h3>
-        {% include 'tea/icon-group.html' %}
+<!--     basically i want this as a cube here, but in a row on a spectea page
+    and i can't work out how to do different things with an included block
+    so this is a row too right now
+    dk whether to put the text in the block or if that'll complicate things further-->
+    <div class="included-icon-group">
+        <h3 id="icon-search-text"><B>Search by</B></h3>
+        {% include 'tea/icon-group2.html' %}
     </div>
-<!--     <div class="col-md-4">
-        <div class="icon-group">
-            <h3>Search by</h3>
-
-            <div class="img">
-                <img src="http://via.placeholder.com/100x100" alt="icon">
-            </div>
-            <p class="icon-name">Temperature</p>
-            <div class="img">
-                <img src="http://via.placeholder.com/100x100" alt="icon">
-            </div>
-            <p class="icon-name">Temperature</p>
-        </div> -->
 
         <div class="mugshot-api">
-            <img src="http://via.placeholder.com/250x250" alt="mugshot">
+            <h2><B>Mugshot</B></h2>
+            <div id="display-mugshot">
+            </div>
         </div>
     </div>
 

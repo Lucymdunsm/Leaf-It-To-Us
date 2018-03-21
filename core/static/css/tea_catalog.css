@@ -1,3 +1,7 @@
-.list-class {
+#everything {
     margin-left: 25%;
+    width: 60%;
+}
+.checked {
+    color: orange;
 }

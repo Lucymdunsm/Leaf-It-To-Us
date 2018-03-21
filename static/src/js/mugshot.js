@@ -1,7 +1,7 @@
 /*
 MugShot JQuery Plugin
 version 1.0 March 11, 2018
-by Cameron Nicolson 
+by Cameron Nicolson
 */
 
 (function($) {
@@ -15,7 +15,7 @@ by Cameron Nicolson
         this.options = $.extend({}, this.defaults, options);
 
         this._init();
-    } 
+    }
 
     MugShot.prototype = {
 
@@ -40,8 +40,9 @@ by Cameron Nicolson
     	_render: function() {
     		this.container = this.$createElement("div.mugshot-container");
             this.innerContainer = this.$createElement("div.mugshot-inner-container");
+            this.noteElm = this.$createElement("p.mugshot-note-text");
             this.imgElem = this.$createElement("img.mugshot-img img").attr('src', '/static/src/img/ajax-loader.gif');
-            this.container.append(this.innerContainer.append(this.imgElem));
+            this.container.append(this.innerContainer.append(this.imgElem, this.noteElm));
             this.element.addClass("mugshot-control").empty().append(this.container);
     	},
 
@@ -50,10 +51,8 @@ by Cameron Nicolson
     		url = "https://api.pinterest.com/v1/boards/643170459222980929/pins/?access_token=AaJQ-l6vxCcM5KUNTNeY9yVHEPd4FRtUjoMUJzZExS3SeYAzEgAAAAA&fields=id%2Clink%2Curl%2Cimage%2Coriginal_link%2Cnote"
 		    $.get(url, function(res, status){
 		    	items = res.data
-				$.each(items, function(i, item) {
-				    self.creator = item.id, self.url = item.image.original.url,
-				    self.note = item.note;
-				});
+                self.creator = items[0].id, self.url = items[0].image.original.url,
+                self.note = items[0].note;
 		    	console.log(res);
 		    	if(status === 'success') self._updateDisplay();
 		    });
@@ -61,6 +60,7 @@ by Cameron Nicolson
 
     	_updateDisplay: function() {
     		$(this.imgElem).attr("src", this.url);
+            $(this.noteElm).html(this.note);
     	},
 
     	// common core method

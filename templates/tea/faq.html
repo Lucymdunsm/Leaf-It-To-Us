@@ -11,10 +11,105 @@
 {% endblock %}
 
 
-<!-- this is on the page, but behind the sidebar -->
 {% block body_block %}
 <div id="thing">
-    <h2>FAQszzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</h2>
+    <h2>FAQs</h2>
+        <p id="intro-text">
+            How often do you make tea by simply leaving the kettle to boil, or by removing the tea bag only once you remember that it’s there?<br>
+            If so, you have been unknowingly – and significantly – altering the flavour of the brew, more often than not drinking little more than burnt leaves.<br>
+            Read on for a guide on the perfect cuppa…
+        </p>
+
+    <div id="small-table">
+        <table>
+            <tr>
+                <td></td>
+                <th>Black</th>
+                <th>Green</th>
+                <th>White</th>
+                <th>Oolong</th>
+                <th>Herbal</th>
+                <th>Pu'erh</th>
+            </tr>
+            <tr>
+                <td>Temp</td>
+                <td>90-100°</td>
+                <td>75-90°</td>
+                <td>80-85°</td>
+                <td>80-90°</td>
+                <td>100°</td>
+                <td>90°</td>
+            </tr>
+            <tr>
+                <td>Time</td>
+                <td>3-5</td>
+                <td>2-3</td>
+                <td>3-5</td>
+                <td>2-3</td>
+                <td>3-5</td>
+                <td>variable</td>
+        </table>
+    </div>
+
+
+    <div id="table-content">
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#temp-text">Why is temperature important</button><br>
+        <div id="temp-text" class="collapse">
+        An often underappreciated factor in brewing the perfect cup of tea is the temperature of the water. The leaves will burn using water that’s too hot, so you can (and will!) destroy the delicate aroma and subtle taste of the blend – usually imparting a bitter taste (much to the ignorance of many coffee chains). White and green varieties are the most susceptible to burning – tea is far easier to burn than food.
+        <br>
+        There’re multiple ways to avoid this problem, however – the easiest fix is to use a temperature-controlled kettle (or thermometer, if you’re feeling less fancy). You can also rinse the leaves in cold water before brewing, or pour the heated water down the side of the cup to avoid direct contact with the leaves.
+        <br>
+        On the other hand, tea that’s brewed to cold won’t impart the full flavour of the tea as the molecules simply can’t dissolve properly.
+        <br>
+        In short, get your temperature right.
+        </div>
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#type-text">Run-down of types</button><br>
+        <div id="type-text" class="collapse">
+            <b>Black</b>
+            If you’ve been buying teabags prior to now, black is likely what you’re most familiar with. Such teabags usually consist of a low grade blend – multi-origin, created with the leftover particles of higher grade (larger leaf) products. In China black tea is referred to as “red tea”. Loose leaf black tea has a much stronger, full-bodied taste<br>
+            <b>Green</b>
+            Well-known for its health benefits, green tea from a teabag doesn’t hold a candle to the real thing – the brew should not be bitter, the most common cause of which occurring through burning the leaves (through using water that’s too hot). At the correct temperature, green tea is often lightly grassy - although the roasted hojicha could fool you into thinking you're drinking something entirely different!<br>
+            <b>White</b>
+            A much lighter tasting profile than other types, white tea is more labour-intensive to harvest and therefore more expensive than most other teas.<br>
+            <b>Herbal</b>
+            AKA tisanes. The debate rages on as to whether this truly qualifies as tea as the leaves are picked from an entirely different type of plant. These teas usually have one overriding flavour - often floral (like chamomile, hibiscus) or fruit-infused (berries and apples are most common).
+        </div>
+
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#brew-text">Brew time</button><br>
+        <div id="brew-text" class="collapse">
+        Whilst the exact time is dependent on the specific tea, some general guidelines are…<br>
+        <b>Black</b>
+        To create the strong, full-bodied flavour that black teas are renowned for, steep for up to five minutes.<br>
+        <b>Green</b>
+        Too long a steeping time can impart bitterness, too short and the tea will lack any real flavour. Between two and three minutes is a happy medium.<br>
+        <b>White</b>
+        The flavour should be subtle, but the lightness of the tea means that a longer brew time is generally needed. Five minutes is often a good starting point.
+        <br>
+        <b>Oolong</b>
+        To write just one thing about oolong would inevitably impart a contradication - the very wide variety of flavours available is down to how the leaf is processed: some are sweet, some are light, and some more full-bodied. Hard to pin down and even harder to brew "correctly" - 3 minutes? 10 minutes? 20 seconds? There are as many methods as there are oolongs themselves.
+        <br>
+        <b>Herbal</b>
+        Herbal brewing times can be strongly dependent on which flavour is used most strongly in the blend, but four minutes is usually enough for most types.
+        </div>
+
+        <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#starter-text">Starter teas</button><br>
+        <div id="starter-text" class="collapse">
+            <b>The Good</b><br>
+            If you're just stepping away from teabags into the world of loose leaf the selection can be overwhelming. How can you possibly know the meaning behind OP, FOP, GFOP, TGFOP, FTGFOP ... SFTGFOP?
+            Rather than trying to decipher the increasingly long acronyms (they all refer to leaf quality, by the way - the latter, if you're interested, stands for Superior Finest Tippy Golden Flowery Orange Pekoe. Really rolls off the tongue) we've put together a selection of starter teas to get you on your way. We recommend you skip the milk and sugar, to get nature's full flavour:<br>
+
+            <u>Black Darjeeling</u> - black teas are well-known to carry more caffeine than other types, so if you're moving over from coffee Darjeeling's a good place to start. It has the expected strength, with a subtle underlying sweetness.<br>
+            <u>Green Sencha</u> - Sencha is widely available, and quintessentially green. Unflavoured (unlike the more common Green Jasmine) and extremely grassy (in a good way!), Sencha's the most popular brew in Japan.<br>
+            <br>
+
+            <b>The Bad</b><br>
+            And with the good must come the bad. We're not saying these are bad teas (does such a thing exist?) but for beginners you can easily create poor brews - and spend a lot whilst doing so - on the following:<br>
+            <u>Pu’erh</u> - more often sold in (expensive!) "cakes" that need to be finely chipped away at, with brew times ranging from 30 seconds to several minutes. You really need to know what you're doing.<br>
+            <u>Matcha</u> - Matcha is a consumed in powder form, not leaf. Whilst no strainer is needed here, a good brewing technique is essential - and such technique requires tools in the form of a very small bowl and a very large whisk. Without the latter you'll likely end up with a very lumpy brew. And did we mention the cost?<br>
+            <u>Oolong</u> - less tricky then the above two, but oolong manages to be a very broad umbrella for a multitude of teas. Whilst it's easy to see the similarities between other varities, oolongs vary hugely - finding one that you like can be a very tea-consuming process.<br>
+        </div>
+    </div>
+
 </div>
 {% endblock %}
 

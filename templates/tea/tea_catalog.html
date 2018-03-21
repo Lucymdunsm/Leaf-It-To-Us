@@ -5,34 +5,47 @@
     <title>tea</title>
     <!-- not working -->
 {% endblock %}
-<body>
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/tea_catalog.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+
 {% block body_block %}
-<h1>Catalog page</h1>
+<div id="everything">
+<h1>Browse all teas or
 <div class="dropdown" id="catalog-filter">
-  Sort By:<button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-    A-Z
+  sort by:<button class="btn btn-primary dropdown-toggle" type="button" id="filter-menu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    <span class="filter-option">Filter</span>
     <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-    <li><a href="#" class="active">A-Z</a></li>
+    <li><a href="#" id="catalog" class="active">A-Z</a></li>
     <li><a href="#" id="popular">Most Popular</a></li>
     <li><a href="#" id="type">Type</a></li>
     <li><a href="#" id="origin">Origin</a></li>
+    <li><a href="#" id="recent-reviews">recently reviewed</a></li>
+    <li><a href="#" id="temperatures">Brew Temp</a></li>
+    <li><a href="#" id="top">Top Rated</a></li>
   </ul>
 </div>
+</h1>
 {% if teas %}
 	<div class="list-group filterable" id="catalog-list">
 	{% for tea in teas %}
-	<a href="#" class="list-group-item" data-teaid="{{ tea.id }}">
+	<a href="{% url 'catalog'%}{{ tea.slug }}" class="list-group-item filter-item" data-teaid="{{ tea.id }}">
 		<span class="badge">Views {{ tea.views }}</span>
 	<h4 class="list-group-item-heading">{{ tea.name }}</h4>
     <p class="list-group-item-text">{{ tea.description }}</p>
-        <b>{{ tea.origin }}</b>
-        <b> {{ tea.category }}</b>
+      <span class="score" data-rating="{{ tea.rating }}">
+        {% include 'tea/star_rating.html' %} 
+      </span>
+        <p>Origin: {{ tea.origin }}</p>
+        <p>Type: {{ tea.category }}</p>
   	</a>
 	{% endfor %}
 </div>
+</div>
 {% endif %}
 {% endblock %}
-</body>
-</html>

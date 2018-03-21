@@ -5,6 +5,7 @@
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/search.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
 
 
@@ -13,38 +14,47 @@
     <div class ="container-fluid">
         <div class="row">
             <div id="filter-options" class="col-md-9">
-                <ul id="filters">
-                    <li class="dropdown">
-                        <p>Search filters:</p></li>
-                    <li class="dropdown">temp
-                         <div class="dropdown-content">hi</li>
-                    <li class="dropdown">origin
-                        <div class="dropdown-content">hi</li>
-                    <li class="dropdown">type
-                        <div class="dropdown-content">hi</li>
-                    <li class="dropdown">brew time
-                        <div class="dropdown-content">hi</li>
-                    <li class="dropdown">top rated
-                        <div class="dropdown-content">hi</li>
-                    <li class="dropdown">recently reviewed
-                        <div class="dropdown-content">hi</li>
+                <h3>Search Filters:</h3>
+        <ul class="nav nav-pills">
+                    <li role="presentation"><a id="popular" href="#">Most Popular</a></li>
+                    <li role="presentation"><a id="origin" href="#">Origin</a></li>
+                    <li role="presentation"><a id="type" href="#">Type</a></li>
+                    <li role="presentation"><a id="recent-reviews" href="#">Recently Reviewed</a></li>
+                    <li role="presentation"><a id="temperatures" href="#">Brew Temp</a></li>
+                    <li role="presentation"><a id="top" href="#">Top Rated</a></li>
                 </ul>
             </div>
         </div>
     {% if results %}
         <div class="toprow">
-            <div class="teabox">
-                {% for tea in results %}
-                <div class="col-md-2">
-                    <img src="http://via.placeholder.com/150x150" alt="picture of tea"/>
-                    <h3 class="tname"> {{ tea.name }} </h3>
-                    <h4 class="trating">{{ tea.rating }}</h4>
-                </div>
+            <div class="teabox filterable col-xs-12">
+            {% for tea in results %}
+                 {% if forloop.first %}<div class="row">{% endif %}
+                <div class="col-lg-12" >
+                <a class="list-group-item filter-item" href="{% url 'catalog' %}{{tea.slug}}" data-teaid="{{ tea.id }}">
+                    <img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-image">
+                    <h3 class="tname">{{tea.name}}</h3>
+
+                        <div class="fetch-tea-details">
+                            <h4 class="trating">
+                                <!-- <span class="badge"> views {{ tea.views }}</span> -->
+                                <span class="score" data-rating="{{ tea.rating }}">
+                                    {% include 'tea/star_rating.html' %}
+                                </span>
+                            </h4>
+                            <h4 class="trating">{{ tea.temperature }}°</h4>
+                            <h4 class="trating">{{ tea.origin }}</h4>
+                        </div>
+                        </a>
+                </div> <!-- end of column -->
+                {% if forloop.counter|divisibleby:3 %}</div><div class="row">{% endif %}
+                {% if forloop.last %}</div>{% endif %}
                 {% endfor %}
             </div>
         </div>
         {% else %}
-            <p>No results matched your search</p>
+            <h3 class="search-fail">No results matched your search<br>
+                Think we're missing something? <a href="{% url 'contact_us' %}">Let us know!</a></h3>
         {% endif %}
 
     </div>

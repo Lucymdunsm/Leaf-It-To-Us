@@ -2,25 +2,41 @@
 
 <!--     <div class="column"> -->
         <div class="icon-img">
-            <img src="http://via.placeholder.com/100x100" alt="temperature icon">
+            <a href="{% url 'brew_temp' %}">
+                <img src="{{ MEDIA_URL }}/icons/tempicon.jpg" class="single-icon" alt="temperature icon">
+            </a>
         </div>
-        <!-- <h4 class="icon-name">Temperature</h4> -->
+
 
         <div class="icon-img">
-            <img src="http://via.placeholder.com/100x100" alt="origin icon">
+            <a href="{% url 'origin' %}">
+                <img src="{{ MEDIA_URL }}/icons/origin.jpg" class="single-icon" alt="origin icon">
+            </a>
         </div>
-        <!-- <h4 class="icon-name">Origin</h4> -->
+        <!--  -->
 <!--     </div>
 
     <div class="column"> -->
         <div class="icon-img">
-            <img src="http://via.placeholder.com/100x100" alt="type icon">
+            <a href="{% url 'type' %}">
+                <img src="{{ MEDIA_URL }}/icons/teatype.jpg" class="single-icon" alt="type icon">
+            </a>
         </div>
-        <!-- <h4 class="icon-name">Type</h4> -->
+        <!--  -->
 
         <div class="icon-img">
-            <img src="http://via.placeholder.com/100x100" alt="rating icon">
+            <a href="{% url 'top_rated' %}">
+            <img src="{{ MEDIA_URL }}/icons/favicon.jpg" class="single-icon" alt="rating icon">
+            </a>
         </div>
-        <!-- <h4 class="icon-name">Rating</h4> -->
+        <!--  -->
 <!--     </div> -->
+
+
+</div>
+<div class="name-row">
+<h4 class="icon-name">Temperature</h4>
+<h4 class="icon-name">Origin</h4>
+<h4 class="icon-name">Type</h4>
+<h4 class="icon-name">Rating</h4>
 </div>

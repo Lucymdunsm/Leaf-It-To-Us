@@ -128,3 +128,24 @@ __pycache__
 
 #dump
 sh.exe.stackdump
+teapot/bin/activate
+teapot/bin/activate.csh
+teapot/bin/activate_this.py
+teapot/bin/activate.fish
+teapot/bin/django-admin
+media/tea_images/arctic_fire.jpg
+media/tea_images/breakfast_tea.jpg
+teapot/bin/wheel
+teapot/include/python3.6m
+teapot/bin/python3.6
+teapot/bin/python3
+teapot/bin/python-config
+teapot/bin/python
+teapot/bin/pip3.6
+teapot/bin/pip3
+teapot/bin/pip
+teapot/bin/pyjwt
+teapot/bin/easy_install-3.6
+teapot/bin/easy_install
+teapot/bin/django-admin.py
+teapot/bin/chardetect

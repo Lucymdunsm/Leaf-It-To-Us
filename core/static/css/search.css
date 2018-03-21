@@ -1,3 +1,7 @@
+#filter-options {
+    margin-left: 30%;
+}
+
 #filters {
     padding-top: 2%;
     display: flex;
@@ -8,18 +12,49 @@
     padding-left: 2%;
 }
 
-#filter-options {
-    margin-left: 30%;
+.teabox {
+    margin-top: 3%;
+    margin-left: 25%;
+    /*display: flex;*/
+    background-color:#5b2424;
+    border: 2px solid #353538;
+    width: 60%;
 }
 
-.teabox {
-    margin-top: 5%;
-    margin-left: 25%;
-    display: flex;
-    background-color:lavender;
+.col-xs-6 {
+    width: 20%;
+}
+
+.filter-item {
+    max-width: 310px;
+    display: inline-block;
+    margin: 1%;
+}
+
+.tea-image {
+    max-height: 150px;
+    max-width: 150px;
+    width: auto;
+    height: auto;
 }
 
 .tname {
+    text-align: center;
+    padding-bottom: 2%;
+}
+
+.tname a:hover {
+    text-decoration: none;
+    color: #5b2424;
+}
+
+.trating {
+    background-color: beige;
+    text-align: center;
+}
+
+.fetch-tea-details {
+    margin-top: 5%;
 }
 
 .dropdown {
@@ -33,7 +68,7 @@
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
 }
@@ -41,4 +76,13 @@
 .dropdown:hover .dropdown-content {
     display: block;
     background-color: #ddd;
+}
+
+.checked {
+    color: orange;
+}
+
+.search-fail {
+    margin-left: 25%;
+    padding-top: 5%;
 }

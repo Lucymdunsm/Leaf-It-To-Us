@@ -1,41 +1,54 @@
+{% extends 'tea/base.html' %}
 {% load staticfiles %}
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/account.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
 {% block body_block %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style type="text/css">
-.checked {
-    color: orange;
-}
-</style>
-<h1>Account</h1>
+
+<div class="account">
+	<div class="personal">
 	{% if user %}
-		{{ user.first_name }} {{ user.last_name }}
-		<img src="{{ MEDIA_URL }}{{ profile.profile_pic }}">
+		<div id="display-name">
+			Welcome, {{ user.first_name }} {{ user.last_name }}!
+		</div>
+		{% if profile %}
+		<img id="profile-img" img src="{{ MEDIA_URL }}{{ profile.profile_pic }}">
+		{% else %}
+		<strong>Finish updating your profile by adding a profile picture</strong>
+		{% endif %}
 	{% endif %}
+	</div>
 
-	<p><b>My Reviews:</b></p>
-	{% if reviews %}
-	{% for review in reviews %}
-	{{ review.tea }}
-	<span class="score" data-rating="{{ review.rating }}">
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-		<span class="fa fa-star"></span>
-	</span>
-	<p>{{review.date}}</p>
-	{{ review.content }}
-	{% endfor %}
-	{% endif %}
+	<div class="social-tea">
+		<div class="recent-posted-review">
+			<h2>My Reviews:</h2>
+			{% if reviews %}
+				{% for review in reviews %}
+					<p class="review-tea-name">{{ review.tea }}</p>
+					<span class="score" data-rating="{{ review.rating }}">
+						{% include 'tea/star_rating.html' %}
+						</span>
+					<p>{{review.date}}</p>
+					{{ review.content }}
+				{% endfor %}
+			{% endif %}
+		</div>
 
-	<p><b>Favourite teas:</b></p>
-	{% if favourites %}
-	<ul>
-		{% for favourite in favourites %}
-		<li>{{ favourite.tea }}</li>
-		{% endfor %}
-	</ul>
-	{% endif %}
+	<div class="recent-posted-review">
+		<h2>Favourite teas:</h2>
+		{% if favourites %}
+			<ul class="fav-list">
+			{% for favourite in favourites %}
+				<li class="fav-tea-name">{{ favourite.tea }}</li>
+			{% endfor %}
+			</ul>
+		{% endif %}
+	</div>
+</div>
+
 {% endblock %}
 
 

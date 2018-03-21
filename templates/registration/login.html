@@ -1,3 +1,4 @@
+
 {% extends 'tea/base.html' %}
 {% load staticfiles %}
 
@@ -5,22 +6,48 @@
 <link rel="stylesheet" type="text/css" href="{% static 'css/login.css' %}">
 {% endblock %}
 
+
 {% block body_block %}
-<div id="everything">
-	<h1>Login</h1>
-	<form method="post" action=".">
-		{% csrf_token %}
-		{{ form.as_p }}
-	<input type="submit" value="Log in" />
-	<input type="hidden" name="next" value="{{ next }}" />
-	</form>
-	<p>
-		Not a member?
-		<a href="{% url 'registration_register' %}">Register</a>
-	</p>
-	<br>
-	<p><strong> OR </strong></p>
-	<a href="{% url 'social:begin' 'facebook' %}">Log in with Facebook</a><br>
-	<a href="{% url 'social:begin' 'twitter' %}">Log in with Twitter</a><br>
+<div id="login-page">
+	{% if user.is_authenticated %}
+		<h2> You are logged in as {{ user.username }} </h2>
+		<p> To log in with a different account, you must first <a href="{% url 'logout' %}"> log out.</a></p>
+	{% else %}
+		<h1>Login</h1>
+		<form id="login_form" method="post" action="{% url 'login' %}">
+			{% csrf_token %}
+			<h5>Username:</h5><input type="text" name="username" value="" size="50" />
+			<br />
+			<br />
+			<h5>Password:</h5><input type="password" name="password" value="" size="50" />
+			<br />
+			<br />
+			<button type="submit" value="Log in">Log in </button>
+		</form>
+		<br>
+		<br>
+		<p>
+			Not a member?
+			<a href="{% url 'register' %}">Register</a>
+		</p>
+		<br>
+		<p><strong> OR </strong></p>
+
+		<div id="social-login-button">
+		<a href="{% url 'social:begin' 'github' %}">
+			<img src="{{ MEDIA_URL }}icons/sign-in-github.png" class="social-login"></a>
+		</div>
+		<br>
+		<div class="social-login-button">
+		<a href="{% url 'social:begin' 'facebook' %}">
+			<img src="{{ MEDIA_URL }}icons/sign-in-facebook.png" class="social-login"></a>
+		</div>
+		<br>
+		<div class="social-login-button">
+		<a href="{% url 'social:begin' 'twitter' %}">
+			<img src="{{ MEDIA_URL }}icons/sign-in-twitter.png" class="social-login"></a>
+		</div>
+		<br>
+	{% endif %}
 </div>
 {% endblock %}

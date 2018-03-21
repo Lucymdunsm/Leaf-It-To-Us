@@ -8,39 +8,56 @@
 
 {% block style_block %}
 <link rel="stylesheet" type="text/css" href="{% static 'css/specific_tea.css' %}">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock %}
+
+
 
 {% block body_block %}
 
-    <div class="breadcrumb">breadcrumb
-     <!-- should prob be inherting from a block from somewhere? -->
-    </div>
+    <div class="breadcrumb"><a href="{% url 'home' %}">Home</a> > <a href="{% url 'catalog' %}">Catalog</a> > {{ tea.name }}</div>
 
         <div id="tea-info">
-            <div class="col-md-9">
+            <div class="col-md-12">
                 {% if tea %}
-                    <div class="tea-img"><img src="http://via.placeholder.com/250x250" alt="picture of tea"></div>
-                    <div id="tea-name">{{ tea.name }}</div>
-                    <div id="tea-desc">{{ tea.description }}</div>
+                <div id="top-box">
+                    <div><img src="{{ MEDIA_URL }}{{ tea.image }}" alt="picture of {{ tea.name }}" class="tea-img"></div>
+                    <div id="tea-name"><h1 class="name">{{ tea.name }}</h1></div>
+                    <div id="tea-desc"><h3 class="desc">{{ tea.description }}</h3></div>
+                </div>
                 {% endif %}
+                {% if user.is_authenticated %}
+               {% if not is_user_favourite %}
+                <div class="fav-button">
+                    <button id="add-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>Favourite
+                    </button>
+
+
+                    {% else %}
+                    <button id="remove-favourite" type="button" data-teaid="{{ tea.id }}" class="btn btn-default btn-lg" disabled="">
+                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span> Tea already saved
+                    </button>
+                    {% endif %}
+                      </div>
+                    {% endif %}
+
+                </div>
             </div>
         </div>
 
-        <div class="col-md-2">
+        <div class="col-md-9">
             <div id="tea-icon-group">
-                {% include 'tea/icon-group.html' %}
-                <div id="icon-headings">
-                    <h4 class="icon-name">Temperature</h4>
-                    <h4 class="icon-name">Origin</h4>
-                    <h4 class="icon-name">Type</h4>
-                    <h4 class="icon-name">Rating</h4>
-                </div>
+
+                {% include 'tea/icon-group2.html' %}
+
+
                 {% if tea %}
                 <div id="detailed-tea-info">
-                    <h5 class="tea-details">{{ tea.temperature }}</h5>
-                    <h5 class="tea-details">{{ tea.origin }}</h5>
-                    <h5 class="tea-details">{{ tea.category }}</h5>
-                    <h5 class="tea-details">{{ tea.rating }}</h5>
+                    <h3 class="tea-details">{{ tea.temperature }}°</h3>
+                    <h3 class="tea-details">{{ tea.origin }}</h3>
+                    <h3 class="tea-details">{{ tea.category }}</h3>
+                    <h3 class="tea-details">{{ tea.rating }}</h3>
                 </div>
                 {% endif %}
             </div>
@@ -49,25 +66,61 @@
         <div class="col-md-9">
             <div class="review-section">
                 <div class="review-sort-bar">
-                    <p class="reviews">reviews</p>
+                    <h3 class="review-headline">Reviews</h3>
 
                     <div class="review-filter">
-                        <p>order by:</p>
-                        <button>most recent</button> <!-- maybe dont have as button for real -->
-                        <button>top rated</button>
+                        <h3 class="order-by"><a href="#">most recent</a></h3>
+                        <h3 class="order-by"><a href="#">top rated</a></h3>
                     </div>
                 </div>
+                <script type="text/javascript">
+                    var tea_name_slug = "{{ tea.slug }}";
+                </script>
+                <div class="new-review">
+                    <ul id="form-messages"></ul>
+                    {% if user.is_authenticated %}
+                    <div class="new-review-text">
 
-                <div class="review-boxes">
-                    <div id="review-profile">
+                        <form id="review_form" method="post">
+                            {% csrf_token %}
+
+                            <!-- <b>{{ form.errors }}</b> -->
+                            {% for error in form.errors %}
+                                    Output error text message only
+                                    <div>{{ form.errors }}</div>
+                                {% endfor %}
+
+                            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+
+                            {% for field in form.visible_fields %}
+                                {{ field }}
+                            {% endfor %}
+                            <input type="submit" id="sub_review_btn" name="submit" value="Submit"/>
+                        </form>
+                    </div>
+
+                    {% endif %}
+                </div>
+
+                <div class="individual-review-boxes">
+
                         {% if review %}
                         {% for review in review %}
-                            <div id="profile-pic"><img src="http://via.placeholder.com/50x50" alt="profile pic"></div>
-                            <div id="tea-rating">{{ review.rating }}</div>
+                        <div id="review-profile">
+                            <h4 id="reviewer-name">{{ review.user }}</h4>
+
+                            <span class="score" data-rating="{{ review.rating }}">
+                                {% include 'tea/star_rating.html' %}
+                            </span>
+
+                            <p>{{review.date}}</p>
                             <div id="review-text">{{ review.content }}</div>
+
+                        </div>
                         {% endfor %}
                         {% endif %}
-                    </div>
                 </div>
             </div>
         </div>

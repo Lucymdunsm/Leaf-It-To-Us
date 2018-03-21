@@ -47,15 +47,21 @@ class Review(models.Model):
 	content = models.TextField()
 	rating = models.FloatField(default=0)
 	date = models.DateField(default=timezone.now)
+	#ratings = GenericRelation(Rating, related_query_name='reviews')
 	user = models.ForeignKey(User,
 		on_delete = models.CASCADE, null=True)
 	tea = models.ForeignKey(Tea,
 		on_delete = models.CASCADE, related_name='reviews', null=True)
 	slug = models.SlugField(unique=True)
 
-	def __str__(self):
-		return self.tea
+	def save(self, *args, **kwargs): 
+		slug_str = "%s %s" % ( self.date, self.rating) 
+		self.slug = slugify(slug_str)
+		super(Review, self).save(*args, **kwargs)
 
+	def __str__(self):
+		return str(self.tea)
+#Review.objects.filter(ratings__isnull=False).order_by('ratings__average')
 
 class SavedTea(models.Model):
 	user = models.ForeignKey(User,
@@ -83,16 +89,16 @@ class UserProfile(models.Model):
 	)
 
 	def __str__(self):
-		return self.user
+		return str(self.user)
 
 @receiver(post_save)
 def callback(sender, **kwargs):
-    r = kwargs['instance']
 
-    if (isinstance(r, Review)):
-    	# if kwargs['created']:
-	    	try:
-	    		r.tea.update_rating()
-	    	except Exception as e:
-	    		print('fail')
-	    		print(e)
+    if kwargs['created']:
+    	r = kwargs['instance']
+    	if (isinstance(r, Review)):
+    		try:
+    			r.tea.update_rating()
+    		except Exception as e:
+		    	print('fail')
+		    	print(e)

@@ -1,30 +1,85 @@
 
 .tea-month {
     margin-left: 75%;
+    width: 60%;
+}
+
+.tea-month h2 {
+    text-transform: uppercase;
+    text-align: center;
     background-color: BurlyWood;
-    width: 50%;
+}
+
+.tea-image {
+    width: auto;
+    height: auto;
+    max-width: 350px;
+    max-height: 350px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1%;
 }
 
 .tea-desc {
     padding: 7% 2% 7% 2%;
+    text-align: center;
+    border: 2px solid black;
+    background-color: BurlyWood;
+}
 
+.tea-desc h3 {
+    text-transform: uppercase;
 }
 
 #icon-search-text {
     margin-left: 65%;
+    text-transform: uppercase;
+}
+
+.included-icon-group {
+    margin-top: 2%;
 }
 
 #icon-group {
-    margin-left: 65%;
+    margin-left: 55%;
+    display: flex;
+    padding: 1%;
     background: lavender;
+    width: 25%;
 }
 
-.column {
-    display: inline-block;
-    margin-right: 5%;
+.icon-img {
+    padding-left: 2%;
+    display: inline-flex;
+}
+
+.single-icon {
+    width: 120px;
+    height: 120px;
+}
+
+.icon-name {
+    display: inline-flex;
+    padding-left: 7%
+}
+
+.name-row {
+    margin-left: 54%;
 }
 
 .mugshot-api {
-    margin-left: 65%;
+    margin-top: 3%;
+    margin-left: 57%;
     background: Bisque;
+    width: 20%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.mugshot-img {
+    height: auto;
+    width: auto;
+    max-width: 500px;
+    max-height: 450px;
+
 }

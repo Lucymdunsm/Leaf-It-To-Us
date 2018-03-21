@@ -255,14 +255,7 @@ def add_tea(name, price, description, origin, temperature, category, views, slug
 	return t
 
 def add_review(content,rating,date,user,tea,slug):
-	r = Review.objects.get_or_create(date=date,user_id=user.id)[0]
-	r.content=content
-	r.rating=rating
-	r.date=date
-	r.user=user
-	r.tea=tea
-	r.slug=slug
-
+	r = Review.objects.get_or_create(date=date,user=user,content=content,tea=tea,slug=slug, rating=rating)[0]
 	r.save()
 	return r
 

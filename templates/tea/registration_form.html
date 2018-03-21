@@ -1,9 +1,9 @@
 {% extends "tea/base.html" %}
 {% block body_block %}
-	<h1>Register Here</h1>
+	<h1><B>Register Here</b></h1>
 	<form method="post" action=".">
 		{% csrf_token %}
 		{{ form.as_p }}
-		<input type="submit" value="Submit" />
+		<input type="submit" value= "Submit" />
 	</form>
 {% endblock %}

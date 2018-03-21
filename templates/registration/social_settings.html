@@ -1,0 +1,56 @@
+{% extends 'tea/base.html' %}
+{% load staticfiles %}
+
+{% block style_block %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/social_settings.css' %}">
+{% endblock %}
+
+{% block body_block %}
+<div class="settings-page">
+<h2>Social Authentication Settings</h2>
+
+
+<h3>Twitter</h3>
+	{% if twitter_login %}
+
+		<p>Connected as <a href="https://twitter.com/{{ twitter_login.extra_data.access_token.screen_name }}/" target="_blank">@{{ twitter_login.extra_data.access_token.screen_name }}</a></p>"
+		{% if can_disconnect %}
+
+     		<form method="post" action="{% url 'social:disconnect' 'twitter' %}">
+       		{% csrf_token %}
+       		<button type="submit">Disconnect from Twitter</button>
+      		</form>
+
+   		 {% else %}
+     		<button type="button" disabled>Disconnect from Twitter</button>
+      		<p class="pw-emph">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Twitter.</p>
+    	{% endif %}
+
+	{% else %}
+    	<a href="{% url 'social:begin' 'twitter' %}">Connect to Twitter</a>
+	{% endif %}
+<br/>
+<br/>
+
+<h3>Facebook</h3>
+  {% if facebook_login %}
+
+    <p>Connected as <a href="https://facebook.com/{{ facebook_login.extra_data.id }}/" target="_blank">{{ facebook_login.extra_data.id }}</a></p>
+
+    {% if can_disconnect %}
+      <form method="post" action="{% url 'social:disconnect' 'facebook' %}">
+        {% csrf_token %}
+        <button type="submit">Disconnect from Facebook</button>
+      </form>
+
+    {% else %}
+      <button type="button" disabled>Disconnect from Facebook</button>
+      <p class="pw-emph">You must <a href="{% url 'password' %}">define a password</a> for your account before disconnecting from Facebook.</p>
+    {% endif %}
+
+  {% else %}
+    <a href="{% url 'social:begin' 'facebook' %}">Connect to Facebook</a>
+  {% endif %}
+
+</div>
+{% endblock %}
