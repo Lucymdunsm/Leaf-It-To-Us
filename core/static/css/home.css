@@ -1,13 +1,13 @@
 
 .tea-month {
     margin-left: 75%;
-    background-color: BurlyWood;
     width: 60%;
 }
 
 .tea-month h2 {
     text-transform: uppercase;
     text-align: center;
+    background-color: BurlyWood;
 }
 
 .tea-image {
@@ -23,6 +23,8 @@
 .tea-desc {
     padding: 7% 2% 7% 2%;
     text-align: center;
+    border: 2px solid black;
+    background-color: BurlyWood;
 }
 
 .tea-desc h3 {
@@ -31,6 +33,11 @@
 
 #icon-search-text {
     margin-left: 65%;
+    text-transform: uppercase;
+}
+
+.included-icon-group {
+    margin-top: 2%;
 }
 
 #icon-group {
@@ -61,10 +68,12 @@
 }
 
 .mugshot-api {
-    margin-top: 5%;
+    margin-top: 3%;
     margin-left: 57%;
     background: Bisque;
     width: 20%;
+    text-transform: uppercase;
+    text-align: center;
 }
 
 .mugshot-img {

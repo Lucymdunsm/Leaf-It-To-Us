@@ -105,10 +105,11 @@
                 </div>
 
                 <div class="individual-review-boxes">
-                    <div id="review-profile">
+
                         {% if review %}
                         {% for review in review %}
-                            <div id="reviewer-name">{{ review.user }}</div>
+                        <div id="review-profile">
+                            <h4 id="reviewer-name">{{ review.user }}</h4>
 
                             <span class="score" data-rating="{{ review.rating }}">
                                 {% include 'tea/star_rating.html' %}
@@ -116,9 +117,10 @@
 
                             <p>{{review.date}}</p>
                             <div id="review-text">{{ review.content }}</div>
+
+                        </div>
                         {% endfor %}
                         {% endif %}
-                    </div>
                 </div>
             </div>
         </div>
