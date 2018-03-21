@@ -44,8 +44,8 @@
     margin-left: 55%;
     display: flex;
     padding: 1%;
-    background: lavender;
-    width: 25%;
+    background: BurlyWood;
+    width: 30%;
 }
 
 .icon-img {
@@ -69,8 +69,8 @@
 
 .mugshot-api {
     margin-top: 3%;
-    margin-left: 57%;
-    background: Bisque;
+    margin-left: 60%;
+    background: BurlyWood;
     width: 20%;
     text-transform: uppercase;
     text-align: center;
